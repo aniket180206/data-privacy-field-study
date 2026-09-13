@@ -1,1 +1,1298 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Findings</title><link rel="stylesheet" href="css/style.css"></head><body><nav class="navbar"><div class="container nav-inner"><a class="brand" href="index.html"><span class="brand-mark">✦</span> Data Privacy Field Study</a><button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="awareness.html">Awareness</a><a href="survey.html">Survey</a><a href="quiz.html">Quiz</a><a href="leaderboard.html">Leaderboard</a><a href="dashboard.html">Dashboard</a><a href="findings.html">Findings</a><a href="conclusion.html">Conclusion</a></div></div></nav><main><section class="page-hero"><div class="container"><span class="eyebrow">Research findings</span><h1 class="gradient">Findings</h1><p>Use collected responses to identify awareness levels, online habits and common cybercrime experiences.</p></div></section><section class="section"><div class="container grid"><div class="card"><h3>Awareness</h3><p>Compare awareness of data privacy and understanding of personal data.</p></div><div class="card"><h3>Online behaviour</h3><p>Analyse privacy policies, permissions, social media and 2FA practices.</p></div><div class="card"><h3>Cybercrime</h3><p>Analyse suspicious messages, phishing, payment fraud and other reported incidents.</p></div></div></section></main><footer><div class="container footer-inner"><div><strong>Field Study on Awareness of Data Privacy Among College Students</strong><br>Viva College · B.Sc IT · 2nd Year · Division C · 2026–27</div><div>Aniket</div></div></footer><button class="back-top" aria-label="Back to top">↑</button><script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Findings | Data Privacy Awareness Field Study</title>
+  <meta name="description" content="Detailed findings and interpretation of the Field Study on Awareness of Data Privacy Among College Students at Viva College.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.08), transparent 30%),
+        #07111f;
+      color: #e5edf7;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 15, 28, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: .4px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      padding: 9px 12px;
+      border-radius: 8px;
+      color: #aebed1;
+      font-size: 14px;
+      transition: .25s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      background: rgba(56,189,248,.1);
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.12);
+      color: #fff;
+      padding: 8px 11px;
+      border-radius: 8px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      padding: 95px 0 75px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 7px 13px;
+      border-radius: 50px;
+      background: rgba(56,189,248,.1);
+      border: 1px solid rgba(56,189,248,.22);
+      color: #7dd3fc;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin: auto;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: 22px auto 0;
+      color: #9eb0c4;
+      font-size: 17px;
+    }
+
+    /* ================= COMMON ================= */
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-title {
+      margin-bottom: 38px;
+    }
+
+    .section-title .mini {
+      color: #38bdf8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .section-title h2 {
+      font-size: 34px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #91a4b9;
+      max-width: 780px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: rgba(12, 27, 45, .78);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 17px;
+      padding: 26px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.14);
+    }
+
+    .card:hover {
+      border-color: rgba(56,189,248,.28);
+      transform: translateY(-2px);
+      transition: .25s;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 19px;
+    }
+
+    .card p {
+      color: #9db0c4;
+      font-size: 14px;
+    }
+
+    .number {
+      color: #38bdf8;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    /* ================= RESEARCH SUMMARY ================= */
+
+    .summary-box {
+      background: linear-gradient(
+        135deg,
+        rgba(14,165,233,.10),
+        rgba(30,64,175,.08)
+      );
+      border: 1px solid rgba(56,189,248,.2);
+      border-radius: 20px;
+      padding: 32px;
+    }
+
+    .summary-box p {
+      color: #b4c3d4;
+      margin-bottom: 15px;
+    }
+
+    .summary-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ================= FINDING CARDS ================= */
+
+    .finding {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .finding::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      right: -35px;
+      top: -35px;
+      border-radius: 50%;
+      background: rgba(56,189,248,.05);
+    }
+
+    .finding strong {
+      display: block;
+      color: #fff;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    /* ================= TABLE ================= */
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+      background: rgba(10,24,40,.75);
+    }
+
+    th,
+    td {
+      padding: 15px 18px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      font-size: 14px;
+    }
+
+    th {
+      color: #7dd3fc;
+      background: rgba(56,189,248,.06);
+      font-weight: 700;
+    }
+
+    td {
+      color: #aebdcd;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ================= THREAT LEVEL ================= */
+
+    .threat {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .threat-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 80px;
+      gap: 15px;
+      align-items: center;
+      padding: 16px;
+      background: rgba(255,255,255,.025);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.05);
+    }
+
+    .threat-name {
+      font-weight: 700;
+    }
+
+    .bar {
+      height: 8px;
+      background: #16283c;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      background: #38bdf8;
+      border-radius: 20px;
+    }
+
+    .level {
+      text-align: right;
+      color: #7dd3fc;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* ================= BEHAVIOUR ================= */
+
+    .behavior-card {
+      padding: 24px;
+      border-left: 3px solid #38bdf8;
+    }
+
+    .behavior-card h3 {
+      font-size: 18px;
+      margin-bottom: 7px;
+    }
+
+    .behavior-card p {
+      color: #9eafc2;
+      font-size: 14px;
+    }
+
+    /* ================= RECOMMENDATIONS ================= */
+
+    .recommendation {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .rec-number {
+      min-width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: rgba(56,189,248,.1);
+      color: #7dd3fc;
+      font-weight: 800;
+    }
+
+    .recommendation h3 {
+      margin-bottom: 5px;
+    }
+
+    .recommendation p {
+      color: #98aabe;
+      font-size: 14px;
+    }
+
+    /* ================= LIMITATIONS ================= */
+
+    .warning {
+      border: 1px solid rgba(245,158,11,.2);
+      background: rgba(245,158,11,.05);
+    }
+
+    .warning h3 {
+      color: #fbbf24;
+    }
+
+    /* ================= FINAL ================= */
+
+    .final-box {
+      text-align: center;
+      padding: 45px 30px;
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg,
+        rgba(14,165,233,.12),
+        rgba(37,99,235,.08));
+      border: 1px solid rgba(56,189,248,.2);
+    }
+
+    .final-box h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .final-box p {
+      max-width: 800px;
+      margin: auto;
+      color: #a6b7ca;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid rgba(255,255,255,.07);
+      color: #7e91a7;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        position: absolute;
+        left: 4%;
+        right: 4%;
+        top: 70px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        background: #091728;
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 12px;
+        padding: 10px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .grid,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .threat-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .level {
+        text-align: left;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .hero {
+        padding: 70px 0 55px;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .section-title h2 {
+        font-size: 28px;
+      }
+
+      .card,
+      .summary-box {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="logo">
+      Data<span>Privacy</span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="awareness.html">Awareness</a></li>
+      <li><a href="survey.html">Survey</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="leaderboard.html">Leaderboard</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="findings.html" class="active">Findings</a></li>
+      <li><a href="conclusion.html">Conclusion</a></li>
+    </ul>
+
+  </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+  <div class="container">
+
+    <div class="badge">
+      FIELD STUDY • RESEARCH FINDINGS
+    </div>
+
+    <h1>
+      What We Learned About
+      <span>Data Privacy Awareness</span>
+    </h1>
+
+    <p>
+      This page presents the major findings, observations, behavioural
+      patterns, risks and recommendations identified through the field
+      study conducted among college students.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ================= RESEARCH SUMMARY ================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <div class="mini">01 — Research Overview</div>
+      <h2>Understanding the Findings</h2>
+      <p>
+        The purpose of this study was not only to measure whether students
+        had heard about data privacy, but also to understand how privacy
+        awareness affects their everyday digital behaviour.
+      </p>
+    </div>
+
+    <div class="summary-box">
+
+      <p>
+        College students use smartphones, social media platforms,
+        educational applications, online shopping services, digital
+        payments and cloud-based platforms on a regular basis. These
+        activities require users to share different forms of personal
+        information.
+      </p>
+
+      <p>
+        The field study focuses on whether students understand what
+        personal data is, how it can be collected and processed, what
+        risks are associated with careless sharing, and which security
+        practices students follow in their daily digital lives.
+      </p>
+
+      <p>
+        The findings should therefore be interpreted as an indication of
+        awareness and behaviour among the surveyed students rather than as
+        a representation of every college student.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= KEY FINDINGS ================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <div class="mini">02 — Key Findings</div>
+      <h2>Major Observations</h2>
+      <p>
+        The study highlights several important areas where students
+        demonstrate awareness as well as areas where additional education
+        is required.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card finding">
+        <div class="number">FINDING 01</div>
+        <strong>Awareness Does Not Always Mean Safe Behaviour</strong>
+        <p>
+          A student may know that privacy is important but may still accept
+          unnecessary permissions, reuse passwords, click suspicious links
+          or share excessive information online.
+        </p>
+      </div>
+
+      <div class="card finding">
+        <div class="number">FINDING 02</div>
+        <strong>Personal Data Is Often Underestimated</strong>
+        <p>
+          Personal data is not limited to passwords and bank details.
+          Names, phone numbers, email addresses, photographs, addresses,
+          identification details and online activity can also have privacy
+          implications.
+        </p>
+      </div>
+
+      <div class="card finding">
+        <div class="number">FINDING 03</div>
+        <strong>Phishing Remains an Important Risk</strong>
+        <p>
+          Suspicious emails, messages, calls and links can imitate trusted
+          organisations. Students need practical skills to verify requests
+          before clicking or sharing information.
+        </p>
+      </div>
+
+      <div class="card finding">
+        <div class="number">FINDING 04</div>
+        <strong>Digital Payments Increase the Need for Caution</strong>
+        <p>
+          UPI and online payments make transactions convenient, but scams
+          involving fake payment requests, impersonation and social
+          engineering can create financial risks.
+        </p>
+      </div>
+
+      <div class="card finding">
+        <div class="number">FINDING 05</div>
+        <strong>Password Habits Matter</strong>
+        <p>
+          Reusing the same password across multiple services can increase
+          the impact of a single compromised account. Strong, unique
+          passwords and multi-factor authentication provide additional
+          protection.
+        </p>
+      </div>
+
+      <div class="card finding">
+        <div class="number">FINDING 06</div>
+        <strong>Privacy Education Can Improve Preparedness</strong>
+        <p>
+          Regular workshops, awareness campaigns, practical demonstrations
+          and cybersecurity training can help students convert theoretical
+          knowledge into safer digital habits.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= AREAS STUDIED ================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <div class="mini">03 — Study Areas</div>
+      <h2>What the Survey Examined</h2>
+      <p>
+        The questionnaire covered different aspects of students' online
+        behaviour and understanding of privacy.
+      </p>
+    </div>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>What Was Studied</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>Privacy Awareness</td>
+            <td>Understanding of the term data privacy</td>
+            <td>Basic awareness is the foundation of responsible digital behaviour.</td>
+          </tr>
+
+          <tr>
+            <td>Personal Data</td>
+            <td>Recognition of information that can identify or relate to a person</td>
+            <td>Helps students understand what information requires protection.</td>
+          </tr>
+
+          <tr>
+            <td>Privacy Policies</td>
+            <td>Whether students read privacy policies</td>
+            <td>Policies explain how organisations may collect and use information.</td>
+          </tr>
+
+          <tr>
+            <td>App Permissions</td>
+            <td>Whether students review permissions requested by applications</td>
+            <td>Unnecessary permissions can create privacy and security concerns.</td>
+          </tr>
+
+          <tr>
+            <td>Password Security</td>
+            <td>Password reuse and account protection practices</td>
+            <td>Weak or reused passwords can increase account takeover risk.</td>
+          </tr>
+
+          <tr>
+            <td>Two-Factor Authentication</td>
+            <td>Use and awareness of 2FA/MFA</td>
+            <td>An additional authentication factor can provide another security layer.</td>
+          </tr>
+
+          <tr>
+            <td>Phishing Awareness</td>
+            <td>Ability to recognise suspicious messages and links</td>
+            <td>Phishing is commonly used to steal credentials and personal information.</td>
+          </tr>
+
+          <tr>
+            <td>Cybercrime Experience</td>
+            <td>Whether students encountered online fraud or cybercrime</td>
+            <td>Real experiences demonstrate the practical consequences of cyber risks.</td>
+          </tr>
+
+          <tr>
+            <td>Safe Internet Practices</td>
+            <td>Website verification, public Wi-Fi and information sharing</td>
+            <td>Everyday decisions can reduce exposure to digital threats.</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= BEHAVIOURAL OBSERVATIONS ================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <div class="mini">04 — Behaviour</div>
+      <h2>Awareness vs. Actual Behaviour</h2>
+      <p>
+        One of the most important aspects of data privacy research is
+        understanding the difference between knowing a security rule and
+        consistently following it.
+      </p>
+    </div>
+
+    <div class="grid-2">
+
+      <div class="card behavior-card">
+        <h3>Knowing About Privacy</h3>
+        <p>
+          Students may recognise the term "data privacy" because of social
+          media, news reports, college education or previous online
+          experiences.
+        </p>
+      </div>
+
+      <div class="card behavior-card">
+        <h3>Checking Permissions</h3>
+        <p>
+          Awareness becomes more useful when users actually review the
+          permissions requested by applications before granting access.
+        </p>
+      </div>
+
+      <div class="card behavior-card">
+        <h3>Protecting Accounts</h3>
+        <p>
+          Strong unique passwords and multi-factor authentication reduce the
+          likelihood that a compromised password alone can provide complete
+          access to an account.
+        </p>
+      </div>
+
+      <div class="card behavior-card">
+        <h3>Handling Suspicious Messages</h3>
+        <p>
+          Students should avoid acting immediately on urgent requests and
+          independently verify the sender, website or organisation.
+        </p>
+      </div>
+
+      <div class="card behavior-card">
+        <h3>Social Media Sharing</h3>
+        <p>
+          Excessive public sharing can reveal personal information that may
+          later be used for impersonation, scams or social engineering.
+        </p>
+      </div>
+
+      <div class="card behavior-card">
+        <h3>Digital Payment Safety</h3>
+        <p>
+          Users should remember that convenience does not eliminate the
+          need to verify payment requests, recipients and transaction
+          details.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= THREAT ANALYSIS ================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <div class="mini">05 — Risk Analysis</div>
+      <h2>Major Privacy & Cybersecurity Risks</h2>
+      <p>
+        The following areas represent important risks that students should
+        understand and actively manage.
+      </p>
+    </div>
+
+    <div class="card">
+
+      <div class="threat">
+
+        <div class="threat-row">
+          <div class="threat-name">Phishing</div>
+          <div class="bar"><span style="width:90%"></span></div>
+          <div class="level">High</div>
+        </div>
+
+        <div class="threat-row">
+          <div class="threat-name">Social Engineering</div>
+          <div class="bar"><span style="width:88%"></span></div>
+          <div class="level">High</div>
+        </div>
+
+        <div class="threat-row">
+          <div class="threat-name">Password Reuse</div>
+          <div class="bar"><span style="width:82%"></span></div>
+          <div class="level">High</div>
+        </div>
+
+        <div class="threat-row">
+          <div class="threat-name">Oversharing</div>
+          <div class="bar"><span style="width:76%"></span></div>
+          <div class="level">Medium</div>
+        </div>
+
+        <div class="threat-row">
+          <div class="threat-name">Unsafe Downloads</div>
+          <div class="bar"><span style="width:70%"></span></div>
+          <div class="level">Medium</div>
+        </div>
+
+        <div class="threat-row">
+          <div class="threat-name">Public Wi-Fi Risks</div>
+          <div class="bar"><span style="width:65%"></span></div>
+          <div class="level">Medium</div>
+        </div>
+
+      </div>
+
+      <p style="margin-top:22px;color:#73879d;font-size:12px;">
+        Note: The bars above are an educational risk illustration and are
+        not percentages calculated from the survey responses.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= IMPORTANT LESSONS ================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <div class="mini">06 — Lessons Learned</div>
+      <h2>What Students Should Take Away</h2>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="number">01</div>
+        <h3>Think Before You Share</h3>
+        <p>
+          Before posting or submitting information online, consider whether
+          the information is actually necessary and who may be able to
+          access it.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="number">02</div>
+        <h3>Verify Before You Trust</h3>
+        <p>
+          A message can appear to come from a bank, company, friend or
+          government organisation and still be fraudulent.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="number">03</div>
+        <h3>Protect Your Accounts</h3>
+        <p>
+          Use unique passwords and enable multi-factor authentication on
+          important accounts whenever available.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="number">04</div>
+        <h3>Control App Access</h3>
+        <p>
+          Review application permissions and avoid giving access that is
+          unnecessary for the application's actual purpose.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="number">05</div>
+        <h3>Keep Devices Updated</h3>
+        <p>
+          Operating system and application updates can include important
+          security fixes.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="number">06</div>
+        <h3>Report Suspicious Activity</h3>
+        <p>
+          If fraud or cybercrime occurs, preserving evidence and reporting
+          the incident quickly can be important.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= RECOMMENDATIONS ================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <div class="mini">07 — Recommendations</div>
+      <h2>How Colleges Can Improve Awareness</h2>
+      <p>
+        Data privacy should be treated as an ongoing digital-safety skill,
+        not only as a one-time academic topic.
+      </p>
+    </div>
+
+    <div class="grid-2">
+
+      <div class="card recommendation">
+        <div class="rec-number">01</div>
+        <div>
+          <h3>Conduct Regular Awareness Programs</h3>
+          <p>
+            Colleges can organise short sessions on phishing, online fraud,
+            privacy settings, passwords and safe digital payments.
+          </p>
+        </div>
+      </div>
+
+      <div class="card recommendation">
+        <div class="rec-number">02</div>
+        <div>
+          <h3>Use Practical Demonstrations</h3>
+          <p>
+            Students can learn more effectively through demonstrations of
+            fake messages, suspicious URLs, privacy settings and common
+            scam techniques.
+          </p>
+        </div>
+      </div>
+
+      <div class="card recommendation">
+        <div class="rec-number">03</div>
+        <div>
+          <h3>Promote MFA</h3>
+          <p>
+            Students should be encouraged to enable multi-factor
+            authentication on email, social media and other important
+            accounts.
+          </p>
+        </div>
+      </div>
+
+      <div class="card recommendation">
+        <div class="rec-number">04</div>
+        <div>
+          <h3>Teach Scam Recognition</h3>
+          <p>
+            Awareness programs should explain urgency tactics, impersonation,
+            fake offers, OTP scams and suspicious payment requests.
+          </p>
+        </div>
+      </div>
+
+      <div class="card recommendation">
+        <div class="rec-number">05</div>
+        <div>
+          <h3>Encourage Responsible Social Media Use</h3>
+          <p>
+            Students should understand how publicly available information
+            can contribute to privacy risks and social engineering.
+          </p>
+        </div>
+      </div>
+
+      <div class="card recommendation">
+        <div class="rec-number">06</div>
+        <div>
+          <h3>Provide Reporting Guidance</h3>
+          <p>
+            Students should know where and how to report cybercrime,
+            suspicious activity and online fraud.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= STUDY LIMITATIONS ================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <div class="mini">08 — Limitations</div>
+      <h2>Understanding the Scope of the Study</h2>
+    </div>
+
+    <div class="card warning">
+
+      <h3>Important Research Limitation</h3>
+
+      <p style="margin-top:12px;color:#b9c4d0;">
+        The findings of this field study are based on the responses
+        collected through the survey conducted for this academic project.
+        The sample may not represent the behaviour of all college students
+        in India.
+      </p>
+
+      <p style="margin-top:12px;color:#b9c4d0;">
+        Survey responses are also self-reported. Participants may remember
+        previous experiences differently or may report what they believe
+        is the correct behaviour rather than what they normally do.
+      </p>
+
+      <p style="margin-top:12px;color:#b9c4d0;">
+        Therefore, the results should be used to understand general
+        awareness patterns within the study sample and to identify areas
+        where further awareness activities may be useful.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= ACADEMIC INTERPRETATION ================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <div class="mini">09 — Interpretation</div>
+      <h2>Overall Interpretation of the Study</h2>
+    </div>
+
+    <div class="grid-2">
+
+      <div class="card">
+
+        <h3>Positive Indicators</h3>
+
+        <p style="margin-top:12px;">
+          The study provides an opportunity to identify students who are
+          already familiar with concepts such as data privacy, phishing,
+          passwords, two-factor authentication and online safety.
+        </p>
+
+        <p style="margin-top:12px;">
+          Such awareness provides a strong foundation for developing more
+          responsible digital habits.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Areas Requiring Improvement</h3>
+
+        <p style="margin-top:12px;">
+          Knowledge alone is not sufficient. Students should be encouraged
+          to consistently apply privacy and security practices while using
+          social media, digital payments, educational platforms and mobile
+          applications.
+        </p>
+
+        <p style="margin-top:12px;">
+          Continuous awareness and practical training can help reduce
+          avoidable mistakes.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= RESEARCH VALUE ================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <div class="mini">10 — Significance</div>
+      <h2>Why These Findings Matter</h2>
+    </div>
+
+    <div class="summary-box">
+
+      <p>
+        Data privacy is becoming increasingly important as more personal
+        activities move online. Students are not only consumers of digital
+        services but also active participants in social media, digital
+        payments, online education, gaming, e-commerce and cloud platforms.
+      </p>
+
+      <p>
+        A privacy incident can have consequences beyond the immediate loss
+        of information. Compromised accounts, financial fraud,
+        impersonation, reputational damage and misuse of personal
+        information can affect an individual's academic, professional and
+        personal life.
+      </p>
+
+      <p>
+        For this reason, privacy awareness should be developed as a daily
+        habit. Students should understand what information they share,
+        why it is requested, who may receive it and what steps they can
+        take to protect themselves.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= FINAL ================= -->
+
+<section>
+  <div class="container">
+
+    <div class="final-box">
+
+      <h2>From Awareness to Action</h2>
+
+      <p>
+        The most important outcome of this field study is that data privacy
+        should not remain only a theoretical concept. Students can improve
+        their digital safety by making small but consistent decisions:
+        using unique passwords, enabling MFA, checking permissions,
+        verifying suspicious requests, limiting unnecessary sharing and
+        reporting cybercrime.
+      </p>
+
+      <p style="margin-top:16px;">
+        <strong style="color:#7dd3fc;">
+          Better awareness → Better decisions → Safer digital behaviour
+        </strong>
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+  <div class="container footer-inner">
+
+    <div>
+      <strong style="color:#dbeafe;">
+        Field Study on Awareness of Data Privacy Among College Students
+      </strong>
+      <br>
+      Viva College • B.Sc IT • 2nd Year • Division C
+    </div>
+
+    <div>
+      Academic Year 2026–27 • Aniket
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+    });
+  });
+
+</script>
+
+</body>
+</html>
