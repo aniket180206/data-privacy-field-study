@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -10,7 +12,7 @@
 
     <meta
         name="description"
-        content="Data Privacy Field Study quiz leaderboard for Viva College students."
+        content="Leaderboard for the Data Privacy Field Study Quiz conducted among college students."
     >
 
     <meta
@@ -22,136 +24,391 @@
         Leaderboard | Data Privacy Field Study
     </title>
 
-    <!-- Main stylesheet -->
+
+    <!-- ==================================================
+         EXISTING SITE CSS
+         ================================================== -->
+
     <link
         rel="stylesheet"
-        href="css/style.css?v=4"
+        href="css/style.css?v=10"
     >
 
-    <!-- Leaderboard stylesheet -->
+
+    <!-- ==================================================
+         PAGE CSS
+         ================================================== -->
+
     <style>
 
-        /* =========================================
-           LEADERBOARD PAGE
-           ========================================= */
+        /* =================================================
+           RESET
+           ================================================= */
 
-        .leaderboard-section {
-            padding: 90px 0 100px;
-            min-height: 70vh;
+        * {
+            box-sizing: border-box;
         }
 
 
-        .leaderboard-intro {
-            max-width: 850px;
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+
+        /* =================================================
+           HEADER FIX
+           ================================================= */
+
+        .site-header {
+            width: 100%;
+            position: relative;
+            z-index: 1000;
+        }
+
+
+        .site-header .container {
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+
+        .navbar {
+            width: 100%;
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            text-decoration: none;
+            white-space: nowrap;
+
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+
+        .brand-icon {
+            color: #29b9ff;
+            font-size: 22px;
+            line-height: 1;
+        }
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            gap: 24px;
+
+            margin-left: auto;
+        }
+
+
+        .nav-links a {
+            text-decoration: none;
+            white-space: nowrap;
+
+            font-size: 15px;
+
+            transition:
+                color .2s ease,
+                opacity .2s ease;
+        }
+
+
+        .nav-links a:hover {
+            color: #29b9ff;
+        }
+
+
+        .nav-links a.active {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+
+        .menu-toggle {
+            display: none;
+
+            border: 0;
+            background: transparent;
+
+            color: #ffffff;
+
+            font-size: 25px;
+            cursor: pointer;
+
+            padding: 6px;
+        }
+
+
+        /* =================================================
+           MAIN
+           ================================================= */
+
+        .leaderboard-page {
+            width: 100%;
+            min-height: calc(100vh - 76px);
+        }
+
+
+        .leaderboard-section {
+            width: 100%;
+
+            padding:
+                90px 0
+                100px;
+        }
+
+
+        .leaderboard-container {
+            width: 100%;
+            max-width: 1180px;
+
+            margin: 0 auto;
+
+            padding:
+                0 24px;
+        }
+
+
+        /* =================================================
+           HERO
+           ================================================= */
+
+        .leaderboard-hero {
+            max-width: 820px;
+
             margin-bottom: 55px;
         }
 
 
         .leaderboard-kicker {
+            margin-bottom: 14px;
+
             color: #27b8ff;
+
             font-size: 14px;
             font-weight: 800;
+
             letter-spacing: 3px;
+
             text-transform: uppercase;
-            margin-bottom: 15px;
         }
 
 
         .leaderboard-title {
-            font-size: clamp(48px, 7vw, 82px);
-            line-height: 1;
-            margin: 0 0 25px;
+            margin: 0 0 22px;
+
+            color: #f2f8ff;
+
+            font-size:
+                clamp(52px, 7vw, 82px);
+
+            line-height: .98;
+
+            letter-spacing: -4px;
+
             font-weight: 900;
-            letter-spacing: -3px;
         }
 
 
-        .leaderboard-subtitle {
+        .leaderboard-title span {
+            color: #8edfff;
+        }
+
+
+        .leaderboard-description {
+            margin: 0;
+
+            max-width: 760px;
+
+            color: #a8bdd1;
+
             font-size: 18px;
+
             line-height: 1.7;
-            opacity: .8;
-            max-width: 720px;
         }
 
 
-        /* =========================================
-           CARD
-           ========================================= */
+        /* =================================================
+           STATS
+           ================================================= */
+
+        .leaderboard-stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .stat-card {
+            padding: 22px 24px;
+
+            border:
+                1px solid
+                rgba(91, 183, 255, .14);
+
+            border-radius: 18px;
+
+            background:
+                rgba(14, 29, 49, .72);
+        }
+
+
+        .stat-label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #7f9bb5;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.3px;
+        }
+
+
+        .stat-value {
+            display: block;
+
+            color: #f1f8ff;
+
+            font-size: 26px;
+
+            font-weight: 850;
+        }
+
+
+        /* =================================================
+           LEADERBOARD CARD
+           ================================================= */
 
         .leaderboard-card {
             width: 100%;
-            border: 1px solid rgba(100, 190, 255, .18);
-            background: rgba(15, 31, 52, .72);
+
+            padding: 25px;
+
+            border:
+                1px solid
+                rgba(89, 181, 255, .18);
+
             border-radius: 24px;
-            padding: 28px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15, 34, 57, .95),
+                    rgba(8, 21, 37, .95)
+                );
+
             box-shadow:
-                0 25px 80px rgba(0, 0, 0, .25);
-            overflow-x: auto;
+                0 30px 90px
+                rgba(0, 0, 0, .25);
         }
 
 
-        /* =========================================
-           HEADER
-           ========================================= */
+        /* =================================================
+           TABLE
+           ================================================= */
+
+        .leaderboard-table {
+            width: 100%;
+        }
+
 
         .leaderboard-header,
         .leaderboard-row {
-
-            min-width: 720px;
 
             display: grid;
 
             grid-template-columns:
                 90px
-                minmax(220px, 1fr)
+                minmax(200px, 1fr)
                 130px
                 150px
                 130px;
 
             align-items: center;
 
-            gap: 15px;
+            column-gap: 20px;
         }
 
 
         .leaderboard-header {
 
-            padding: 18px 22px;
+            min-height: 55px;
 
-            margin-bottom: 10px;
+            padding:
+                0 22px;
 
             border-bottom:
-                1px solid rgba(255, 255, 255, .1);
-
-            color: #8fa8c2;
-
-            font-size: 13px;
-
-            font-weight: 800;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1.5px;
+                1px solid
+                rgba(255, 255, 255, .09);
         }
 
 
-        /* =========================================
-           ROW
-           ========================================= */
+        .leaderboard-header div {
+
+            color: #83a5c2;
+
+            font-size: 12px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
 
         .leaderboard-row {
 
-            padding: 22px;
+            min-height: 78px;
 
-            margin-bottom: 10px;
+            margin-top: 10px;
+
+            padding:
+                15px 22px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, .045);
 
             border-radius: 16px;
 
             background:
                 rgba(255, 255, 255, .025);
-
-            border:
-                1px solid rgba(255, 255, 255, .045);
 
             transition:
                 transform .2s ease,
@@ -166,140 +423,142 @@
                 translateY(-2px);
 
             background:
-                rgba(255, 255, 255, .055);
+                rgba(39, 184, 255, .045);
 
             border-color:
-                rgba(39, 184, 255, .2);
+                rgba(39, 184, 255, .15);
         }
 
 
-        .leaderboard-row:last-child {
-            margin-bottom: 0;
-        }
-
-
-        /* =========================================
+        /* =================================================
            RANK
-           ========================================= */
+           ================================================= */
 
         .rank {
 
-            font-size: 22px;
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-width: 42px;
+
+            font-size: 21px;
 
             font-weight: 900;
 
-            color: #dff5ff;
-
-            text-align: center;
+            color: #dcefff;
         }
 
 
-        /* =========================================
+        /* =================================================
            NAME
-           ========================================= */
+           ================================================= */
 
         .name {
 
-            font-size: 17px;
-
-            font-weight: 750;
-
-            color: #f1f7ff;
+            min-width: 0;
 
             overflow: hidden;
 
-            text-overflow: ellipsis;
+            color: #f2f7fd;
+
+            font-size: 16px;
+
+            font-weight: 750;
 
             white-space: nowrap;
+
+            text-overflow: ellipsis;
         }
 
 
-        /* =========================================
+        /* =================================================
            SCORE
-           ========================================= */
+           ================================================= */
 
         .score {
 
-            font-weight: 800;
-
-            color: #bcecff;
+            color: #c7eaff;
 
             font-size: 16px;
+
+            font-weight: 800;
         }
 
 
-        /* =========================================
+        /* =================================================
            PERCENTAGE
-           ========================================= */
+           ================================================= */
 
         .percentage {
 
-            font-weight: 900;
+            color: #2fc2ff;
 
             font-size: 18px;
 
-            color: #39c6ff;
+            font-weight: 900;
         }
 
 
-        /* =========================================
+        /* =================================================
            TIME
-           ========================================= */
+           ================================================= */
 
         .time {
 
-            color: #9fb6ca;
+            color: #9db5ca;
+
+            font-size: 15px;
 
             font-weight: 650;
         }
 
 
-        /* =========================================
+        /* =================================================
            LOADING
-           ========================================= */
+           ================================================= */
 
         .loading-state {
 
-            min-height: 180px;
+            min-height: 230px;
 
             display: flex;
+
+            flex-direction: column;
 
             align-items: center;
 
             justify-content: center;
 
-            text-align: center;
+            gap: 15px;
 
-            color: #9fb6ca;
+            color: #94abc0;
 
-            font-size: 16px;
+            font-size: 15px;
         }
 
 
-        .loading-state::before {
+        .loading-spinner {
 
-            content: "";
+            width: 30px;
+            height: 30px;
 
-            width: 20px;
+            border:
+                3px solid
+                rgba(255,255,255,.1);
 
-            height: 20px;
-
-            margin-right: 12px;
+            border-top-color:
+                #2abaff;
 
             border-radius: 50%;
 
-            border:
-                2px solid rgba(255,255,255,.15);
-
-            border-top-color:
-                #27b8ff;
-
             animation:
-                leaderboardSpin .8s linear infinite;
+                spin .8s linear infinite;
         }
 
 
-        @keyframes leaderboardSpin {
+        @keyframes spin {
 
             to {
                 transform: rotate(360deg);
@@ -308,65 +567,279 @@
         }
 
 
-        /* =========================================
-           EMPTY / ERROR
-           ========================================= */
+        /* =================================================
+           EMPTY STATE
+           ================================================= */
 
-        .empty-state,
+        .empty-state {
+
+            min-height: 230px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 30px;
+        }
+
+
+        .empty-icon {
+
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .empty-state h3 {
+
+            margin:
+                0 0 8px;
+
+            color: #edf7ff;
+
+            font-size: 22px;
+        }
+
+
+        .empty-state p {
+
+            margin: 0;
+
+            max-width: 480px;
+
+            color: #8fa9bf;
+
+            line-height: 1.6;
+        }
+
+
+        /* =================================================
+           ERROR
+           ================================================= */
+
         .error-state {
 
             min-height: 180px;
 
             display: flex;
 
-            flex-direction: column;
+            align-items: center;
 
             justify-content: center;
 
-            align-items: center;
-
             text-align: center;
 
-            padding: 40px;
+            padding: 30px;
+
+            color: #ffb5b5;
+
+            font-size: 15px;
         }
 
 
-        .empty-state h3,
-        .error-state h3 {
+        /* =================================================
+           FOOTER
+           ================================================= */
 
-            margin: 0 0 10px;
-
-            font-size: 22px;
+        .site-footer {
+            width: 100%;
         }
 
 
-        .empty-state p,
-        .error-state p {
+        .site-footer .container {
+
+            width: 100%;
+
+            max-width: 1180px;
+
+            margin: 0 auto;
+
+            padding:
+                35px 24px;
+        }
+
+
+        .footer-content {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .footer-content strong {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #b9d4ec;
+        }
+
+
+        .footer-content p {
 
             margin: 0;
 
-            color: #9fb6ca;
+            color: #7993aa;
+
+            font-size: 14px;
 
             line-height: 1.6;
         }
 
 
-        .error-state {
+        .footer-name {
 
-            color: #ffb4b4;
+            color: #94c9eb;
+
+            font-size: 18px;
         }
 
 
-        /* =========================================
-           MOBILE
-           ========================================= */
+        /* =================================================
+           TABLET
+           ================================================= */
 
-        @media (max-width: 700px) {
+        @media (max-width: 1100px) {
+
+            .nav-links {
+                gap: 16px;
+            }
+
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+
+            .leaderboard-header,
+            .leaderboard-row {
+
+                grid-template-columns:
+                    70px
+                    minmax(180px, 1fr)
+                    110px
+                    120px
+                    110px;
+
+                column-gap: 15px;
+            }
+
+        }
+
+
+        /* =================================================
+           MOBILE NAV
+           ================================================= */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                min-height: 70px;
+            }
+
+
+            .menu-toggle {
+                display: block;
+            }
+
+
+            .nav-links {
+
+                display: none;
+
+                position: absolute;
+
+                top: 70px;
+
+                left: 20px;
+                right: 20px;
+
+                margin: 0;
+
+                padding: 15px;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 0;
+
+                border:
+                    1px solid
+                    rgba(95, 185, 255, .16);
+
+                border-radius: 16px;
+
+                background:
+                    #0a192b;
+
+                box-shadow:
+                    0 25px 60px
+                    rgba(0,0,0,.4);
+            }
+
+
+            .nav-links.mobile-open {
+                display: flex;
+            }
+
+
+            .nav-links a {
+
+                padding:
+                    13px 15px;
+
+                border-radius: 10px;
+            }
+
+
+            .nav-links a:hover,
+            .nav-links a.active {
+
+                background:
+                    rgba(39, 184, 255, .08);
+            }
+
+        }
+
+
+        /* =================================================
+           SMALL MOBILE
+           ================================================= */
+
+        @media (max-width: 650px) {
 
             .leaderboard-section {
 
                 padding:
-                    60px 0 70px;
+                    55px 0
+                    70px;
+            }
+
+
+            .leaderboard-container {
+
+                padding:
+                    0 16px;
+            }
+
+
+            .leaderboard-hero {
+
+                margin-bottom: 35px;
             }
 
 
@@ -374,48 +847,111 @@
 
                 font-size: 48px;
 
-                letter-spacing: -2px;
+                letter-spacing: -2.5px;
             }
 
 
-            .leaderboard-subtitle {
+            .leaderboard-description {
 
-                font-size: 16px;
+                font-size: 15px;
+
+                line-height: 1.65;
+            }
+
+
+            .leaderboard-stats {
+
+                grid-template-columns:
+                    1fr;
+
+                gap: 12px;
+
+                margin-bottom: 18px;
             }
 
 
             .leaderboard-card {
 
-                padding: 15px;
+                padding: 12px;
 
                 border-radius: 18px;
+            }
+
+
+            /*
+             * Horizontal scroll only for the table.
+             */
+
+            .leaderboard-table {
+
+                overflow-x: auto;
+
+                -webkit-overflow-scrolling: touch;
+
+                padding-bottom: 4px;
             }
 
 
             .leaderboard-header,
             .leaderboard-row {
 
-                min-width: 650px;
+                width: 680px;
 
-                grid-template-columns:
-                    70px
-                    minmax(180px, 1fr)
-                    100px
-                    120px
-                    110px;
+                min-width: 680px;
+            }
 
-                gap: 10px;
+
+            .leaderboard-header {
+
+                padding:
+                    0 15px;
             }
 
 
             .leaderboard-row {
 
-                padding: 18px 15px;
+                padding:
+                    13px 15px;
+            }
+
+
+            .footer-content {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+        }
+
+
+        /* =================================================
+           VERY SMALL SCREEN
+           ================================================= */
+
+        @media (max-width: 400px) {
+
+            .brand {
+
+                font-size: 15px;
+            }
+
+
+            .brand-icon {
+
+                font-size: 18px;
+            }
+
+
+            .leaderboard-title {
+
+                font-size: 42px;
             }
 
         }
 
     </style>
+
 </head>
 
 
@@ -432,18 +968,31 @@
 
         <nav class="navbar">
 
+
+            <!-- BRAND -->
+
             <a
                 href="index.html"
                 class="brand"
             >
-                <span class="brand-icon">✦</span>
+
+                <span class="brand-icon">
+                    ✦
+                </span>
+
                 <span>
                     Data Privacy Field Study
                 </span>
+
             </a>
 
 
-            <div class="nav-links">
+            <!-- DESKTOP NAVIGATION -->
+
+            <div
+                class="nav-links"
+                id="mainNavigation"
+            >
 
                 <a href="index.html">
                     Home
@@ -487,16 +1036,18 @@
             </div>
 
 
-            <!-- Mobile menu button -->
+            <!-- MOBILE MENU -->
 
             <button
-                class="menu-toggle"
                 type="button"
-                aria-label="Open navigation"
-                onclick="toggleMenu()"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
             >
                 ☰
             </button>
+
 
         </nav>
 
@@ -510,20 +1061,24 @@
      MAIN
      ===================================================== -->
 
-<main>
+<main class="leaderboard-page">
 
 
     <section
         class="leaderboard-section"
     >
 
-        <div class="container">
+        <div
+            class="leaderboard-container"
+        >
 
 
-            <!-- INTRO -->
+            <!-- =========================================
+                 HERO
+                 ========================================= -->
 
             <div
-                class="leaderboard-intro"
+                class="leaderboard-hero"
             >
 
                 <div
@@ -536,38 +1091,125 @@
                 <h1
                     class="leaderboard-title"
                 >
-                    Leaderboard
+                    Leader<span>board</span>
                 </h1>
 
 
                 <p
-                    class="leaderboard-subtitle"
+                    class="leaderboard-description"
                 >
                     See how participants performed
-                    in the Data Privacy Awareness
-                    Quiz. Higher scores are ranked
-                    first, and faster completion
-                    times are used as the tie-breaker.
+                    in the Data Privacy Awareness Quiz.
+                    Higher scores are ranked first,
+                    while faster completion times
+                    decide ties.
                 </p>
 
             </div>
 
 
 
-            <!-- LEADERBOARD -->
+            <!-- =========================================
+                 STATS
+                 ========================================= -->
+
+            <div
+                class="leaderboard-stats"
+            >
+
+                <div
+                    class="stat-card"
+                >
+
+                    <span
+                        class="stat-label"
+                    >
+                        Participants
+                    </span>
+
+                    <span
+                        class="stat-value"
+                        id="participantCount"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="stat-card"
+                >
+
+                    <span
+                        class="stat-label"
+                    >
+                        Top Score
+                    </span>
+
+                    <span
+                        class="stat-value"
+                        id="topScore"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="stat-card"
+                >
+
+                    <span
+                        class="stat-label"
+                    >
+                        Best Time
+                    </span>
+
+                    <span
+                        class="stat-value"
+                        id="bestTime"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 LEADERBOARD CARD
+                 ========================================= -->
 
             <div
                 class="leaderboard-card"
             >
 
                 <div
-                    id="leaderboard"
+                    class="leaderboard-table"
                 >
 
                     <div
-                        class="loading-state"
+                        id="leaderboard"
                     >
-                        Loading leaderboard...
+
+                        <div
+                            class="loading-state"
+                        >
+
+                            <div
+                                class="loading-spinner"
+                            ></div>
+
+                            <span>
+                                Loading leaderboard...
+                            </span>
+
+                        </div>
+
                     </div>
 
                 </div>
@@ -578,7 +1220,6 @@
         </div>
 
     </section>
-
 
 </main>
 
@@ -592,8 +1233,9 @@
 
     <div class="container">
 
-        <div class="footer-content">
-
+        <div
+            class="footer-content"
+        >
 
             <div>
 
@@ -601,7 +1243,6 @@
                     Field Study on Awareness of
                     Data Privacy Among College Students
                 </strong>
-
 
                 <p>
                     Viva College · B.Sc IT ·
@@ -612,12 +1253,11 @@
             </div>
 
 
-            <div class="footer-name">
-
+            <div
+                class="footer-name"
+            >
                 Aniket
-
             </div>
-
 
         </div>
 
@@ -631,43 +1271,334 @@
      MAIN JS
      ===================================================== -->
 
-<script src="js/main.js?v=4"></script>
+<script src="js/main.js?v=10"></script>
+
 
 
 <!-- =====================================================
      LEADERBOARD JS
      ===================================================== -->
 
-<script src="js/leaderboard.js?v=4"></script>
+<script src="js/leaderboard.js?v=10"></script>
 
 
 
 <!-- =====================================================
-     MOBILE NAVIGATION
+     PAGE SCRIPT
      ===================================================== -->
 
 <script>
 
-function toggleMenu() {
+(function () {
 
-    const nav =
-        document.querySelector(
-            ".nav-links"
+    "use strict";
+
+
+    /* ==============================================
+       MOBILE MENU
+       ============================================== */
+
+    const menuToggle =
+        document.getElementById(
+            "menuToggle"
         );
 
 
-    if (!nav) {
-        return;
+    const navigation =
+        document.getElementById(
+            "mainNavigation"
+        );
+
+
+    if (
+        menuToggle &&
+        navigation
+    ) {
+
+        menuToggle.addEventListener(
+            "click",
+            function () {
+
+                const isOpen =
+                    navigation.classList.toggle(
+                        "mobile-open"
+                    );
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                        ? "true"
+                        : "false"
+                );
+
+            }
+        );
+
+
+        /*
+         * Close menu after clicking a link.
+         */
+
+        navigation
+            .querySelectorAll("a")
+            .forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            navigation.classList.remove(
+                                "mobile-open"
+                            );
+
+                            menuToggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
     }
 
 
-    nav.classList.toggle(
-        "mobile-open"
-    );
-}
+    /* ==============================================
+       STATS
+       ============================================== */
+
+    /*
+     * leaderboard.js receives the data.
+     *
+     * We wrap renderLeaderboard so the stats
+     * are updated at the same time.
+     */
+
+    const originalRender =
+        window.renderLeaderboard;
+
+
+    if (
+        typeof originalRender ===
+        "function"
+    ) {
+
+        window.renderLeaderboard =
+            function (players) {
+
+                updateStats(
+                    players
+                );
+
+
+                originalRender(
+                    players
+                );
+
+            };
+
+    }
+
+
+    function updateStats(
+        players
+    ) {
+
+        const participantCount =
+            document.getElementById(
+                "participantCount"
+            );
+
+
+        const topScore =
+            document.getElementById(
+                "topScore"
+            );
+
+
+        const bestTime =
+            document.getElementById(
+                "bestTime"
+            );
+
+
+        if (
+            !players ||
+            players.length === 0
+        ) {
+
+            if (participantCount) {
+                participantCount.textContent =
+                    "0";
+            }
+
+            if (topScore) {
+                topScore.textContent =
+                    "0%";
+            }
+
+            if (bestTime) {
+                bestTime.textContent =
+                    "—";
+            }
+
+            return;
+        }
+
+
+        /*
+         * Participants
+         */
+
+        if (participantCount) {
+
+            participantCount.textContent =
+                players.length;
+
+        }
+
+
+        /*
+         * Highest percentage
+         */
+
+        let highest =
+            0;
+
+
+        players.forEach(
+            function (player) {
+
+                const score =
+                    Number(
+                        player.percentage
+                    );
+
+
+                if (
+                    isFinite(score) &&
+                    score > highest
+                ) {
+
+                    highest =
+                        score;
+
+                }
+
+            }
+        );
+
+
+        if (topScore) {
+
+            topScore.textContent =
+                Math.round(
+                    highest
+                ) + "%";
+
+        }
+
+
+        /*
+         * Best time
+         */
+
+        const times =
+            players
+                .map(
+                    function (player) {
+
+                        return Number(
+                            player.time
+                        );
+
+                    }
+                )
+                .filter(
+                    function (time) {
+
+                        return (
+                            isFinite(time) &&
+                            time >= 0
+                        );
+
+                    }
+                );
+
+
+        if (
+            bestTime &&
+            times.length
+        ) {
+
+            const fastest =
+                Math.min(
+                    ...times
+                );
+
+
+            bestTime.textContent =
+                formatTime(
+                    fastest
+                );
+
+        }
+
+    }
+
+
+    function formatTime(
+        seconds
+    ) {
+
+        seconds =
+            Math.round(
+                Number(seconds) || 0
+            );
+
+
+        const minutes =
+            Math.floor(
+                seconds / 60
+            );
+
+
+        const remaining =
+            seconds % 60;
+
+
+        if (
+            minutes === 0
+        ) {
+
+            return (
+                remaining +
+                " sec"
+            );
+
+        }
+
+
+        return (
+            minutes +
+            " min " +
+            String(
+                remaining
+            ).padStart(2, "0") +
+            " sec"
+        );
+
+    }
+
+})();
 
 </script>
 
 
 </body>
+
 </html>
