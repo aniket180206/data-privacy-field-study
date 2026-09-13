@@ -1,493 +1,260 @@
-/* =========================================================
-   DATA PRIVACY FIELD STUDY
-   LEADERBOARD
-   ========================================================= */
-
 const BACKEND_URL =
-  "https://script.google.com/macros/s/AKfycbz2qTZQR7u8eZJUb_Ac9Ytnr-9nAoItyDIP7HjS-onbHgcDcYw2XzF6onGnJEmiO4yQcg/exec";
+"https://script.google.com/macros/s/AKfycbz2qTZQR7u8eZJUb_Ac9Ytnr-9nAoItyDIP7HjS-onbHgcDcYw2XzF6onGnJEmiO4yQcg/exec";
 
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  loadLeaderboard();
-
-});
-
-
-/* =========================================================
-   LOAD LEADERBOARD
-   ========================================================= */
+document.addEventListener("DOMContentLoaded", loadLeaderboard);
 
 function loadLeaderboard() {
 
-  const container =
-    document.getElementById("leaderboard");
+    const container =
+        document.getElementById("leaderboard");
 
-  const loading =
-    document.getElementById("leaderboardLoading");
+    if (!container) {
+        console.error("Leaderboard container not found");
+        return;
+    }
 
-  const error =
-    document.getElementById("leaderboardError");
+    container.innerHTML = `
+        <div class="loading-state">
+            Loading leaderboard...
+        </div>
+    `;
+
+    const callbackName =
+        "privacyLeaderboard_" + Date.now();
+
+    const script =
+        document.createElement("script");
+
+    window[callbackName] =
+        function(data) {
+
+            console.log("Leaderboard data:", data);
+
+            if (!data || data.success !== true) {
+
+                container.innerHTML = `
+                    <div class="error-state">
+                        Unable to load leaderboard.
+                    </div>
+                `;
+
+                cleanup();
+                return;
+            }
+
+            const players =
+                Array.isArray(data.leaderboard)
+                    ? data.leaderboard
+                    : [];
+
+            renderLeaderboard(players);
+
+            cleanup();
+        };
 
 
-  if (loading) {
-    loading.style.display = "block";
-  }
+    function cleanup() {
 
-  if (error) {
-    error.style.display = "none";
-  }
+        delete window[callbackName];
 
-
-  /*
-   * JSONP callback
-   */
-
-  const callbackName =
-    "leaderboardCallback_" +
-    Date.now();
-
-
-  window[callbackName] =
-    function (data) {
-
-      try {
-
-        if (loading) {
-          loading.style.display = "none";
+        if (script.parentNode) {
+            script.parentNode.removeChild(script);
         }
+    }
 
 
-        if (
-          !data ||
-          data.success === false
-        ) {
-
-          showLeaderboardError(
-            "Unable to load leaderboard."
-          );
-
-          return;
-        }
+    script.src =
+        BACKEND_URL +
+        "?action=leaderboard" +
+        "&callback=" +
+        callbackName +
+        "&_=" +
+        Date.now();
 
 
-        /*
-         * Support both:
-         *
-         * data.leaderboard
-         * data.rows
-         */
+    script.onerror =
+        function() {
 
-        const players =
-          Array.isArray(data.leaderboard)
-            ? data.leaderboard
-            : (
-                Array.isArray(data.rows)
-                  ? data.rows
-                  : []
-              );
+            console.error(
+                "Could not connect to Apps Script"
+            );
 
+            container.innerHTML = `
+                <div class="error-state">
+                    Could not connect to leaderboard.
+                    <br><br>
+                    Please try again.
+                </div>
+            `;
 
-        renderLeaderboard(
-          players
-        );
-
-      }
-
-      catch (err) {
-
-        console.error(
-          "Leaderboard render error:",
-          err
-        );
-
-        showLeaderboardError(
-          "Unable to display leaderboard."
-        );
-      }
+            cleanup();
+        };
 
 
-      cleanupJSONP(
-        callbackName,
-        script
-      );
-    };
-
-
-  const script =
-    document.createElement("script");
-
-
-  script.src =
-    BACKEND_URL +
-    "?action=leaderboard" +
-    "&callback=" +
-    encodeURIComponent(callbackName) +
-    "&t=" +
-    Date.now();
-
-
-  script.async = true;
-
-
-  script.onerror =
-    function () {
-
-      if (loading) {
-        loading.style.display = "none";
-      }
-
-      showLeaderboardError(
-        "Could not connect to the leaderboard server."
-      );
-
-
-      cleanupJSONP(
-        callbackName,
-        script
-      );
-    };
-
-
-  document.body.appendChild(
-    script
-  );
-
-
-  /*
-   * Timeout
-   */
-
-  setTimeout(
-    function () {
-
-      if (
-        window[callbackName]
-      ) {
-
-        showLeaderboardError(
-          "Leaderboard request timed out."
-        );
-
-        cleanupJSONP(
-          callbackName,
-          script
-        );
-      }
-
-    },
-    15000
-  );
+    document.body.appendChild(script);
 }
 
 
-/* =========================================================
-   RENDER LEADERBOARD
-   ========================================================= */
+/* =========================================
+   RENDER
+   ========================================= */
 
-function renderLeaderboard(
-  players
-) {
+function renderLeaderboard(players) {
 
-  const container =
-    document.getElementById(
-      "leaderboard"
-    );
+    const container =
+        document.getElementById("leaderboard");
 
+    if (!players.length) {
 
-  if (!container) {
-    return;
-  }
+        container.innerHTML = `
+            <div class="empty-state">
+                <h3>No quiz attempts yet</h3>
+                <p>
+                    Complete the quiz to appear
+                    on the leaderboard.
+                </p>
+            </div>
+        `;
 
-
-  if (
-    !players ||
-    players.length === 0
-  ) {
-
-    container.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-icon">🏆</div>
-        <h3>No quiz attempts yet</h3>
-        <p>Complete the quiz to appear on the leaderboard.</p>
-      </div>
-    `;
-
-    return;
-  }
-
-
-  /*
-   * Sort again on client side.
-   */
-
-  players.sort(
-    function (a, b) {
-
-      const scoreA =
-        Number(a.score) || 0;
-
-      const scoreB =
-        Number(b.score) || 0;
-
-
-      if (
-        scoreB !== scoreA
-      ) {
-
-        return scoreB - scoreA;
-      }
-
-
-      const timeA =
-        Number(a.time) || 999999;
-
-      const timeB =
-        Number(b.time) || 999999;
-
-
-      return timeA - timeB;
+        return;
     }
-  );
 
 
-  let html = "";
+    let html = `
 
+        <div class="leaderboard-header">
 
-  players.forEach(
-    function (player, index) {
-
-      const rank =
-        index + 1;
-
-
-      const name =
-        escapeHTML(
-          player.name ||
-          "Anonymous"
-        );
-
-
-      const score =
-        Number(player.score) || 0;
-
-
-      const total =
-        Number(player.total) || 10;
-
-
-      const percentage =
-        player.percentage !== undefined
-          ? Number(player.percentage)
-          : Math.round(
-              (score / total) * 100
-            );
-
-
-      const time =
-        Number(player.time) || 0;
-
-
-      let medal = "";
-
-
-      if (rank === 1) {
-        medal = "🥇";
-      }
-
-      else if (rank === 2) {
-        medal = "🥈";
-      }
-
-      else if (rank === 3) {
-        medal = "🥉";
-      }
-
-      else {
-        medal = rank;
-      }
-
-
-      html += `
-
-        <div class="leaderboard-row">
-
-          <div class="leaderboard-rank">
-            ${medal}
-          </div>
-
-          <div class="leaderboard-name">
-            ${name}
-          </div>
-
-          <div class="leaderboard-score">
-            ${score}/${total}
-          </div>
-
-          <div class="leaderboard-percentage">
-            ${percentage}%
-          </div>
-
-          <div class="leaderboard-time">
-            ${formatTime(time)}
-          </div>
+            <div>Rank</div>
+            <div>Name</div>
+            <div>Score</div>
+            <div>Percentage</div>
+            <div>Time</div>
 
         </div>
 
-      `;
+    `;
+
+
+    players.forEach(function(player, index) {
+
+        const rank =
+            index + 1;
+
+        const name =
+            escapeHTML(
+                player.name || "Anonymous"
+            );
+
+        const score =
+            Number(player.score) || 0;
+
+        const total =
+            Number(player.total) || 10;
+
+        const percentage =
+            Number(player.percentage) ||
+            Math.round(
+                (score / total) * 100
+            );
+
+        const time =
+            Number(player.time) || 0;
+
+
+        let rankDisplay =
+            "#" + rank;
+
+
+        if (rank === 1) {
+            rankDisplay = "🥇";
+        }
+
+        else if (rank === 2) {
+            rankDisplay = "🥈";
+        }
+
+        else if (rank === 3) {
+            rankDisplay = "🥉";
+        }
+
+
+        html += `
+
+            <div class="leaderboard-row">
+
+                <div class="rank">
+                    ${rankDisplay}
+                </div>
+
+                <div class="name">
+                    ${name}
+                </div>
+
+                <div class="score">
+                    ${score}/${total}
+                </div>
+
+                <div class="percentage">
+                    ${percentage}%
+                </div>
+
+                <div class="time">
+                    ${formatTime(time)}
+                </div>
+
+            </div>
+
+        `;
+    });
+
+
+    container.innerHTML = html;
+}
+
+
+/* =========================================
+   TIME
+   ========================================= */
+
+function formatTime(seconds) {
+
+    seconds =
+        Math.max(
+            0,
+            Number(seconds) || 0
+        );
+
+    const minutes =
+        Math.floor(seconds / 60);
+
+    const secs =
+        Math.floor(seconds % 60);
+
+
+    if (minutes === 0) {
+        return secs + " sec";
     }
-  );
 
-
-  container.innerHTML =
-    html;
-}
-
-
-/* =========================================================
-   ERROR
-   ========================================================= */
-
-function showLeaderboardError(
-  message
-) {
-
-  const container =
-    document.getElementById(
-      "leaderboard"
-    );
-
-
-  if (!container) {
-    return;
-  }
-
-
-  container.innerHTML = `
-
-    <div class="empty-state">
-
-      <div class="empty-icon">
-        ⚠️
-      </div>
-
-      <h3>
-        Leaderboard unavailable
-      </h3>
-
-      <p>
-        ${escapeHTML(message)}
-      </p>
-
-      <button
-        onclick="loadLeaderboard()"
-        class="btn"
-      >
-        Try Again
-      </button>
-
-    </div>
-
-  `;
-}
-
-
-/* =========================================================
-   FORMAT TIME
-   ========================================================= */
-
-function formatTime(
-  seconds
-) {
-
-  seconds =
-    Number(seconds) || 0;
-
-
-  const minutes =
-    Math.floor(
-      seconds / 60
-    );
-
-
-  const remaining =
-    Math.floor(
-      seconds % 60
-    );
-
-
-  if (minutes > 0) {
 
     return (
-      minutes +
-      "m " +
-      String(remaining).padStart(2, "0") +
-      "s"
+        minutes +
+        " min " +
+        String(secs).padStart(2, "0") +
+        " sec"
     );
-  }
-
-
-  return (
-    remaining +
-    "s"
-  );
 }
 
 
-/* =========================================================
-   HTML ESCAPE
-   ========================================================= */
+/* =========================================
+   SECURITY
+   ========================================= */
 
-function escapeHTML(
-  value
-) {
+function escapeHTML(value) {
 
-  return String(value)
-
-    .replace(/&/g, "&amp;")
-
-    .replace(/</g, "&lt;")
-
-    .replace(/>/g, "&gt;")
-
-    .replace(/"/g, "&quot;")
-
-    .replace(/'/g, "&#039;");
-}
-
-
-/* =========================================================
-   JSONP CLEANUP
-   ========================================================= */
-
-function cleanupJSONP(
-  callbackName,
-  script
-) {
-
-  try {
-
-    delete window[
-      callbackName
-    ];
-
-  }
-
-  catch (e) {
-
-    window[
-      callbackName
-    ] = undefined;
-  }
-
-
-  if (
-    script &&
-    script.parentNode
-  ) {
-
-    script.parentNode.removeChild(
-      script
-    );
-  }
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
