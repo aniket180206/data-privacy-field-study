@@ -1,1 +1,4193 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Awareness</title><link rel="stylesheet" href="css/style.css"></head><body><nav class="navbar"><div class="container nav-inner"><a class="brand" href="index.html"><span class="brand-mark">✦</span> Data Privacy Field Study</a><button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="awareness.html">Awareness</a><a href="survey.html">Survey</a><a href="quiz.html">Quiz</a><a href="leaderboard.html">Leaderboard</a><a href="dashboard.html">Dashboard</a><a href="findings.html">Findings</a><a href="conclusion.html">Conclusion</a></div></div></nav><main><section class="page-hero"><div class="container"><span class="eyebrow">Awareness</span><h1 class="gradient">Protect Your Digital Privacy</h1><p>Practical habits for safer digital life.</p></div></section><section class="section"><div class="container grid"><div class="card"><h3>Strong unique passwords</h3><p>Use different strong passwords for important accounts.</p></div><div class="card"><h3>Two-factor authentication</h3><p>Add a second verification step wherever possible.</p></div><div class="card"><h3>Check permissions</h3><p>Review camera, microphone, contacts and location access.</p></div><div class="card"><h3>Spot phishing</h3><p>Be careful with urgent requests for OTPs, passwords or money.</p></div><div class="card"><h3>Verify websites</h3><p>Check the domain before entering sensitive information.</p></div><div class="card"><h3>Limit oversharing</h3><p>Avoid publishing unnecessary personal information.</p></div></div></section></main><footer><div class="container footer-inner"><div><strong>Field Study on Awareness of Data Privacy Among College Students</strong><br>Viva College · B.Sc IT · 2nd Year · Division C · 2026–27</div><div>Aniket</div></div></footer><button class="back-top" aria-label="Back to top">↑</button><script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Learn about data privacy, personal data protection, cyber safety, phishing, passwords, social media privacy, online scams and responsible digital practices."
+    >
+
+    <meta
+        name="keywords"
+        content="data privacy awareness, data privacy students, cyber safety, personal data, phishing, OTP scam, password security, digital privacy, DPDP Act India"
+    >
+
+    <meta
+        name="theme-color"
+        content="#07111f"
+    >
+
+    <title>
+        Awareness | Data Privacy Field Study
+    </title>
+
+
+    <!-- =================================================
+         MAIN WEBSITE CSS
+         ================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css?v=30"
+    >
+
+
+    <!-- =================================================
+         PAGE CSS
+         ================================================= -->
+
+    <style>
+
+        /* =================================================
+           GLOBAL
+           ================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =================================================
+           HEADER
+           ================================================= */
+
+        .site-header {
+            width: 100%;
+            position: relative;
+            z-index: 1000;
+        }
+
+
+        .site-header .container {
+            width: 100%;
+            max-width: 1180px;
+            margin: auto;
+            padding: 0 24px;
+        }
+
+
+        .navbar {
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            white-space: nowrap;
+
+            color: #eef7ff;
+
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+
+        .brand-icon {
+            color: #29b9ff;
+            font-size: 22px;
+        }
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 21px;
+
+            margin-left: auto;
+        }
+
+
+        .nav-links a {
+            color: #8ea7bd;
+
+            font-size: 14px;
+
+            white-space: nowrap;
+
+            transition:
+                color .2s ease;
+        }
+
+
+        .nav-links a:hover {
+            color: #29b9ff;
+        }
+
+
+        .nav-links a.active {
+            color: #ffffff;
+            font-weight: 750;
+        }
+
+
+        .menu-toggle {
+            display: none;
+
+            border: 0;
+            background: transparent;
+
+            color: #ffffff;
+
+            font-size: 25px;
+
+            cursor: pointer;
+        }
+
+
+        /* =================================================
+           PAGE HERO
+           ================================================= */
+
+        .awareness-hero {
+            position: relative;
+
+            padding:
+                105px 0
+                90px;
+
+            overflow: hidden;
+        }
+
+
+        .awareness-hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            top: -250px;
+            right: -180px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(39,184,255,.06);
+
+            filter: blur(10px);
+
+            pointer-events: none;
+        }
+
+
+        .awareness-container {
+
+            width: 100%;
+            max-width: 1180px;
+
+            margin: auto;
+
+            padding:
+                0 24px;
+        }
+
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+
+        .hero-kicker {
+
+            color: #29b9ff;
+
+            font-size: 14px;
+
+            font-weight: 850;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 16px;
+        }
+
+
+        .hero-title {
+
+            margin: 0 0 25px;
+
+            color: #f2f8ff;
+
+            font-size:
+                clamp(48px, 7vw, 82px);
+
+            line-height: .98;
+
+            letter-spacing: -4px;
+
+            font-weight: 900;
+        }
+
+
+        .hero-title span {
+            color: #8edfff;
+        }
+
+
+        .hero-description {
+
+            margin: 0;
+
+            max-width: 800px;
+
+            color: #a8bdcf;
+
+            font-size: 19px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =================================================
+           QUICK NAV
+           ================================================= */
+
+        .topic-nav {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 38px;
+        }
+
+
+        .topic-nav a {
+
+            padding:
+                10px 15px;
+
+            border:
+                1px solid
+                rgba(82,181,255,.15);
+
+            border-radius: 50px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            color: #91aec5;
+
+            font-size: 13px;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .topic-nav a:hover {
+
+            color: #dff5ff;
+
+            border-color:
+                rgba(82,181,255,.4);
+
+            background:
+                rgba(39,184,255,.06);
+        }
+
+
+        /* =================================================
+           CONTENT SECTION
+           ================================================= */
+
+        .awareness-section {
+
+            padding:
+                85px 0;
+        }
+
+
+        .awareness-section.alt {
+
+            background:
+                rgba(255,255,255,.012);
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.035);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.035);
+        }
+
+
+        .section-heading {
+
+            max-width: 780px;
+
+            margin-bottom: 45px;
+        }
+
+
+        .section-label {
+
+            color: #29b9ff;
+
+            font-size: 12px;
+
+            font-weight: 850;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+
+        .section-heading h2 {
+
+            margin: 0 0 15px;
+
+            color: #edf7ff;
+
+            font-size:
+                clamp(32px, 5vw, 50px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+        }
+
+
+        .section-heading p {
+
+            margin: 0;
+
+            color: #8ea7bc;
+
+            font-size: 16px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =================================================
+           CARDS
+           ================================================= */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .info-card {
+
+            padding: 27px;
+
+            border:
+                1px solid
+                rgba(86,181,255,.13);
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15,34,57,.85),
+                    rgba(8,21,37,.85)
+                );
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease;
+        }
+
+
+        .info-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                rgba(86,181,255,.28);
+        }
+
+
+        .info-icon {
+
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(39,184,255,.08);
+
+            color: #39c5ff;
+
+            font-size: 21px;
+        }
+
+
+        .info-card h3 {
+
+            margin: 0 0 10px;
+
+            color: #eaf5fd;
+
+            font-size: 19px;
+        }
+
+
+        .info-card p {
+
+            margin: 0;
+
+            color: #91a9bd;
+
+            font-size: 14px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =================================================
+           TWO COLUMN
+           ================================================= */
+
+        .two-column {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 22px;
+        }
+
+
+        .content-card {
+
+            padding: 30px;
+
+            border:
+                1px solid
+                rgba(86,181,255,.13);
+
+            border-radius: 22px;
+
+            background:
+                rgba(11,28,47,.75);
+        }
+
+
+        .content-card h3 {
+
+            margin:
+                0 0 15px;
+
+            color: #eef7ff;
+
+            font-size: 23px;
+        }
+
+
+        .content-card p {
+
+            color: #91a9bd;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+
+            margin:
+                0 0 15px;
+        }
+
+
+        .content-card p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* =================================================
+           DATA TYPES
+           ================================================= */
+
+        .data-type {
+
+            display: grid;
+
+            grid-template-columns:
+                55px 1fr;
+
+            gap: 17px;
+
+            padding:
+                20px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.06);
+        }
+
+
+        .data-type:last-child {
+            border-bottom: 0;
+        }
+
+
+        .data-number {
+
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background:
+                rgba(39,184,255,.08);
+
+            color: #3ac6ff;
+
+            font-weight: 900;
+        }
+
+
+        .data-type h3 {
+
+            margin: 0 0 7px;
+
+            font-size: 17px;
+        }
+
+
+        .data-type p {
+
+            margin: 0;
+
+            color: #8fa8bc;
+
+            font-size: 14px;
+
+            line-height: 1.65;
+        }
+
+
+        /* =================================================
+           DATA LIFECYCLE
+           ================================================= */
+
+        .lifecycle {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 10px;
+
+            position: relative;
+        }
+
+
+        .lifecycle-step {
+
+            position: relative;
+
+            padding: 25px 18px;
+
+            text-align: center;
+
+            border:
+                1px solid
+                rgba(86,181,255,.13);
+
+            border-radius: 17px;
+
+            background:
+                rgba(11,28,47,.8);
+        }
+
+
+        .lifecycle-number {
+
+            width: 36px;
+            height: 36px;
+
+            margin:
+                0 auto 14px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(39,184,255,.1);
+
+            color: #36c3ff;
+
+            font-weight: 900;
+        }
+
+
+        .lifecycle-step h3 {
+
+            margin:
+                0 0 8px;
+
+            color: #eaf5fd;
+
+            font-size: 16px;
+        }
+
+
+        .lifecycle-step p {
+
+            margin: 0;
+
+            color: #829bb0;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =================================================
+           THREATS
+           ================================================= */
+
+        .threat-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .threat {
+
+            display: grid;
+
+            grid-template-columns:
+                45px 1fr;
+
+            gap: 15px;
+
+            padding: 22px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.05);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,.018);
+        }
+
+
+        .threat-icon {
+
+            color: #ffb06e;
+
+            font-size: 22px;
+        }
+
+
+        .threat h3 {
+
+            margin:
+                0 0 7px;
+
+            color: #eaf5fd;
+
+            font-size: 16px;
+        }
+
+
+        .threat p {
+
+            margin: 0;
+
+            color: #879fb3;
+
+            font-size: 13px;
+
+            line-height: 1.65;
+        }
+
+
+        /* =================================================
+           CHECKLIST
+           ================================================= */
+
+        .checklist {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .check-item {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 13px;
+
+            padding:
+                17px 18px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.05);
+
+            border-radius: 13px;
+
+            background:
+                rgba(255,255,255,.02);
+        }
+
+
+        .check {
+
+            flex-shrink: 0;
+
+            width: 25px;
+            height: 25px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 7px;
+
+            background:
+                rgba(44,197,255,.1);
+
+            color: #36c5ff;
+
+            font-size: 13px;
+
+            font-weight: 900;
+        }
+
+
+        .check-item span {
+
+            color: #9ab1c5;
+
+            font-size: 14px;
+
+            line-height: 1.55;
+        }
+
+
+        /* =================================================
+           WARNING BOX
+           ================================================= */
+
+        .warning-box {
+
+            padding: 25px 28px;
+
+            border-left:
+                3px solid
+                #ff9d62;
+
+            border-radius:
+                0 16px 16px 0;
+
+            background:
+                rgba(255,157,98,.055);
+
+            margin-top: 25px;
+        }
+
+
+        .warning-box h3 {
+
+            margin:
+                0 0 8px;
+
+            color: #ffc19d;
+
+            font-size: 18px;
+        }
+
+
+        .warning-box p {
+
+            margin: 0;
+
+            color: #a99489;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =================================================
+           DPDP SECTION
+           ================================================= */
+
+        .law-banner {
+
+            padding: 32px;
+
+            border:
+                1px solid
+                rgba(57,197,255,.18);
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(39,184,255,.08),
+                    rgba(20,55,84,.08)
+                );
+
+            margin-bottom: 25px;
+        }
+
+
+        .law-banner h3 {
+
+            margin:
+                0 0 10px;
+
+            color: #eff9ff;
+
+            font-size: 24px;
+        }
+
+
+        .law-banner p {
+
+            margin: 0;
+
+            color: #92aabd;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+        }
+
+
+        .law-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .law-item {
+
+            padding: 22px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.05);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,.018);
+        }
+
+
+        .law-item h3 {
+
+            margin:
+                0 0 8px;
+
+            color: #e9f5fc;
+
+            font-size: 16px;
+        }
+
+
+        .law-item p {
+
+            margin: 0;
+
+            color: #899fb2;
+
+            font-size: 13px;
+
+            line-height: 1.65;
+        }
+
+
+        /* =================================================
+           MYTHS
+           ================================================= */
+
+        .myth-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .myth {
+
+            padding: 22px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.05);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,.018);
+        }
+
+
+        .myth-label {
+
+            color: #ff9f75;
+
+            font-size: 11px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 6px;
+        }
+
+
+        .fact-label {
+
+            color: #3cc7ff;
+
+            font-size: 11px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.3px;
+
+            text-transform: uppercase;
+
+            margin:
+                15px 0 6px;
+        }
+
+
+        .myth p {
+
+            margin: 0;
+
+            color: #9bb1c4;
+
+            font-size: 14px;
+
+            line-height: 1.65;
+        }
+
+
+        /* =================================================
+           ACTION STEPS
+           ================================================= */
+
+        .action-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .action {
+
+            padding: 25px 20px;
+
+            border:
+                1px solid
+                rgba(86,181,255,.12);
+
+            border-radius: 18px;
+
+            background:
+                rgba(10,27,46,.75);
+        }
+
+
+        .action-number {
+
+            color: #31c2ff;
+
+            font-size: 30px;
+
+            font-weight: 900;
+
+            margin-bottom: 13px;
+        }
+
+
+        .action h3 {
+
+            margin:
+                0 0 8px;
+
+            color: #eaf5fd;
+
+            font-size: 17px;
+        }
+
+
+        .action p {
+
+            margin: 0;
+
+            color: #879fb4;
+
+            font-size: 13px;
+
+            line-height: 1.65;
+        }
+
+
+        /* =================================================
+           SELF CHECK
+           ================================================= */
+
+        .self-check {
+
+            max-width: 850px;
+
+            padding: 35px;
+
+            border:
+                1px solid
+                rgba(86,181,255,.16);
+
+            border-radius: 23px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15,34,57,.95),
+                    rgba(8,21,37,.95)
+                );
+        }
+
+
+        .self-check h3 {
+
+            margin:
+                0 0 10px;
+
+            color: #eef7ff;
+
+            font-size: 24px;
+        }
+
+
+        .self-check > p {
+
+            margin:
+                0 0 25px;
+
+            color: #8fa8bc;
+
+            line-height: 1.7;
+        }
+
+
+        .self-question {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding:
+                16px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.06);
+        }
+
+
+        .self-question span {
+
+            color: #a6bdd0;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+
+        .self-question input {
+
+            width: 20px;
+            height: 20px;
+
+            accent-color:
+                #2dbfff;
+        }
+
+
+        .score-button {
+
+            margin-top: 25px;
+
+            padding:
+                13px 20px;
+
+            border: 0;
+
+            border-radius: 10px;
+
+            background:
+                #29b9ff;
+
+            color: #03101c;
+
+            font-weight: 850;
+
+            cursor: pointer;
+        }
+
+
+        .score-result {
+
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 18px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(39,184,255,.06);
+
+            color: #b9eaff;
+
+            line-height: 1.6;
+        }
+
+
+        /* =================================================
+           GLOSSARY
+           ================================================= */
+
+        .glossary {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .term {
+
+            padding: 18px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.05);
+
+            border-radius: 13px;
+
+            background:
+                rgba(255,255,255,.018);
+        }
+
+
+        .term strong {
+
+            display: block;
+
+            color: #dff3ff;
+
+            margin-bottom: 6px;
+        }
+
+
+        .term span {
+
+            color: #849caf;
+
+            font-size: 13px;
+
+            line-height: 1.55;
+        }
+
+
+        /* =================================================
+           SOURCES
+           ================================================= */
+
+        .source-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+
+        .source-link {
+
+            display: block;
+
+            padding: 16px 18px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.05);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.018);
+
+            color: #8fcbed;
+
+            font-size: 14px;
+        }
+
+
+        .source-link:hover {
+
+            border-color:
+                rgba(39,184,255,.25);
+
+            color: #bcecff;
+        }
+
+
+        /* =================================================
+           FOOTER
+           ================================================= */
+
+        .site-footer .container {
+
+            width: 100%;
+            max-width: 1180px;
+
+            margin: auto;
+
+            padding:
+                35px 24px;
+        }
+
+
+        .footer-content {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .footer-content strong {
+            color: #b9d4ec;
+        }
+
+
+        .footer-content p {
+
+            margin: 7px 0 0;
+
+            color: #7892aa;
+
+            font-size: 14px;
+        }
+
+
+        .footer-name {
+
+            color: #94c9eb;
+
+            font-size: 18px;
+        }
+
+
+        /* =================================================
+           TABLET
+           ================================================= */
+
+        @media (max-width: 950px) {
+
+            .nav-links {
+                gap: 14px;
+            }
+
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+
+            .info-grid,
+            .law-grid,
+            .glossary {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .lifecycle {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+
+            .action-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =================================================
+           MOBILE NAV
+           ================================================= */
+
+        @media (max-width: 800px) {
+
+            .menu-toggle {
+                display: block;
+            }
+
+
+            .nav-links {
+
+                display: none;
+
+                position: absolute;
+
+                top: 70px;
+
+                left: 18px;
+                right: 18px;
+
+                padding: 12px;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 2px;
+
+                border:
+                    1px solid
+                    rgba(86,181,255,.18);
+
+                border-radius: 16px;
+
+                background:
+                    #09192b;
+
+                box-shadow:
+                    0 25px 60px
+                    rgba(0,0,0,.4);
+            }
+
+
+            .nav-links.mobile-open {
+                display: flex;
+            }
+
+
+            .nav-links a {
+
+                padding:
+                    12px 14px;
+
+                border-radius: 9px;
+            }
+
+
+            .two-column {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .threat-grid,
+            .myth-grid,
+            .checklist {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+
+        /* =================================================
+           SMALL MOBILE
+           ================================================= */
+
+        @media (max-width: 550px) {
+
+            .awareness-hero {
+
+                padding:
+                    65px 0
+                    60px;
+            }
+
+
+            .awareness-container {
+
+                padding:
+                    0 16px;
+            }
+
+
+            .hero-title {
+
+                font-size: 47px;
+
+                letter-spacing: -2.5px;
+            }
+
+
+            .hero-description {
+
+                font-size: 16px;
+            }
+
+
+            .awareness-section {
+
+                padding:
+                    65px 0;
+            }
+
+
+            .info-grid,
+            .law-grid,
+            .glossary,
+            .action-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .lifecycle {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .lifecycle-step {
+
+                text-align: left;
+            }
+
+
+            .lifecycle-number {
+
+                margin-left: 0;
+            }
+
+
+            .content-card,
+            .law-banner,
+            .self-check {
+
+                padding: 22px;
+            }
+
+
+            .footer-content {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="site-header">
+
+    <div class="container">
+
+        <nav class="navbar">
+
+
+            <a
+                href="index.html"
+                class="brand"
+            >
+
+                <span class="brand-icon">
+                    ✦
+                </span>
+
+                <span>
+                    Data Privacy Field Study
+                </span>
+
+            </a>
+
+
+            <div
+                class="nav-links"
+                id="mainNavigation"
+            >
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a
+                    href="awareness.html"
+                    class="active"
+                >
+                    Awareness
+                </a>
+
+                <a href="survey.html">
+                    Survey
+                </a>
+
+                <a href="quiz.html">
+                    Quiz
+                </a>
+
+                <a href="leaderboard.html">
+                    Leaderboard
+                </a>
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="findings.html">
+                    Findings
+                </a>
+
+                <a href="conclusion.html">
+                    Conclusion
+                </a>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation"
+            >
+                ☰
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
+<section
+    class="awareness-hero"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="hero-content"
+    >
+
+        <div
+            class="hero-kicker"
+        >
+            Digital Safety & Privacy
+        </div>
+
+
+        <h1
+            class="hero-title"
+        >
+            Understand Your <span>Digital Privacy</span>
+        </h1>
+
+
+        <p
+            class="hero-description"
+        >
+            Every time we use a smartphone, social media
+            platform, website, payment application or
+            online service, we create and share digital
+            information. Data privacy is about understanding
+            what information is collected, why it is used,
+            who may receive it, how it is protected and
+            what choices we have as individuals.
+        </p>
+
+
+        <div
+            class="topic-nav"
+        >
+
+            <a href="#basics">
+                Basics
+            </a>
+
+            <a href="#personal-data">
+                Personal Data
+            </a>
+
+            <a href="#lifecycle">
+                Data Lifecycle
+            </a>
+
+            <a href="#threats">
+                Threats
+            </a>
+
+            <a href="#student-safety">
+                Safety
+            </a>
+
+            <a href="#india-law">
+                India & DPDP
+            </a>
+
+            <a href="#self-check">
+                Self Check
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     1. BASICS
+     ===================================================== -->
+
+<section
+    class="awareness-section"
+    id="basics"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            01 · Foundation
+        </div>
+
+
+        <h2>
+            What is Data Privacy?
+        </h2>
+
+
+        <p>
+            Data privacy refers to the responsible handling
+            of personal information. It involves transparency,
+            appropriate use, security and giving people
+            meaningful control over information associated
+            with them.
+        </p>
+
+    </div>
+
+
+    <div
+        class="info-grid"
+    >
+
+
+        <article class="info-card">
+
+            <div class="info-icon">
+                🔐
+            </div>
+
+            <h3>
+                Privacy
+            </h3>
+
+            <p>
+                Privacy is about having appropriate control
+                over information about yourself and deciding
+                when and how it should be shared.
+            </p>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="info-icon">
+                🛡️
+            </div>
+
+            <h3>
+                Security
+            </h3>
+
+            <p>
+                Security focuses on protecting information
+                and systems from unauthorized access,
+                alteration, disclosure, destruction or loss.
+            </p>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="info-icon">
+                👁️
+            </div>
+
+            <h3>
+                Transparency
+            </h3>
+
+            <p>
+                People should be able to understand what
+                information is being requested and the
+                purpose for which it is being processed.
+            </p>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="info-icon">
+                🎯
+            </div>
+
+            <h3>
+                Purpose
+            </h3>
+
+            <p>
+                Before sharing information, ask why it is
+                required and whether the requested data is
+                actually necessary for the service.
+            </p>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="info-icon">
+                ⚖️
+            </div>
+
+            <h3>
+                Responsibility
+            </h3>
+
+            <p>
+                Privacy is a shared responsibility. Users,
+                organizations, platforms and service providers
+                all have roles in protecting personal data.
+            </p>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="info-icon">
+                🧠
+            </div>
+
+            <h3>
+                Awareness
+            </h3>
+
+            <p>
+                Awareness helps people recognize risky
+                requests, suspicious links, unsafe permissions,
+                scams and unnecessary data sharing.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     2. WHY IT MATTERS
+     ===================================================== -->
+
+<section
+    class="awareness-section alt"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            02 · Why It Matters
+        </div>
+
+
+        <h2>
+            Why Should College Students Care?
+        </h2>
+
+
+        <p>
+            Students are active users of social media,
+            online learning platforms, shopping websites,
+            digital payments, gaming services and cloud
+            applications. This creates a large digital
+            footprint.
+        </p>
+
+    </div>
+
+
+    <div
+        class="two-column"
+    >
+
+        <div class="content-card">
+
+            <h3>
+                Your digital footprint
+            </h3>
+
+            <p>
+                A digital footprint is the collection of
+                information created by your online activities.
+                It may include posts, comments, photographs,
+                searches, purchases, account information,
+                device information and interactions with
+                websites and applications.
+            </p>
+
+            <p>
+                Some information is deliberately provided,
+                while other information may be generated
+                automatically by digital services.
+            </p>
+
+        </div>
+
+
+        <div class="content-card">
+
+            <h3>
+                Privacy can affect real life
+            </h3>
+
+            <p>
+                Exposed personal information can contribute
+                to identity misuse, targeted scams, account
+                takeover, impersonation, unwanted profiling
+                and financial fraud.
+            </p>
+
+            <p>
+                Good privacy practices reduce unnecessary
+                exposure and make it harder for attackers to
+                combine small pieces of information into a
+                useful profile.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     3. PERSONAL DATA
+     ===================================================== -->
+
+<section
+    class="awareness-section"
+    id="personal-data"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            03 · Personal Information
+        </div>
+
+
+        <h2>
+            What Counts as Personal Data?
+        </h2>
+
+
+        <p>
+            Personal data can include information that
+            identifies or relates to an individual. Different
+            services may need different information, but
+            users should understand what they are sharing.
+        </p>
+
+    </div>
+
+
+    <div
+        class="two-column"
+    >
+
+
+        <div class="content-card">
+
+
+            <div class="data-type">
+
+                <div class="data-number">
+                    01
+                </div>
+
+                <div>
+
+                    <h3>
+                        Identity Information
+                    </h3>
+
+                    <p>
+                        Name, date of birth, photographs,
+                        identification details and similar
+                        information associated with a person.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="data-type">
+
+                <div class="data-number">
+                    02
+                </div>
+
+                <div>
+
+                    <h3>
+                        Contact Information
+                    </h3>
+
+                    <p>
+                        Mobile number, email address, home
+                        address and other contact details.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="data-type">
+
+                <div class="data-number">
+                    03
+                </div>
+
+                <div>
+
+                    <h3>
+                        Financial Information
+                    </h3>
+
+                    <p>
+                        Payment-related information and
+                        transaction details can be highly
+                        sensitive and should be protected.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="content-card">
+
+
+            <div class="data-type">
+
+                <div class="data-number">
+                    04
+                </div>
+
+                <div>
+
+                    <h3>
+                        Account Information
+                    </h3>
+
+                    <p>
+                        Usernames, account identifiers,
+                        authentication information and
+                        account activity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="data-type">
+
+                <div class="data-number">
+                    05
+                </div>
+
+                <div>
+
+                    <h3>
+                        Device & Online Data
+                    </h3>
+
+                    <p>
+                        Device identifiers, IP-related
+                        information, browser details,
+                        cookies and online activity may
+                        contribute to a digital profile.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="data-type">
+
+                <div class="data-number">
+                    06
+                </div>
+
+                <div>
+
+                    <h3>
+                        Photos & Content
+                    </h3>
+
+                    <p>
+                        Photos, videos, documents, messages
+                        and other content can reveal personal
+                        or sensitive information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     4. DATA LIFECYCLE
+     ===================================================== -->
+
+<section
+    class="awareness-section alt"
+    id="lifecycle"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            04 · Data Lifecycle
+        </div>
+
+
+        <h2>
+            What Happens to Your Data?
+        </h2>
+
+
+        <p>
+            Personal information can move through several
+            stages during its digital lifecycle. Understanding
+            this process makes privacy decisions easier.
+        </p>
+
+    </div>
+
+
+    <div
+        class="lifecycle"
+    >
+
+
+        <div class="lifecycle-step">
+
+            <div class="lifecycle-number">
+                1
+            </div>
+
+            <h3>
+                Collection
+            </h3>
+
+            <p>
+                Information is provided or generated when
+                a service is used.
+            </p>
+
+        </div>
+
+
+        <div class="lifecycle-step">
+
+            <div class="lifecycle-number">
+                2
+            </div>
+
+            <h3>
+                Processing
+            </h3>
+
+            <p>
+                Data may be organized, analyzed or used
+                for a stated purpose.
+            </p>
+
+        </div>
+
+
+        <div class="lifecycle-step">
+
+            <div class="lifecycle-number">
+                3
+            </div>
+
+            <h3>
+                Storage
+            </h3>
+
+            <p>
+                Information may be stored on devices,
+                servers or cloud infrastructure.
+            </p>
+
+        </div>
+
+
+        <div class="lifecycle-step">
+
+            <div class="lifecycle-number">
+                4
+            </div>
+
+            <h3>
+                Sharing
+            </h3>
+
+            <p>
+                Data may be shared with processors,
+                service providers or other entities
+                depending on the circumstances.
+            </p>
+
+        </div>
+
+
+        <div class="lifecycle-step">
+
+            <div class="lifecycle-number">
+                5
+            </div>
+
+            <h3>
+                Deletion
+            </h3>
+
+            <p>
+                Data may eventually be deleted or
+                retained according to applicable
+                requirements and purposes.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     5. COMMON THREATS
+     ===================================================== -->
+
+<section
+    class="awareness-section"
+    id="threats"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            05 · Threat Landscape
+        </div>
+
+
+        <h2>
+            Common Privacy & Cyber Threats
+        </h2>
+
+
+        <p>
+            Many attacks do not require highly advanced
+            hacking techniques. Attackers often exploit
+            human trust, urgency, weak passwords and
+            excessive information sharing.
+        </p>
+
+    </div>
+
+
+    <div
+        class="threat-grid"
+    >
+
+
+        <article class="threat">
+
+            <div class="threat-icon">
+                🎣
+            </div>
+
+            <div>
+
+                <h3>
+                    Phishing
+                </h3>
+
+                <p>
+                    Fake messages, emails or websites designed
+                    to trick users into revealing passwords,
+                    financial information or other data.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="threat">
+
+            <div class="threat-icon">
+                🎭
+            </div>
+
+            <div>
+
+                <h3>
+                    Social Engineering
+                </h3>
+
+                <p>
+                    Attackers manipulate people using trust,
+                    fear, urgency, authority or curiosity
+                    instead of directly attacking technology.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="threat">
+
+            <div class="threat-icon">
+                🔑
+            </div>
+
+            <div>
+
+                <h3>
+                    Credential Theft
+                </h3>
+
+                <p>
+                    Stolen usernames, passwords, session
+                    information or authentication codes may
+                    allow attackers to access accounts.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="threat">
+
+            <div class="threat-icon">
+                💳
+            </div>
+
+            <div>
+
+                <h3>
+                    Financial Scams
+                </h3>
+
+                <p>
+                    Fake payment requests, impersonation,
+                    fraudulent shopping websites and other
+                    schemes may cause financial loss.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="threat">
+
+            <div class="threat-icon">
+                📱
+            </div>
+
+            <div>
+
+                <h3>
+                    Malicious Apps
+                </h3>
+
+                <p>
+                    Untrusted applications may request
+                    excessive permissions or contain
+                    malicious functionality.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="threat">
+
+            <div class="threat-icon">
+                🧬
+            </div>
+
+            <div>
+
+                <h3>
+                    Data Breaches
+                </h3>
+
+                <p>
+                    A breach can expose information held by
+                    an organization. Users should respond
+                    quickly when affected accounts are at risk.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="threat">
+
+            <div class="threat-icon">
+                🤖
+            </div>
+
+            <div>
+
+                <h3>
+                    AI-Enabled Scams
+                </h3>
+
+                <p>
+                    AI can make fake messages, voice content,
+                    images and impersonation attempts more
+                    convincing. Verify unexpected requests
+                    independently.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="threat">
+
+            <div class="threat-icon">
+                📡
+            </div>
+
+            <div>
+
+                <h3>
+                    Unsafe Networks
+                </h3>
+
+                <p>
+                    Untrusted networks and devices can create
+                    additional risks, particularly when users
+                    access sensitive accounts or information.
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     6. STUDENT SAFETY
+     ===================================================== -->
+
+<section
+    class="awareness-section alt"
+    id="student-safety"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            06 · Practical Protection
+        </div>
+
+
+        <h2>
+            Data Privacy Rules Every Student Should Follow
+        </h2>
+
+
+        <p>
+            Privacy protection does not require being a
+            cybersecurity expert. Small habits can significantly
+            reduce unnecessary exposure.
+        </p>
+
+    </div>
+
+
+    <div
+        class="checklist"
+    >
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Use strong and unique passwords for important
+                accounts instead of reusing the same password.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Enable two-factor or multi-factor authentication
+                wherever it is available.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Never share OTPs, passwords, PINs or authentication
+                codes with callers or messages.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Check application permissions and question
+                permissions that are unnecessary for the app's purpose.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Review social-media privacy settings and avoid
+                publicly posting unnecessary personal information.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Verify suspicious links and websites before
+                entering passwords, payment information or identity details.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Keep your operating system, browser and applications
+                updated with security fixes.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Download applications from trusted sources and
+                avoid unknown files or suspicious software.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Think before posting photographs, documents,
+                locations, college IDs or other information online.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Be suspicious of urgent requests involving money,
+                passwords, OTPs, account suspension or prizes.
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <div
+        class="warning-box"
+    >
+
+        <h3>
+            Remember: urgency is a common manipulation technique
+        </h3>
+
+        <p>
+            If a message says “act immediately,” “your account
+            will be blocked,” “send the OTP now,” or “pay immediately
+            to receive the refund,” pause and independently verify
+            the request through an official channel.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     7. SOCIAL MEDIA
+     ===================================================== -->
+
+<section
+    class="awareness-section"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            07 · Social Media
+        </div>
+
+
+        <h2>
+            Think Before You Share
+        </h2>
+
+
+        <p>
+            Social media can make personal information easier
+            for strangers to collect and combine. Information
+            that appears harmless individually can become useful
+            when combined with other details.
+        </p>
+
+    </div>
+
+
+    <div
+        class="two-column"
+    >
+
+        <div class="content-card">
+
+            <h3>
+                Information attackers can learn
+            </h3>
+
+            <p>
+                Public posts can reveal your name, college,
+                daily routine, location, friends, interests,
+                travel plans, family information, photographs
+                and other contextual details.
+            </p>
+
+            <p>
+                Attackers may use these details to create
+                convincing impersonation or social-engineering
+                messages.
+            </p>
+
+        </div>
+
+
+        <div class="content-card">
+
+            <h3>
+                Safer sharing habits
+            </h3>
+
+            <p>
+                Review your audience settings, remove
+                unnecessary public information, avoid posting
+                sensitive documents and think carefully before
+                sharing real-time location or travel plans.
+            </p>
+
+            <p>
+                Remember that deleting a post does not guarantee
+                that nobody has already copied, downloaded or
+                captured it.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     8. PASSWORDS & 2FA
+     ===================================================== -->
+
+<section
+    class="awareness-section alt"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            08 · Account Security
+        </div>
+
+
+        <h2>
+            Passwords and Multi-Factor Authentication
+        </h2>
+
+
+        <p>
+            Password reuse is dangerous because one compromised
+            password can put multiple accounts at risk. Unique
+            passwords and additional authentication factors reduce
+            this risk.
+        </p>
+
+    </div>
+
+
+    <div
+        class="info-grid"
+    >
+
+
+        <article class="info-card">
+
+            <div class="info-icon">
+                🔐
+            </div>
+
+            <h3>
+                Unique Passwords
+            </h3>
+
+            <p>
+                Use a different password or passphrase for
+                important services. A password manager can help
+                generate and remember unique credentials.
+            </p>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="info-icon">
+                📲
+            </div>
+
+            <h3>
+                MFA / 2FA
+            </h3>
+
+            <p>
+                Multi-factor authentication adds another
+                verification step beyond the password and can
+                reduce the impact of stolen passwords.
+            </p>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="info-icon">
+                🚫
+            </div>
+
+            <h3>
+                Never Share Codes
+            </h3>
+
+            <p>
+                OTPs and authentication codes are security
+                credentials. Treat unexpected requests for
+                them as a serious warning sign.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     9. INDIA DPDP
+     ===================================================== -->
+
+<section
+    class="awareness-section"
+    id="india-law"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            09 · India
+        </div>
+
+
+        <h2>
+            Data Protection in India
+        </h2>
+
+
+        <p>
+            India has established a legal framework for
+            digital personal data protection. Students should
+            understand the basic concepts without assuming
+            that every privacy issue is solved by legislation
+            alone.
+        </p>
+
+    </div>
+
+
+    <div
+        class="law-banner"
+    >
+
+        <h3>
+            Digital Personal Data Protection Act, 2023
+        </h3>
+
+        <p>
+            The Digital Personal Data Protection Act, 2023
+            establishes a framework for processing digital
+            personal data in India. It uses concepts including
+            the “Data Principal” for the individual to whom
+            personal data relates and the “Data Fiduciary”
+            for an entity that determines the purpose and means
+            of processing personal data.
+        </p>
+
+    </div>
+
+
+    <div
+        class="law-grid"
+    >
+
+        <article class="law-item">
+
+            <h3>
+                Notice & Consent
+            </h3>
+
+            <p>
+                The framework includes requirements concerning
+                notice and consent for applicable processing
+                activities.
+            </p>
+
+        </article>
+
+
+        <article class="law-item">
+
+            <h3>
+                Access to Information
+            </h3>
+
+            <p>
+                The Act provides Data Principals with specified
+                rights relating to information about their
+                personal data and its processing.
+            </p>
+
+        </article>
+
+
+        <article class="law-item">
+
+            <h3>
+                Correction & Erasure
+            </h3>
+
+            <p>
+                The Act provides specified rights concerning
+                correction and erasure of personal data,
+                subject to applicable requirements.
+            </p>
+
+        </article>
+
+
+        <article class="law-item">
+
+            <h3>
+                Grievance Redressal
+            </h3>
+
+            <p>
+                Data Principals have mechanisms under the
+                framework for raising grievances concerning
+                applicable processing activities.
+            </p>
+
+        </article>
+
+
+        <article class="law-item">
+
+            <h3>
+                Data Security
+            </h3>
+
+            <p>
+                Data Fiduciaries have obligations concerning
+                reasonable security safeguards and protection
+                of personal data.
+            </p>
+
+        </article>
+
+
+        <article class="law-item">
+
+            <h3>
+                Children's Data
+            </h3>
+
+            <p>
+                The framework includes additional requirements
+                for processing the personal data of children.
+            </p>
+
+        </article>
+
+    </div>
+
+
+    <div
+        class="warning-box"
+    >
+
+        <h3>
+            Important legal note
+        </h3>
+
+        <p>
+            The DPDP Act, 2023 and the Digital Personal Data
+            Protection Rules, 2025 have an implementation and
+            enforcement timeline. Specific obligations may
+            apply at different stages. This awareness page is
+            educational information, not legal advice.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     10. ONLINE FRAUD
+     ===================================================== -->
+
+<section
+    class="awareness-section alt"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            10 · If Something Goes Wrong
+        </div>
+
+
+        <h2>
+            What To Do After an Online Fraud
+        </h2>
+
+
+        <p>
+            Acting quickly can help reduce further damage.
+            Do not panic and do not continue communicating
+            with the suspected scammer.
+        </p>
+
+    </div>
+
+
+    <div
+        class="action-grid"
+    >
+
+
+        <div class="action">
+
+            <div class="action-number">
+                01
+            </div>
+
+            <h3>
+                Stop
+            </h3>
+
+            <p>
+                Stop responding to the suspicious person,
+                website or message. Do not send additional
+                money or credentials.
+            </p>
+
+        </div>
+
+
+        <div class="action">
+
+            <div class="action-number">
+                02
+            </div>
+
+            <h3>
+                Secure
+            </h3>
+
+            <p>
+                Change compromised passwords, enable MFA and
+                secure affected accounts using official
+                recovery channels.
+            </p>
+
+        </div>
+
+
+        <div class="action">
+
+            <div class="action-number">
+                03
+            </div>
+
+            <h3>
+                Preserve
+            </h3>
+
+            <p>
+                Keep screenshots, transaction details,
+                messages, phone numbers, URLs and other
+                relevant evidence.
+            </p>
+
+        </div>
+
+
+        <div class="action">
+
+            <div class="action-number">
+                04
+            </div>
+
+            <h3>
+                Report
+            </h3>
+
+            <p>
+                Report the incident through appropriate
+                official channels and contact your bank or
+                payment provider quickly when money is involved.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     11. MYTHS
+     ===================================================== -->
+
+<section
+    class="awareness-section"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            11 · Myths vs Facts
+        </div>
+
+
+        <h2>
+            Common Privacy Misconceptions
+        </h2>
+
+    </div>
+
+
+    <div
+        class="myth-grid"
+    >
+
+
+        <article class="myth">
+
+            <div class="myth-label">
+                Myth
+            </div>
+
+            <p>
+                “I have nothing important, so privacy does
+                not matter to me.”
+            </p>
+
+            <div class="fact-label">
+                Fact
+            </div>
+
+            <p>
+                Personal information can be used for
+                impersonation, scams, profiling and account
+                attacks even when it does not appear valuable.
+            </p>
+
+        </article>
+
+
+        <article class="myth">
+
+            <div class="myth-label">
+                Myth
+            </div>
+
+            <p>
+                “If an app is available in an app store,
+                every permission it requests must be safe.”
+            </p>
+
+            <div class="fact-label">
+                Fact
+            </div>
+
+            <p>
+                Review whether requested permissions make
+                sense for the application's purpose.
+            </p>
+
+        </article>
+
+
+        <article class="myth">
+
+            <div class="myth-label">
+                Myth
+            </div>
+
+            <p>
+                “A bank employee can ask me for my OTP.”
+            </p>
+
+            <div class="fact-label">
+                Fact
+            </div>
+
+            <p>
+                Treat requests for OTPs, passwords and
+                authentication codes as suspicious.
+            </p>
+
+        </article>
+
+
+        <article class="myth">
+
+            <div class="myth-label">
+                Myth
+            </div>
+
+            <p>
+                “My social-media account is private, so
+                everything I post is completely safe.”
+            </p>
+
+            <div class="fact-label">
+                Fact
+            </div>
+
+            <p>
+                Privacy settings reduce exposure but do not
+                eliminate screenshots, downloads, compromised
+                accounts or accidental sharing.
+            </p>
+
+        </article>
+
+
+        <article class="myth">
+
+            <div class="myth-label">
+                Myth
+            </div>
+
+            <p>
+                “AI-generated messages always look fake.”
+            </p>
+
+            <div class="fact-label">
+                Fact
+            </div>
+
+            <p>
+                AI can make phishing and impersonation content
+                increasingly convincing. Verify unexpected
+                requests independently.
+            </p>
+
+        </article>
+
+
+        <article class="myth">
+
+            <div class="myth-label">
+                Myth
+            </div>
+
+            <p>
+                “A strong password is enough to protect every
+                account.”
+            </p>
+
+            <div class="fact-label">
+                Fact
+            </div>
+
+            <p>
+                Unique passwords, MFA, software updates,
+                phishing awareness and careful account
+                recovery practices work together.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     12. SELF CHECK
+     ===================================================== -->
+
+<section
+    class="awareness-section alt"
+    id="self-check"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            12 · Quick Assessment
+        </div>
+
+
+        <h2>
+            How Privacy-Aware Are You?
+        </h2>
+
+
+        <p>
+            Answer the questions below honestly. This is a
+            simple educational self-check and is not part of
+            the official field-study survey.
+        </p>
+
+    </div>
+
+
+    <div
+        class="self-check"
+    >
+
+        <h3>
+            Privacy Habits Check
+        </h3>
+
+
+        <p>
+            Select every statement that describes your
+            current online habits.
+        </p>
+
+
+        <label
+            class="self-question"
+        >
+
+            <span>
+                I use different passwords for important accounts.
+            </span>
+
+            <input
+                type="checkbox"
+                class="privacy-check"
+            >
+
+        </label>
+
+
+        <label
+            class="self-question"
+        >
+
+            <span>
+                I use two-factor or multi-factor authentication.
+            </span>
+
+            <input
+                type="checkbox"
+                class="privacy-check"
+            >
+
+        </label>
+
+
+        <label
+            class="self-question"
+        >
+
+            <span>
+                I check app permissions before granting access.
+            </span>
+
+            <input
+                type="checkbox"
+                class="privacy-check"
+            >
+
+        </label>
+
+
+        <label
+            class="self-question"
+        >
+
+            <span>
+                I verify suspicious links before opening them.
+            </span>
+
+            <input
+                type="checkbox"
+                class="privacy-check"
+            >
+
+        </label>
+
+
+        <label
+            class="self-question"
+        >
+
+            <span>
+                I never share OTPs or passwords with callers.
+            </span>
+
+            <input
+                type="checkbox"
+                class="privacy-check"
+            >
+
+        </label>
+
+
+        <label
+            class="self-question"
+        >
+
+            <span>
+                I review my social-media privacy settings.
+            </span>
+
+            <input
+                type="checkbox"
+                class="privacy-check"
+            >
+
+        </label>
+
+
+        <label
+            class="self-question"
+        >
+
+            <span>
+                I keep my phone and apps updated.
+            </span>
+
+            <input
+                type="checkbox"
+                class="privacy-check"
+            >
+
+        </label>
+
+
+        <label
+            class="self-question"
+        >
+
+            <span>
+                I think before sharing personal information online.
+            </span>
+
+            <input
+                type="checkbox"
+                class="privacy-check"
+            >
+
+        </label>
+
+
+        <button
+            type="button"
+            class="score-button"
+            onclick="calculatePrivacyScore()"
+        >
+            Check My Score
+        </button>
+
+
+        <div
+            id="scoreResult"
+            class="score-result"
+        ></div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     13. GLOSSARY
+     ===================================================== -->
+
+<section
+    class="awareness-section"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            13 · Glossary
+        </div>
+
+
+        <h2>
+            Important Privacy Terms
+        </h2>
+
+    </div>
+
+
+    <div
+        class="glossary"
+    >
+
+
+        <div class="term">
+
+            <strong>
+                Personal Data
+            </strong>
+
+            <span>
+                Information relating to an identifiable individual.
+            </span>
+
+        </div>
+
+
+        <div class="term">
+
+            <strong>
+                Data Principal
+            </strong>
+
+            <span>
+                The individual to whom personal data relates under
+                India's DPDP framework.
+            </span>
+
+        </div>
+
+
+        <div class="term">
+
+            <strong>
+                Data Fiduciary
+            </strong>
+
+            <span>
+                An entity that determines the purpose and means
+                of processing personal data under the DPDP Act.
+            </span>
+
+        </div>
+
+
+        <div class="term">
+
+            <strong>
+                Phishing
+            </strong>
+
+            <span>
+                Deceptive communication designed to obtain information
+                or cause a user to take an unsafe action.
+            </span>
+
+        </div>
+
+
+        <div class="term">
+
+            <strong>
+                MFA
+            </strong>
+
+            <span>
+                Multi-factor authentication uses more than one
+                authentication factor.
+            </span>
+
+        </div>
+
+
+        <div class="term">
+
+            <strong>
+                OTP
+            </strong>
+
+            <span>
+                A one-time password or code used for authentication
+                or verification.
+            </span>
+
+        </div>
+
+
+        <div class="term">
+
+            <strong>
+                Data Breach
+            </strong>
+
+            <span>
+                A security incident involving unauthorized access,
+                disclosure, alteration, loss or destruction of data.
+            </span>
+
+        </div>
+
+
+        <div class="term">
+
+            <strong>
+                Digital Footprint
+            </strong>
+
+            <span>
+                Information and traces generated through online
+                activities and interactions.
+            </span>
+
+        </div>
+
+
+        <div class="term">
+
+            <strong>
+                Social Engineering
+            </strong>
+
+            <span>
+                Manipulating people into revealing information or
+                performing an action that benefits an attacker.
+            </span>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     14. OFFICIAL RESOURCES
+     ===================================================== -->
+
+<section
+    class="awareness-section alt"
+>
+
+<div
+    class="awareness-container"
+>
+
+    <div
+        class="section-heading"
+    >
+
+        <div class="section-label">
+            14 · Further Reading
+        </div>
+
+
+        <h2>
+            Official Cyber Safety Resources
+        </h2>
+
+
+        <p>
+            For detailed and current information, use official
+            government and cybersecurity resources.
+        </p>
+
+    </div>
+
+
+    <div
+        class="source-list"
+    >
+
+        <a
+            class="source-link"
+            href="https://www.meity.gov.in/data-protection-act2023"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Ministry of Electronics & Information Technology —
+            Digital Personal Data Protection Act, 2023 →
+        </a>
+
+
+        <a
+            class="source-link"
+            href="https://www.meity.gov.in/documents/act-and-policies/digital-personal-data-protection-rules-2025-gDOxUjMtQWa"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            MeitY — Digital Personal Data Protection Rules, 2025 →
+        </a>
+
+
+        <a
+            class="source-link"
+            href="https://www.cert-in.org.in/AwarenessBooklets.jsp"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            CERT-In — Cyber Security Awareness Booklets →
+        </a>
+
+
+        <a
+            class="source-link"
+            href="https://www.cert-in.org.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Indian Computer Emergency Response Team (CERT-In) →
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="site-footer">
+
+<div class="container">
+
+    <div
+        class="footer-content"
+    >
+
+        <div>
+
+            <strong>
+                Field Study on Awareness of
+                Data Privacy Among College Students
+            </strong>
+
+            <p>
+                Viva College · B.Sc IT ·
+                2nd Year · Division C ·
+                2026–27
+            </p>
+
+        </div>
+
+
+        <div
+            class="footer-name"
+        >
+            Aniket
+        </div>
+
+    </div>
+
+</div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+"use strict";
+
+
+/* =====================================================
+   MOBILE MENU
+   ===================================================== */
+
+const menuToggle =
+    document.getElementById(
+        "menuToggle"
+    );
+
+
+const navigation =
+    document.getElementById(
+        "mainNavigation"
+    );
+
+
+if (
+    menuToggle &&
+    navigation
+) {
+
+    menuToggle.addEventListener(
+        "click",
+        function () {
+
+            navigation.classList.toggle(
+                "mobile-open"
+            );
+
+        }
+    );
+
+
+    navigation
+        .querySelectorAll("a")
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        navigation.classList.remove(
+                            "mobile-open"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   PRIVACY SELF CHECK
+   ===================================================== */
+
+function calculatePrivacyScore() {
+
+    const checks =
+        document.querySelectorAll(
+            ".privacy-check"
+        );
+
+
+    let score = 0;
+
+
+    checks.forEach(
+        function (check) {
+
+            if (
+                check.checked
+            ) {
+
+                score++;
+
+            }
+
+        }
+    );
+
+
+    const total =
+        checks.length;
+
+
+    const percentage =
+        Math.round(
+            (
+                score /
+                total
+            ) * 100
+        );
+
+
+    const result =
+        document.getElementById(
+            "scoreResult"
+        );
+
+
+    let message = "";
+
+
+    if (
+        percentage >= 88
+    ) {
+
+        message =
+            "Excellent privacy habits. Keep maintaining these practices and continue learning about new digital threats.";
+
+    }
+
+    else if (
+        percentage >= 63
+    ) {
+
+        message =
+            "Good awareness. You already follow several useful privacy practices, but there is room to strengthen your habits.";
+
+    }
+
+    else if (
+        percentage >= 38
+    ) {
+
+        message =
+            "Moderate awareness. Focus on passwords, MFA, suspicious links, permissions and careful information sharing.";
+
+    }
+
+    else {
+
+        message =
+            "Your privacy habits need improvement. Start with strong unique passwords, MFA, cautious link handling and avoiding unnecessary data sharing.";
+
+    }
+
+
+    result.innerHTML = `
+
+        <strong>
+            Your Privacy Awareness Score:
+            ${score}/${total}
+            (${percentage}%)
+        </strong>
+
+        <br><br>
+
+        ${message}
+
+    `;
+
+
+    result.style.display =
+        "block";
+
+
+    result.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>
