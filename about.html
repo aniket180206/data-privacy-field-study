@@ -1,1 +1,818 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>About</title><link rel="stylesheet" href="css/style.css"></head><body><nav class="navbar"><div class="container nav-inner"><a class="brand" href="index.html"><span class="brand-mark">✦</span> Data Privacy Field Study</a><button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="awareness.html">Awareness</a><a href="survey.html">Survey</a><a href="quiz.html">Quiz</a><a href="leaderboard.html">Leaderboard</a><a href="dashboard.html">Dashboard</a><a href="findings.html">Findings</a><a href="conclusion.html">Conclusion</a></div></div></nav><main><section class="page-hero"><div class="container"><span class="eyebrow">About</span><h1 class="gradient">About the Field Study</h1><p>This study explores how college students understand and practise data privacy in everyday digital life.</p></div></section><section class="section"><div class="container grid"><div class="card"><h2>Objective</h2><p>Measure awareness of personal data, privacy policies, permissions, authentication and cybercrime.</p></div><div class="card"><h2>Method</h2><p>A structured 25-question survey is presented through this website and submitted to the project's official Google Form response system.</p></div><div class="card"><h2>Academic Context</h2><p>Viva College · B.Sc IT · Second Year · Division C · Academic Year 2026–27.</p></div></div></section></main><footer><div class="container footer-inner"><div><strong>Field Study on Awareness of Data Privacy Among College Students</strong><br>Viva College · B.Sc IT · 2nd Year · Division C · 2026–27</div><div>Aniket</div></div></footer><button class="back-top" aria-label="Back to top">↑</button><script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About The Study | Data Privacy Awareness</title>
+
+  <meta name="description"
+    content="About the B.Sc IT field study on awareness of data privacy among college students at Viva College.">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(37,99,235,.14), transparent 28%),
+        #06101d;
+      color: #e8f0f8;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px,92%);
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(4,14,27,.9);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 5px;
+    }
+
+    .nav-links a {
+      color: #9fb0c2;
+      padding: 9px 11px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: white;
+      background: rgba(56,189,248,.1);
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 19px;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 90px 0 70px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .badge {
+      display: inline-block;
+      color: #7dd3fc;
+      background: rgba(56,189,248,.08);
+      border: 1px solid rgba(56,189,248,.2);
+      padding: 7px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px,5vw,62px);
+      line-height: 1.08;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: 20px auto 0;
+      color: #98aabd;
+    }
+
+    /* COMMON */
+
+    section {
+      padding: 75px 0;
+    }
+
+    .head {
+      margin-bottom: 35px;
+    }
+
+    .mini {
+      color: #38bdf8;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 34px;
+      line-height: 1.2;
+    }
+
+    .head p {
+      color: #91a4b8;
+      max-width: 760px;
+      margin-top: 12px;
+    }
+
+    /* PROJECT CARD */
+
+    .project {
+      background: rgba(10,28,46,.78);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 20px;
+      padding: 35px;
+    }
+
+    .project p {
+      color: #9eafc1;
+      margin-top: 14px;
+    }
+
+    /* DETAILS */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(10,27,45,.78);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 17px;
+      padding: 27px;
+    }
+
+    .card h3 {
+      margin-bottom: 9px;
+      font-size: 19px;
+    }
+
+    .card p {
+      color: #95a8bb;
+      font-size: 14px;
+    }
+
+    .label {
+      color: #7dd3fc;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 7px;
+    }
+
+    /* OBJECTIVES */
+
+    .objectives {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .objective {
+      padding: 25px;
+      background: rgba(10,27,45,.75);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px;
+    }
+
+    .number {
+      color: #38bdf8;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .objective h3 {
+      margin-bottom: 8px;
+    }
+
+    .objective p {
+      color: #91a4b8;
+      font-size: 14px;
+    }
+
+    /* SCOPE */
+
+    .scope-list {
+      list-style: none;
+    }
+
+    .scope-list li {
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      color: #a8b8c9;
+    }
+
+    .scope-list li::before {
+      content: "✓";
+      color: #38bdf8;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    /* NOTE */
+
+    .note {
+      background: rgba(245,158,11,.05);
+      border: 1px solid rgba(245,158,11,.18);
+      border-radius: 16px;
+      padding: 25px;
+    }
+
+    .note h3 {
+      color: #fbbf24;
+      margin-bottom: 8px;
+    }
+
+    .note p {
+      color: #b2bdc9;
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 35px 0;
+      color: #71859a;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px) {
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 4%;
+        right: 4%;
+        top: 70px;
+        flex-direction: column;
+        background: #081727;
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 12px;
+        padding: 10px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px;
+      }
+
+      .grid,
+      .objectives {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+<header>
+
+  <div class="container nav">
+
+    <a href="index.html" class="logo">
+      Data<span>Privacy</span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="awareness.html">Awareness</a></li>
+      <li><a href="survey.html">Survey</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="leaderboard.html">Leaderboard</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="findings.html">Findings</a></li>
+      <li><a href="conclusion.html">Conclusion</a></li>
+
+    </ul>
+
+  </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="container">
+
+    <div class="badge">
+      ABOUT THE FIELD STUDY
+    </div>
+
+    <h1>
+      Understanding <span>Data Privacy</span>
+      Awareness
+    </h1>
+
+    <p>
+      A structured academic field study designed to understand the
+      awareness, knowledge and digital safety practices of college
+      students.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- PROJECT -->
+
+<section>
+
+  <div class="container">
+
+    <div class="head">
+
+      <div class="mini">01 — Project Background</div>
+
+      <h2>About This Field Study</h2>
+
+    </div>
+
+    <div class="project">
+
+      <p style="margin-top:0;">
+        The field study titled
+        <strong style="color:#e6f4ff;">
+          “Field Study on Awareness of Data Privacy Among College Students”
+        </strong>
+        focuses on understanding how students perceive and manage their
+        personal information in the digital environment.
+      </p>
+
+      <p>
+        Modern students regularly use smartphones, social media,
+        educational applications, digital payment systems, online
+        shopping platforms and cloud services. These activities can
+        involve the collection, processing, storage and sharing of
+        personal information.
+      </p>
+
+      <p>
+        The study therefore examines not only whether students have heard
+        about data privacy, but also whether they follow practical
+        security measures in their everyday digital activities.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PROJECT DETAILS -->
+
+<section>
+
+  <div class="container">
+
+    <div class="head">
+
+      <div class="mini">02 — Project Details</div>
+
+      <h2>Study Information</h2>
+
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <div class="label">Project Title</div>
+
+        <h3>
+          Awareness of Data Privacy Among College Students
+        </h3>
+
+        <p>
+          Academic field study examining student awareness of personal
+          data, privacy and online security.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div class="label">Institution</div>
+
+        <h3>Viva College</h3>
+
+        <p>
+          The study is prepared as part of the academic field-study
+          project.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div class="label">Programme</div>
+
+        <h3>B.Sc Information Technology</h3>
+
+        <p>
+          Second Year • Division C
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div class="label">Academic Year</div>
+
+        <h3>2026–27</h3>
+
+        <p>
+          The study and associated survey website are prepared for the
+          2026–27 academic year.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- OBJECTIVES -->
+
+<section>
+
+  <div class="container">
+
+    <div class="head">
+
+      <div class="mini">03 — Objectives</div>
+
+      <h2>Objectives of the Study</h2>
+
+      <p>
+        The project has been designed around practical questions about
+        privacy awareness and digital behaviour.
+      </p>
+
+    </div>
+
+    <div class="objectives">
+
+      <div class="objective">
+
+        <div class="number">OBJECTIVE 01</div>
+
+        <h3>Measure Awareness</h3>
+
+        <p>
+          Understand how familiar students are with the concept of data
+          privacy and personal information.
+        </p>
+
+      </div>
+
+      <div class="objective">
+
+        <div class="number">OBJECTIVE 02</div>
+
+        <h3>Study Digital Behaviour</h3>
+
+        <p>
+          Examine everyday practices involving passwords, social media,
+          permissions and information sharing.
+        </p>
+
+      </div>
+
+      <div class="objective">
+
+        <div class="number">OBJECTIVE 03</div>
+
+        <h3>Identify Risks</h3>
+
+        <p>
+          Identify common situations where students may be exposed to
+          privacy or cybersecurity risks.
+        </p>
+
+      </div>
+
+      <div class="objective">
+
+        <div class="number">OBJECTIVE 04</div>
+
+        <h3>Understand Cybercrime Awareness</h3>
+
+        <p>
+          Examine awareness and experiences related to online fraud,
+          phishing and other cybercrime.
+        </p>
+
+      </div>
+
+      <div class="objective">
+
+        <div class="number">OBJECTIVE 05</div>
+
+        <h3>Promote Safe Practices</h3>
+
+        <p>
+          Encourage practical habits that can help students protect their
+          accounts and personal information.
+        </p>
+
+      </div>
+
+      <div class="objective">
+
+        <div class="number">OBJECTIVE 06</div>
+
+        <h3>Recommend Improvements</h3>
+
+        <p>
+          Identify ways colleges can improve privacy and cybersecurity
+          awareness among students.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SCOPE -->
+
+<section>
+
+  <div class="container">
+
+    <div class="head">
+
+      <div class="mini">04 — Scope</div>
+
+      <h2>Areas Covered by the Research</h2>
+
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>Privacy Knowledge</h3>
+
+        <ul class="scope-list">
+
+          <li>Meaning of data privacy</li>
+          <li>Personal data identification</li>
+          <li>Digital footprint</li>
+          <li>Importance of privacy</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Cybersecurity Practices</h3>
+
+        <ul class="scope-list">
+
+          <li>Password security</li>
+          <li>Two-factor authentication</li>
+          <li>App permissions</li>
+          <li>Suspicious links</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Online Behaviour</h3>
+
+        <ul class="scope-list">
+
+          <li>Social media sharing</li>
+          <li>Website verification</li>
+          <li>Public Wi-Fi usage</li>
+          <li>Digital payments</li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Cybercrime Awareness</h3>
+
+        <ul class="scope-list">
+
+          <li>Phishing</li>
+          <li>OTP scams</li>
+          <li>UPI/payment fraud</li>
+          <li>Fake websites and scams</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- METHODOLOGY -->
+
+<section>
+
+  <div class="container">
+
+    <div class="head">
+
+      <div class="mini">05 — Methodology</div>
+
+      <h2>How Data Is Collected</h2>
+
+    </div>
+
+    <div class="project">
+
+      <p style="margin-top:0;">
+        The primary data for this study is collected through a structured
+        questionnaire designed for college students.
+      </p>
+
+      <p>
+        The questionnaire consists of multiple-choice and checkbox-based
+        questions so that responses can be organised, compared and
+        represented through charts and statistical summaries.
+      </p>
+
+      <p>
+        The survey examines demographic information, privacy knowledge,
+        online behaviour, cybersecurity practices and experiences with
+        online fraud or cybercrime.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- LIMITATION -->
+
+<section>
+
+  <div class="container">
+
+    <div class="note">
+
+      <h3>Research Scope & Limitation</h3>
+
+      <p>
+        The study is intended as an academic field project. Its findings
+        represent the responses collected from the selected survey
+        participants and should not automatically be treated as a
+        representation of all college students.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <div class="container footer-inner">
+
+    <div>
+      <strong style="color:#dbeafe;">
+        Data Privacy Awareness Field Study
+      </strong>
+      <br>
+      Viva College • B.Sc IT • 2nd Year • Division C
+    </div>
+
+    <div>
+      Academic Year 2026–27 • Aniket
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+    });
+
+  });
+
+</script>
+
+</body>
+</html>
