@@ -1,1 +1,838 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Home</title><link rel="stylesheet" href="css/style.css"></head><body><nav class="navbar"><div class="container nav-inner"><a class="brand" href="index.html"><span class="brand-mark">✦</span> Data Privacy Field Study</a><button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="awareness.html">Awareness</a><a href="survey.html">Survey</a><a href="quiz.html">Quiz</a><a href="leaderboard.html">Leaderboard</a><a href="dashboard.html">Dashboard</a><a href="findings.html">Findings</a><a href="conclusion.html">Conclusion</a></div></div></nav><main><section class="hero"><div class="container hero-grid"><div><span class="eyebrow">College Field Study · 2026–27</span><h1 class="gradient">Awareness of Data Privacy Among College Students</h1><p>Explore data privacy, online safety, cybercrime and safe internet practices through an interactive field-study website.</p><div class="actions"><a class="btn btn-primary" href="survey.html">Take Survey →</a><a class="btn" href="quiz.html">Play Quiz</a></div></div><div class="card"><span class="eyebrow">Interactive project</span><h2>Learn. Test. Compare.</h2><p>Complete the 25-question survey and challenge yourself with the data privacy quiz.</p><div class="stats"><div class="stat"><strong>25</strong><span>Survey Questions</span></div><div class="stat"><strong>10</strong><span>Quiz Questions</span></div><div class="stat"><strong>Live</strong><span>Leaderboard</span></div></div></div></div></section><section class="section"><div class="container grid"><div class="card"><h3>Privacy Awareness</h3><p>Understand personal data, permissions, privacy policies and account security.</p></div><div class="card"><h3>Cyber Safety</h3><p>Learn about phishing, OTP scams, suspicious links and fraud.</p></div><div class="card"><h3>Quiz Challenge</h3><p>Earn a score, track your time and compete on the leaderboard.</p></div></div></section></main><footer><div class="container footer-inner"><div><strong>Field Study on Awareness of Data Privacy Among College Students</strong><br>Viva College · B.Sc IT · 2nd Year · Division C · 2026–27</div><div>Aniket</div></div></footer><button class="back-top" aria-label="Back to top">↑</button><script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Data Privacy Awareness | Viva College Field Study</title>
+
+  <meta name="description"
+    content="Field Study on Awareness of Data Privacy Among College Students - Viva College, B.Sc IT 2nd Year Division C, Academic Year 2026-27.">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(37,99,235,.16), transparent 28%),
+        radial-gradient(circle at 90% 70%, rgba(14,165,233,.09), transparent 30%),
+        #06101d;
+      color: #e8f0f8;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(4,14,27,.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 5px;
+    }
+
+    .nav-links a {
+      color: #9fb0c2;
+      padding: 9px 11px;
+      border-radius: 8px;
+      font-size: 13px;
+      transition: .25s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: white;
+      background: rgba(56,189,248,.1);
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 19px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: 90px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 30px;
+      border: 1px solid rgba(56,189,248,.25);
+      background: rgba(56,189,248,.08);
+      color: #7dd3fc;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero p {
+      color: #9db0c2;
+      max-width: 750px;
+      margin: 25px auto;
+      font-size: 17px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 13px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 13px 21px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .btn-primary {
+      background: #0284c7;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0369a1;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,.12);
+      color: #c8d5e3;
+      background: rgba(255,255,255,.03);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(56,189,248,.4);
+    }
+
+    /* STATS */
+
+    .stats {
+      margin-top: 55px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 15px;
+    }
+
+    .stat {
+      background: rgba(10,28,46,.7);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .stat strong {
+      display: block;
+      color: #7dd3fc;
+      font-size: 25px;
+    }
+
+    .stat span {
+      color: #8296aa;
+      font-size: 12px;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-head {
+      margin-bottom: 40px;
+    }
+
+    .mini {
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .section-head h2 {
+      font-size: 35px;
+      line-height: 1.2;
+    }
+
+    .section-head p {
+      color: #91a4b8;
+      max-width: 720px;
+      margin-top: 12px;
+    }
+
+    /* CARDS */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(10,27,45,.78);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 17px;
+      padding: 27px;
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56,189,248,.25);
+    }
+
+    .icon {
+      width: 43px;
+      height: 43px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(56,189,248,.1);
+      color: #7dd3fc;
+      font-size: 20px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 9px;
+      font-size: 18px;
+    }
+
+    .card p {
+      color: #91a5b9;
+      font-size: 14px;
+    }
+
+    /* TWO COLUMN */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .large-card {
+      background: rgba(10,27,45,.8);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 20px;
+      padding: 35px;
+    }
+
+    .large-card h3 {
+      font-size: 23px;
+      margin-bottom: 14px;
+    }
+
+    .large-card p {
+      color: #9aadc0;
+      font-size: 15px;
+    }
+
+    .check-list {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .check-list li {
+      margin: 10px 0;
+      color: #a9bacb;
+      font-size: 14px;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      color: #38bdf8;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      padding: 55px 25px;
+      border-radius: 22px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(14,165,233,.12),
+          rgba(37,99,235,.08)
+        );
+      border: 1px solid rgba(56,189,248,.18);
+    }
+
+    .cta h2 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: #98aabd;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 35px 0;
+      color: #71859a;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px) {
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 4%;
+        right: 4%;
+        top: 70px;
+        flex-direction: column;
+        background: #081727;
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 12px;
+        padding: 10px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media(max-width:600px) {
+
+      .hero {
+        min-height: auto;
+        padding: 75px 0;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .section-head h2 {
+        font-size: 28px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="container nav">
+
+    <a href="index.html" class="logo">
+      Data<span>Privacy</span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="awareness.html">Awareness</a></li>
+      <li><a href="survey.html">Survey</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="leaderboard.html">Leaderboard</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="findings.html">Findings</a></li>
+      <li><a href="conclusion.html">Conclusion</a></li>
+
+    </ul>
+
+  </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="container hero-content">
+
+    <div class="badge">
+      B.Sc IT FIELD STUDY • 2026–27
+    </div>
+
+    <h1>
+      Awareness of <span>Data Privacy</span>
+      Among College Students
+    </h1>
+
+    <p>
+      A field study exploring how college students understand personal
+      data, online privacy, cybersecurity threats and safe digital
+      practices in an increasingly connected world.
+    </p>
+
+    <div class="buttons">
+
+      <a href="survey.html" class="btn btn-primary">
+        Take the Survey →
+      </a>
+
+      <a href="awareness.html" class="btn btn-secondary">
+        Learn About Privacy
+      </a>
+
+    </div>
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong>25</strong>
+        <span>Survey Questions</span>
+      </div>
+
+      <div class="stat">
+        <strong>5</strong>
+        <span>Survey Sections</span>
+      </div>
+
+      <div class="stat">
+        <strong>360°</strong>
+        <span>Privacy Awareness</span>
+      </div>
+
+      <div class="stat">
+        <strong>2026–27</strong>
+        <span>Academic Year</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- WHY THIS STUDY -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="mini">01 — Why This Matters</div>
+
+      <h2>
+        Your Data Is Part of Your Digital Identity
+      </h2>
+
+      <p>
+        Every day, students interact with websites, mobile applications,
+        social media platforms, payment systems and educational services.
+        Each interaction can involve personal information.
+      </p>
+
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <div class="icon">🔐</div>
+
+        <h3>Personal Information</h3>
+
+        <p>
+          Names, phone numbers, email addresses, photographs, addresses,
+          identification information and other details can contribute to
+          your digital identity.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div class="icon">📱</div>
+
+        <h3>Everyday Digital Life</h3>
+
+        <p>
+          Social media, online shopping, digital payments, gaming,
+          education platforms and cloud services all create digital
+          footprints.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div class="icon">⚠</div>
+
+        <h3>Real-World Risks</h3>
+
+        <p>
+          Poor privacy practices can increase exposure to phishing,
+          identity theft, account compromise, financial fraud and
+          social engineering.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PROJECT -->
+
+<section>
+
+  <div class="container">
+
+    <div class="two-col">
+
+      <div class="large-card">
+
+        <div class="mini">02 — About The Study</div>
+
+        <h3>
+          Understanding Student Awareness
+        </h3>
+
+        <p>
+          This field study examines the knowledge, attitudes and everyday
+          practices of college students regarding data privacy and online
+          security.
+        </p>
+
+        <p style="margin-top:15px;">
+          The survey covers privacy awareness, personal information,
+          application permissions, passwords, two-factor authentication,
+          phishing, cybercrime experiences, online payments and safe
+          internet practices.
+        </p>
+
+        <a href="about.html"
+           class="btn btn-secondary"
+           style="display:inline-block;margin-top:22px;">
+          Explore The Study →
+        </a>
+
+      </div>
+
+
+      <div class="large-card">
+
+        <div class="mini">03 — What We Explore</div>
+
+        <h3>
+          From Awareness to Behaviour
+        </h3>
+
+        <ul class="check-list">
+
+          <li>Understanding personal data</li>
+
+          <li>Privacy and social media habits</li>
+
+          <li>Application permission awareness</li>
+
+          <li>Password and account security</li>
+
+          <li>Two-factor authentication</li>
+
+          <li>Phishing and scam recognition</li>
+
+          <li>Online fraud and cybercrime</li>
+
+          <li>Safe digital payment practices</li>
+
+          <li>Website and link verification</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PROCESS -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="mini">04 — Research Process</div>
+
+      <h2>How The Study Works</h2>
+
+      <p>
+        The project combines awareness material, survey responses,
+        interactive learning and analysis.
+      </p>
+
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <div class="icon">01</div>
+
+        <h3>Learn</h3>
+
+        <p>
+          Students explore fundamental concepts related to personal data,
+          privacy, cybersecurity and online safety.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div class="icon">02</div>
+
+        <h3>Respond</h3>
+
+        <p>
+          Participants complete the field-study questionnaire based on
+          their knowledge, experiences and digital habits.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div class="icon">03</div>
+
+        <h3>Analyse</h3>
+
+        <p>
+          Survey responses are reviewed to identify awareness patterns,
+          common risks and areas where additional education can help.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section>
+
+  <div class="container">
+
+    <div class="cta">
+
+      <h2>
+        How Privacy-Aware Are You?
+      </h2>
+
+      <p>
+        Take the survey, test your cybersecurity knowledge and explore the
+        findings of this field study.
+      </p>
+
+      <div class="buttons">
+
+        <a href="survey.html" class="btn btn-primary">
+          Participate in Survey
+        </a>
+
+        <a href="quiz.html" class="btn btn-secondary">
+          Take Privacy Quiz
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="container footer-inner">
+
+    <div>
+      <strong style="color:#dbeafe;">
+        Field Study on Awareness of Data Privacy Among College Students
+      </strong>
+
+      <br>
+
+      Viva College • B.Sc IT • 2nd Year • Division C
+    </div>
+
+    <div>
+      Academic Year 2026–27 • Aniket
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+    });
+
+  });
+
+</script>
+
+</body>
+</html>
