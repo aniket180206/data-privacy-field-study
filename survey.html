@@ -1,1568 +1,2305 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Data Privacy Awareness Survey | Field Study</title>
+  <title>Survey | Data Privacy Awareness Field Study</title>
 
-  <meta
-    name="description"
-    content="25-question field study survey on awareness of data privacy among college students."
-  >
+  <meta name="description"
+        content="Participate in the Field Study on Awareness of Data Privacy Among College Students at Viva College.">
 
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <script src="js/survey.js" defer></script>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(37,99,235,.16), transparent 28%),
+        radial-gradient(circle at 90% 70%, rgba(14,165,233,.10), transparent 30%),
+        #06101d;
+      color: #e8f0f8;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: auto;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(4,14,27,.90);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #9fb0c2;
+      padding: 9px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      transition: .2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      background: rgba(56,189,248,.10);
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 8px;
+      padding: 7px 11px;
+      font-size: 19px;
+      cursor: pointer;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      padding: 75px 0 35px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 7px 14px;
+      border-radius: 50px;
+      color: #7dd3fc;
+      background: rgba(56,189,248,.08);
+      border: 1px solid rgba(56,189,248,.20);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(35px,5vw,57px);
+      line-height: 1.08;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 18px auto 0;
+      color: #94a8bc;
+      font-size: 15px;
+    }
+
+    /* ================= SURVEY WRAPPER ================= */
+
+    .survey-area {
+      padding: 30px 0 80px;
+    }
+
+    .survey-shell {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    /* ================= TOP PROGRESS ================= */
+
+    .progress-card {
+      position: sticky;
+      top: 88px;
+      z-index: 100;
+      margin-bottom: 22px;
+      padding: 18px 20px;
+      background: rgba(7,19,33,.94);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 15px;
+    }
+
+    .progress-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+
+    .progress-label {
+      color: #b6c6d7;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .progress-number {
+      color: #7dd3fc;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .progress-track {
+      height: 7px;
+      background: #172a3e;
+      border-radius: 50px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 4%;
+      height: 100%;
+      background: #38bdf8;
+      border-radius: 50px;
+      transition: width .3s ease;
+    }
+
+    .section-indicators {
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      gap: 5px;
+      margin-top: 13px;
+    }
+
+    .section-indicator {
+      height: 4px;
+      border-radius: 20px;
+      background: #182b3f;
+      transition: .3s;
+    }
+
+    .section-indicator.active {
+      background: #38bdf8;
+    }
+
+    /* ================= QUESTION CARD ================= */
+
+    .question-card {
+      display: none;
+      background: rgba(9,25,42,.90);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 20px 70px rgba(0,0,0,.18);
+      animation: slideIn .25s ease;
+    }
+
+    .question-card.active {
+      display: block;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(7px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-tag {
+      display: inline-block;
+      color: #7dd3fc;
+      background: rgba(56,189,248,.08);
+      border: 1px solid rgba(56,189,248,.15);
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .question-number {
+      color: #647c94;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .question-title {
+      font-size: 21px;
+      line-height: 1.35;
+      margin-bottom: 22px;
+      color: #f0f6fc;
+    }
+
+    .required {
+      color: #38bdf8;
+    }
+
+    /* ================= OPTIONS ================= */
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      position: relative;
+    }
+
+    .option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .option label {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.025);
+      color: #a9b9c9;
+      font-size: 14px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .option label:hover {
+      border-color: rgba(56,189,248,.25);
+      background: rgba(56,189,248,.045);
+      color: #d9e7f4;
+    }
+
+    .option input:checked + label {
+      border-color: rgba(56,189,248,.55);
+      background: rgba(56,189,248,.10);
+      color: #eaf7ff;
+    }
+
+    .option label::before {
+      content: "";
+      width: 17px;
+      height: 17px;
+      min-width: 17px;
+      border: 1px solid #536b82;
+      border-radius: 50%;
+      transition: .2s;
+    }
+
+    .option.checkbox label::before {
+      border-radius: 5px;
+    }
+
+    .option input:checked + label::before {
+      border-color: #38bdf8;
+      background: #38bdf8;
+      box-shadow: inset 0 0 0 4px #092238;
+    }
+
+    /* ================= NAVIGATION ================= */
+
+    .survey-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      padding: 13px 21px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      background: #0284c7;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      color: #b7c7d8;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(56,189,248,.3);
+    }
+
+    .btn:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ================= ERROR ================= */
+
+    .error {
+      display: none;
+      margin-top: 15px;
+      padding: 12px 14px;
+      border-radius: 9px;
+      background: rgba(239,68,68,.08);
+      border: 1px solid rgba(239,68,68,.18);
+      color: #fca5a5;
+      font-size: 13px;
+    }
+
+    .error.show {
+      display: block;
+    }
+
+    /* ================= SUBMIT SCREEN ================= */
+
+    .success-card {
+      display: none;
+      text-align: center;
+      padding: 55px 30px;
+      background: rgba(9,25,42,.90);
+      border: 1px solid rgba(56,189,248,.20);
+      border-radius: 20px;
+    }
+
+    .success-card.show {
+      display: block;
+    }
+
+    .success-icon {
+      width: 65px;
+      height: 65px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(56,189,248,.10);
+      border: 1px solid rgba(56,189,248,.25);
+      color: #38bdf8;
+      font-size: 30px;
+    }
+
+    .success-card h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .success-card p {
+      max-width: 600px;
+      margin: auto;
+      color: #95a8bb;
+      font-size: 14px;
+    }
+
+    /* ================= INTRO ================= */
+
+    .privacy-note {
+      max-width: 900px;
+      margin: 0 auto 20px;
+      padding: 17px 20px;
+      border-radius: 13px;
+      background: rgba(56,189,248,.045);
+      border: 1px solid rgba(56,189,248,.12);
+      color: #8fa5ba;
+      font-size: 13px;
+    }
+
+    .privacy-note strong {
+      color: #bfeaff;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 35px 0;
+      color: #71859a;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media(max-width:900px) {
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 4%;
+        right: 4%;
+        top: 70px;
+        flex-direction: column;
+        background: #081727;
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 12px;
+        padding: 10px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px;
+      }
+
+      .progress-card {
+        top: 80px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media(max-width:600px) {
+
+      .hero {
+        padding: 55px 0 25px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .question-card {
+        padding: 24px 18px;
+        border-radius: 16px;
+      }
+
+      .question-title {
+        font-size: 19px;
+      }
+
+      .option label {
+        padding: 13px;
+        font-size: 13px;
+      }
+
+      .survey-actions {
+        flex-direction: row;
+      }
+
+      .btn {
+        padding: 12px 16px;
+      }
+
+    }
+
+  </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       NAVIGATION
-       ========================= -->
+<!-- ================= HEADER ================= -->
 
-  <nav class="navbar">
-    <div class="container nav-inner">
+<header>
 
-      <a class="brand" href="index.html">
-        <span class="brand-mark">✦</span>
-        Data Privacy Field Study
-      </a>
+  <div class="container nav">
 
-      <button
-        class="menu-btn"
-        type="button"
-        aria-label="Open menu"
-        aria-expanded="false"
-      >
-        ☰
-      </button>
+    <a href="index.html" class="logo">
+      Data<span>Privacy</span>
+    </a>
 
-      <div class="nav-links">
+    <button class="menu-btn" id="menuBtn">☰</button>
 
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="awareness.html">Awareness</a>
-        <a href="survey.html">Survey</a>
-        <a href="quiz.html">Quiz</a>
-        <a href="leaderboard.html">Leaderboard</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="findings.html">Findings</a>
-        <a href="conclusion.html">Conclusion</a>
+    <ul class="nav-links" id="navLinks">
 
-      </div>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="awareness.html">Awareness</a></li>
+      <li><a href="survey.html" class="active">Survey</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="leaderboard.html">Leaderboard</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="findings.html">Findings</a></li>
+      <li><a href="conclusion.html">Conclusion</a></li>
+
+    </ul>
+
+  </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+  <div class="container">
+
+    <div class="badge">
+      FIELD STUDY • 25 QUESTIONS
     </div>
-  </nav>
+
+    <h1>
+      Data Privacy <span>Awareness Survey</span>
+    </h1>
+
+    <p>
+      Help us understand how college students think about personal data,
+      online privacy, cybersecurity, digital payments and online safety.
+    </p>
+
+  </div>
+
+</section>
 
 
-  <!-- =========================
-       PAGE HERO
-       ========================= -->
+<!-- ================= SURVEY ================= -->
 
-  <main>
+<section class="survey-area">
 
-    <section class="page-hero">
+  <div class="container">
 
-      <div class="container">
+    <div class="privacy-note">
 
-        <span class="eyebrow">
-          OFFICIAL FIELD STUDY SURVEY
-        </span>
+      <strong>Before you begin:</strong>
+      This survey is intended for academic field-study purposes.
+      Please answer honestly based on your own knowledge and experience.
+      Do not enter passwords, OTPs, bank details or other highly sensitive
+      information.
 
-        <h1 class="gradient">
-          Data Privacy Awareness Survey
-        </h1>
+    </div>
 
-        <p>
-          This survey contains 25 questions designed to understand
-          awareness of data privacy, online safety, cybercrime,
-          scams and safe internet practices among college students.
-        </p>
 
-        <div class="callout">
+    <div class="survey-shell">
 
-          Please do not enter passwords, OTPs, Aadhaar numbers,
-          PAN numbers, bank details or any other highly sensitive
-          personal information.
+      <!-- PROGRESS -->
+
+      <div class="progress-card">
+
+        <div class="progress-top">
+
+          <div class="progress-label" id="sectionName">
+            Section 1 • Basic Information
+          </div>
+
+          <div class="progress-number" id="progressNumber">
+            1 / 25
+          </div>
+
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="section-indicators">
+
+          <div class="section-indicator active"></div>
+          <div class="section-indicator"></div>
+          <div class="section-indicator"></div>
+          <div class="section-indicator"></div>
+          <div class="section-indicator"></div>
 
         </div>
 
       </div>
 
-    </section>
 
+      <!-- ================= FORM ================= -->
 
-    <!-- =========================
-         SURVEY
-         ========================= -->
+      <form id="surveyForm">
 
-    <section class="section">
+        <!-- Q1 -->
 
-      <div class="container form-shell">
+        <div class="question-card active" data-question="1" data-section="1">
 
-        <form id="privacySurvey" novalidate>
+          <div class="section-tag">Section 1 • Basic Information</div>
 
-          <div class="card">
+          <div class="question-number">Question 01 of 25</div>
 
+          <h2 class="question-title">
+            What is your age group?
+            <span class="required">*</span>
+          </h2>
 
-            <!-- =====================
-                 Q1
-                 ===================== -->
+          <div class="options">
 
-            <div class="field">
-
-              <label for="q1">
-                <strong>
-                  1. What is your age group?
-                </strong>
-              </label>
-
-              <select id="q1" name="q1" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="Below 18">
-                  Below 18
-                </option>
-
-                <option value="18–20">
-                  18–20
-                </option>
-
-                <option value="21–23">
-                  21–23
-                </option>
-
-                <option value="24–26">
-                  24–26
-                </option>
-
-                <option value="Above 26">
-                  Above 26
-                </option>
-
-              </select>
-
+            <div class="option">
+              <input type="radio" name="q1" value="Below 18" id="q1a" required>
+              <label for="q1a">Below 18</label>
             </div>
 
-
-            <!-- =====================
-                 Q2
-                 ===================== -->
-
-            <div class="field">
-
-              <label>
-                <strong>
-                  2. What is your gender?
-                </strong>
-              </label>
-
-              <div class="options">
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q2"
-                    value="Male"
-                    required
-                  >
-                  <span>Male</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q2"
-                    value="Female"
-                  >
-                  <span>Female</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q2"
-                    value="Prefer not to say"
-                  >
-                  <span>Prefer not to say</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q2"
-                    value="Other"
-                  >
-                  <span>Other</span>
-                </label>
-
-              </div>
-
+            <div class="option">
+              <input type="radio" name="q1" value="18–20" id="q1b">
+              <label for="q1b">18–20</label>
             </div>
 
-
-            <!-- =====================
-                 Q3
-                 ===================== -->
-
-            <div class="field">
-
-              <label for="q3">
-                <strong>
-                  3. What is your current year of study?
-                </strong>
-              </label>
-
-              <select id="q3" name="q3" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="First Year">
-                  First Year
-                </option>
-
-                <option value="Second Year">
-                  Second Year
-                </option>
-
-                <option value="Third Year">
-                  Third Year
-                </option>
-
-                <option value="Postgraduate">
-                  Postgraduate
-                </option>
-
-                <option value="Other">
-                  Other
-                </option>
-
-              </select>
-
+            <div class="option">
+              <input type="radio" name="q1" value="21–23" id="q1c">
+              <label for="q1c">21–23</label>
             </div>
 
-
-            <!-- =====================
-                 Q4
-                 ===================== -->
-
-            <div class="field">
-
-              <label for="q4">
-                <strong>
-                  4. What is your field of study?
-                </strong>
-              </label>
-
-              <select id="q4" name="q4" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="IT / Computer Science">
-                  IT / Computer Science
-                </option>
-
-                <option value="Commerce">
-                  Commerce
-                </option>
-
-                <option value="Management">
-                  Management
-                </option>
-
-                <option value="Science">
-                  Science
-                </option>
-
-                <option value="Arts">
-                  Arts
-                </option>
-
-                <option value="Engineering">
-                  Engineering
-                </option>
-
-                <option value="Other">
-                  Other
-                </option>
-
-              </select>
-
+            <div class="option">
+              <input type="radio" name="q1" value="24–26" id="q1d">
+              <label for="q1d">24–26</label>
             </div>
 
-
-            <!-- =====================
-                 Q5
-                 ===================== -->
-
-            <div class="field">
-
-              <label for="q5">
-                <strong>
-                  5. Approximately how many hours do you spend online each day?
-                </strong>
-              </label>
-
-              <select id="q5" name="q5" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="Less than 1 hour">
-                  Less than 1 hour
-                </option>
-
-                <option value="1–3 hours">
-                  1–3 hours
-                </option>
-
-                <option value="3–5 hours">
-                  3–5 hours
-                </option>
-
-                <option value="5–7 hours">
-                  5–7 hours
-                </option>
-
-                <option value="More than 7 hours">
-                  More than 7 hours
-                </option>
-
-              </select>
-
+            <div class="option">
+              <input type="radio" name="q1" value="Above 26" id="q1e">
+              <label for="q1e">Above 26</label>
             </div>
-
-
-            <!-- =====================
-                 Q6
-                 ===================== -->
-
-            <div class="field">
-
-              <label>
-                <strong>
-                  6. Have you heard the term "Data Privacy" before?
-                </strong>
-              </label>
-
-              <div class="options">
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q6"
-                    value="Yes"
-                    required
-                  >
-                  <span>Yes</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q6"
-                    value="No"
-                  >
-                  <span>No</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q6"
-                    value="Not sure"
-                  >
-                  <span>Not sure</span>
-                </label>
-
-              </div>
-
-            </div>
-
-
-            <!-- =====================
-                 Q7
-                 ===================== -->
-
-            <div class="field">
-
-              <label for="q7">
-                <strong>
-                  7. How would you rate your knowledge of data privacy?
-                </strong>
-              </label>
-
-              <select id="q7" name="q7" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="Very Low">
-                  Very Low
-                </option>
-
-                <option value="1">
-                  1
-                </option>
-
-                <option value="2">
-                  2
-                </option>
-
-                <option value="3">
-                  3
-                </option>
-
-                <option value="4">
-                  4
-                </option>
-
-                <option value="5">
-                  5
-                </option>
-
-                <option value="Excellent">
-                  Excellent
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <!-- =====================
-                 Q8
-                 ===================== -->
-
-            <div class="field">
-
-              <label for="q8">
-                <strong>
-                  8. What do you understand by personal data?
-                </strong>
-              </label>
-
-              <select id="q8" name="q8" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="Information that can identify a person">
-                  Information that can identify a person
-                </option>
-
-                <option value="Only passwords">
-                  Only passwords
-                </option>
-
-                <option value="Only bank details">
-                  Only bank details
-                </option>
-
-                <option value="Only social media information">
-                  Only social media information
-                </option>
-
-                <option value="I don't know">
-                  I don't know
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <!-- =====================
-                 Q9
-                 ===================== -->
-
-            <div class="field">
-
-              <label>
-                <strong>
-                  9. Which of the following do you consider personal information?
-                </strong>
-              </label>
-
-              <div class="options">
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q9"
-                    value="Name"
-                  >
-                  <span>Name</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q9"
-                    value="Phone number"
-                  >
-                  <span>Phone number</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q9"
-                    value="Email address"
-                  >
-                  <span>Email address</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q9"
-                    value="Home address"
-                  >
-                  <span>Home address</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q9"
-                    value="Aadhaar/PAN details"
-                  >
-                  <span>Aadhaar/PAN details</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q9"
-                    value="Photos"
-                  >
-                  <span>Photos</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q9"
-                    value="All of the above"
-                  >
-                  <span>All of the above</span>
-                </label>
-
-              </div>
-
-            </div>
-
-
-            <!-- =====================
-                 Q10
-                 ===================== -->
-
-            <div class="field">
-
-              <label for="q10">
-                <strong>
-                  10. Do you read privacy policies before using an app or website?
-                </strong>
-              </label>
-
-              <select id="q10" name="q10" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="Always">
-                  Always
-                </option>
-
-                <option value="Often">
-                  Often
-                </option>
-
-                <option value="Sometimes">
-                  Sometimes
-                </option>
-
-                <option value="Rarely">
-                  Rarely
-                </option>
-
-                <option value="Never">
-                  Never
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <!-- =====================
-                 Q11
-                 ===================== -->
-
-            <div class="field">
-
-              <label for="q11">
-                <strong>
-                  11. Do you check an app's permissions before installing it?
-                </strong>
-              </label>
-
-              <select id="q11" name="q11" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="Always">
-                  Always
-                </option>
-
-                <option value="Often">
-                  Often
-                </option>
-
-                <option value="Sometimes">
-                  Sometimes
-                </option>
-
-                <option value="Rarely">
-                  Rarely
-                </option>
-
-                <option value="Never">
-                  Never
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <!-- =====================
-                 Q12
-                 ===================== -->
-
-            <div class="field">
-
-              <label>
-                <strong>
-                  12. Have you ever given an app access to your camera, microphone, contacts, or location without checking why it needed access?
-                </strong>
-              </label>
-
-              <div class="options">
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q12"
-                    value="Yes"
-                    required
-                  >
-                  <span>Yes</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q12"
-                    value="No"
-                  >
-                  <span>No</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q12"
-                    value="Not sure"
-                  >
-                  <span>Not sure</span>
-                </label>
-
-              </div>
-
-            </div>
-
-
-            <!-- =====================
-                 Q13
-                 ===================== -->
-
-            <div class="field">
-
-              <label for="q13">
-                <strong>
-                  13. How often do you share personal information on social media?
-                </strong>
-              </label>
-
-              <select id="q13" name="q13" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="Very frequently">
-                  Very frequently
-                </option>
-
-                <option value="Frequently">
-                  Frequently
-                </option>
-
-                <option value="Sometimes">
-                  Sometimes
-                </option>
-
-                <option value="Rarely">
-                  Rarely
-                </option>
-
-                <option value="Never">
-                  Never
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <!-- =====================
-                 Q14
-                 ===================== -->
-
-            <div class="field">
-
-              <label>
-                <strong>
-                  14. Do you keep your social media accounts private?
-                </strong>
-              </label>
-
-              <div class="options">
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q14"
-                    value="Yes"
-                    required
-                  >
-                  <span>Yes</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q14"
-                    value="No"
-                  >
-                  <span>No</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q14"
-                    value="Some accounts are private"
-                  >
-                  <span>Some accounts are private</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q14"
-                    value="I don't know how to change privacy settings"
-                  >
-                  <span>I don't know how to change privacy settings</span>
-                </label>
-
-              </div>
-
-            </div>
-
-
-            <!-- =====================
-                 Q15
-                 ===================== -->
-
-            <div class="field">
-
-              <label>
-                <strong>
-                  15. Do you use the same password for multiple accounts?
-                </strong>
-              </label>
-
-              <div class="options">
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q15"
-                    value="Yes"
-                    required
-                  >
-                  <span>Yes</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q15"
-                    value="No"
-                  >
-                  <span>No</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q15"
-                    value="Sometimes"
-                  >
-                  <span>Sometimes</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q15"
-                    value="Prefer not to say"
-                  >
-                  <span>Prefer not to say</span>
-                </label>
-
-              </div>
-
-            </div>
-
-
-            <!-- =====================
-                 Q16
-                 ===================== -->
-
-            <div class="field">
-
-              <label>
-                <strong>
-                  16. Do you use Two-Factor Authentication (2FA)?
-                </strong>
-              </label>
-
-              <div class="options">
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q16"
-                    value="Yes, on most accounts"
-                    required
-                  >
-                  <span>Yes, on most accounts</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q16"
-                    value="Yes, on some accounts"
-                  >
-                  <span>Yes, on some accounts</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q16"
-                    value="No"
-                  >
-                  <span>No</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q16"
-                    value="I don't know what 2FA is"
-                  >
-                  <span>I don't know what 2FA is</span>
-                </label>
-
-              </div>
-
-            </div>
-
-
-            <!-- =====================
-                 Q17
-                 ===================== -->
-
-            <div class="field">
-
-              <label>
-                <strong>
-                  17. Can you identify a suspicious or phishing link?
-                </strong>
-              </label>
-
-              <div class="options">
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q17"
-                    value="Yes"
-                    required
-                  >
-                  <span>Yes</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q17"
-                    value="No"
-                  >
-                  <span>No</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q17"
-                    value="Sometimes"
-                  >
-                  <span>Sometimes</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q17"
-                    value="Not sure"
-                  >
-                  <span>Not sure</span>
-                </label>
-
-              </div>
-
-            </div>
-
-
-            <!-- =====================
-                 Q18
-                 ===================== -->
-
-            <div class="field">
-
-              <label>
-                <strong>
-                  18. Have you ever received a suspicious message, email, call, or link asking for personal or financial information?
-                </strong>
-              </label>
-
-              <div class="options">
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q18"
-                    value="Yes"
-                    required
-                  >
-                  <span>Yes</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q18"
-                    value="No"
-                  >
-                  <span>No</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q18"
-                    value="Not sure"
-                  >
-                  <span>Not sure</span>
-                </label>
-
-              </div>
-
-            </div>
-
-
-            <!-- =====================
-                 Q19
-                 ===================== -->
-
-            <div class="field">
-
-              <label>
-                <strong>
-                  19. Have you or someone you know ever experienced an online fraud or cybercrime?
-                </strong>
-              </label>
-
-              <div class="options">
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q19"
-                    value="Yes"
-                    required
-                  >
-                  <span>Yes</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q19"
-                    value="No"
-                  >
-                  <span>No</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q19"
-                    value="Not sure"
-                  >
-                  <span>Not sure</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="q19"
-                    value="Prefer not to say"
-                  >
-                  <span>Prefer not to say</span>
-                </label>
-
-              </div>
-
-            </div>
-
-
-            <!-- =====================
-                 Q20
-                 ===================== -->
-
-            <div class="field">
-
-              <label>
-                <strong>
-                  20. If yes, what type of fraud/cybercrime occurred?
-                </strong>
-              </label>
-
-              <div class="options">
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q20"
-                    value="UPI / Payment Fraud"
-                  >
-                  <span>UPI / Payment Fraud</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q20"
-                    value="OTP Scam"
-                  >
-                  <span>OTP Scam</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q20"
-                    value="Phishing"
-                  >
-                  <span>Phishing</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q20"
-                    value="Fake Shopping Website"
-                  >
-                  <span>Fake Shopping Website</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q20"
-                    value="Social Media Account Hacking"
-                  >
-                  <span>Social Media Account Hacking</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q20"
-                    value="Identity Theft"
-                  >
-                  <span>Identity Theft</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q20"
-                    value="Fake Job/Internship Scam"
-                  >
-                  <span>Fake Job/Internship Scam</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q20"
-                    value="Online Gaming/Investment Scam"
-                  >
-                  <span>Online Gaming/Investment Scam</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q20"
-                    value="Cyberbullying"
-                  >
-                  <span>Cyberbullying</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q20"
-                    value="Other"
-                  >
-                  <span>Other</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q20"
-                    value="Not applicable"
-                  >
-                  <span>Not applicable</span>
-                </label>
-
-              </div>
-
-            </div>
-
-
-            <!-- =====================
-                 Q21
-                 ===================== -->
-
-            <div class="field">
-
-              <label for="q21">
-                <strong>
-                  21. What would you do if someone asked you for your OTP or password over a phone call?
-                </strong>
-              </label>
-
-              <select id="q21" name="q21" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="Share it if they claim to be from a bank/company">
-                  Share it if they claim to be from a bank/company
-                </option>
-
-                <option value="Refuse and end the call">
-                  Refuse and end the call
-                </option>
-
-                <option value="Ask them why they need it">
-                  Ask them why they need it
-                </option>
-
-                <option value="I'm not sure">
-                  I'm not sure
-                </option>
-
-                <option value="Other">
-                  Other
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <!-- =====================
-                 Q22
-                 ===================== -->
-
-            <div class="field">
-
-              <label for="q22">
-                <strong>
-                  22. Do you verify whether a website is genuine before entering personal or payment information?
-                </strong>
-              </label>
-
-              <select id="q22" name="q22" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="Always">
-                  Always
-                </option>
-
-                <option value="Often">
-                  Often
-                </option>
-
-                <option value="Sometimes">
-                  Sometimes
-                </option>
-
-                <option value="Rarely">
-                  Rarely
-                </option>
-
-                <option value="Never">
-                  Never
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <!-- =====================
-                 Q23
-                 ===================== -->
-
-            <div class="field">
-
-              <label for="q23">
-                <strong>
-                  23. Do you use public Wi-Fi for online banking or financial transactions?
-                </strong>
-              </label>
-
-              <select id="q23" name="q23" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="Always">
-                  Always
-                </option>
-
-                <option value="Often">
-                  Often
-                </option>
-
-                <option value="Sometimes">
-                  Sometimes
-                </option>
-
-                <option value="Rarely">
-                  Rarely
-                </option>
-
-                <option value="Never">
-                  Never
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <!-- =====================
-                 Q24
-                 ===================== -->
-
-            <div class="field">
-
-              <label for="q24">
-                <strong>
-                  24. What do you think is the most important way to protect your personal data online?
-                </strong>
-              </label>
-
-              <select id="q24" name="q24" required>
-
-                <option value="">
-                  Select an option
-                </option>
-
-                <option value="Using strong and unique passwords">
-                  Using strong and unique passwords
-                </option>
-
-                <option value="Using 2FA">
-                  Using 2FA
-                </option>
-
-                <option value="Avoiding suspicious links">
-                  Avoiding suspicious links
-                </option>
-
-                <option value="Limiting personal information shared online">
-                  Limiting personal information shared online
-                </option>
-
-                <option value="Keeping apps and devices updated">
-                  Keeping apps and devices updated
-                </option>
-
-                <option value="All of the above">
-                  All of the above
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <!-- =====================
-                 Q25
-                 ===================== -->
-
-            <div class="field">
-
-              <label>
-                <strong>
-                  25. What would help you improve your awareness of data privacy and cyber safety?
-                </strong>
-              </label>
-
-              <div class="options">
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q25"
-                    value="College awareness programs"
-                  >
-                  <span>College awareness programs</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q25"
-                    value="Workshops/seminars"
-                  >
-                  <span>Workshops/seminars</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q25"
-                    value="Social media awareness campaigns"
-                  >
-                  <span>Social media awareness campaigns</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q25"
-                    value="Cybersecurity training"
-                  >
-                  <span>Cybersecurity training</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q25"
-                    value="Government awareness campaigns"
-                  >
-                  <span>Government awareness campaigns</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q25"
-                    value="Educational videos"
-                  >
-                  <span>Educational videos</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q25"
-                    value="Online courses"
-                  >
-                  <span>Online courses</span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q25"
-                    value="More information from banks/payment apps"
-                  >
-                  <span>
-                    More information from banks/payment apps
-                  </span>
-                </label>
-
-                <label class="option">
-                  <input
-                    type="checkbox"
-                    name="q25"
-                    value="Other"
-                  >
-                  <span>Other</span>
-                </label>
-
-              </div>
-
-            </div>
-
-
-            <!-- =========================
-                 HONEYPOT
-                 ========================= -->
-
-            <input
-              id="website"
-              name="website"
-              type="text"
-              tabindex="-1"
-              autocomplete="off"
-              style="
-                position:absolute;
-                left:-9999px;
-                width:1px;
-                height:1px;
-                opacity:0;
-              "
-            >
-
-
-            <!-- =========================
-                 SUBMIT
-                 ========================= -->
-
-            <div class="form-actions">
-
-              <button
-                class="btn btn-primary"
-                id="submitSurvey"
-                type="submit"
-              >
-                Submit Survey →
-              </button>
-
-            </div>
-
-
-            <!-- =========================
-                 STATUS
-                 ========================= -->
-
-            <div
-              id="surveyStatus"
-              class="notice"
-              hidden
-              aria-live="polite"
-            ></div>
 
           </div>
 
-        </form>
-
-      </div>
-
-    </section>
-
-  </main>
+        </div>
 
 
-  <!-- =========================
-       FOOTER
-       ========================= -->
+        <!-- Q2 -->
 
-  <footer>
+        <div class="question-card" data-question="2" data-section="1">
 
-    <div class="container footer-inner">
+          <div class="section-tag">Section 1 • Basic Information</div>
 
-      <div>
+          <div class="question-number">Question 02 of 25</div>
 
-        <strong>
-          Field Study on Awareness of Data Privacy Among College Students
-        </strong>
+          <h2 class="question-title">
+            What is your gender?
+            <span class="required">*</span>
+          </h2>
 
-        <br>
+          <div class="options">
 
-        Viva College · B.Sc IT · 2nd Year · Division C · 2026–27
+            <div class="option">
+              <input type="radio" name="q2" value="Male" id="q2a" required>
+              <label for="q2a">Male</label>
+            </div>
 
-      </div>
+            <div class="option">
+              <input type="radio" name="q2" value="Female" id="q2b">
+              <label for="q2b">Female</label>
+            </div>
 
-      <div>
-        Aniket
+            <div class="option">
+              <input type="radio" name="q2" value="Prefer not to say" id="q2c">
+              <label for="q2c">Prefer not to say</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q2" value="Other" id="q2d">
+              <label for="q2d">Other</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q3 -->
+
+        <div class="question-card" data-question="3" data-section="1">
+
+          <div class="section-tag">Section 1 • Basic Information</div>
+
+          <div class="question-number">Question 03 of 25</div>
+
+          <h2 class="question-title">
+            What is your current year of study?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q3" value="First Year" id="q3a" required>
+              <label for="q3a">First Year</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q3" value="Second Year" id="q3b">
+              <label for="q3b">Second Year</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q3" value="Third Year" id="q3c">
+              <label for="q3c">Third Year</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q3" value="Postgraduate" id="q3d">
+              <label for="q3d">Postgraduate</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q3" value="Other" id="q3e">
+              <label for="q3e">Other</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q4 -->
+
+        <div class="question-card" data-question="4" data-section="1">
+
+          <div class="section-tag">Section 1 • Basic Information</div>
+
+          <div class="question-number">Question 04 of 25</div>
+
+          <h2 class="question-title">
+            What is your field of study?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q4" value="IT / Computer Science" id="q4a" required>
+              <label for="q4a">IT / Computer Science</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q4" value="Commerce" id="q4b">
+              <label for="q4b">Commerce</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q4" value="Management" id="q4c">
+              <label for="q4c">Management</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q4" value="Science" id="q4d">
+              <label for="q4d">Science</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q4" value="Arts" id="q4e">
+              <label for="q4e">Arts</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q4" value="Engineering" id="q4f">
+              <label for="q4f">Engineering</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q4" value="Other" id="q4g">
+              <label for="q4g">Other</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q5 -->
+
+        <div class="question-card" data-question="5" data-section="1">
+
+          <div class="section-tag">Section 1 • Basic Information</div>
+
+          <div class="question-number">Question 05 of 25</div>
+
+          <h2 class="question-title">
+            Approximately how many hours do you spend online each day?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q5" value="Less than 1 hour" id="q5a" required>
+              <label for="q5a">Less than 1 hour</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q5" value="1–3 hours" id="q5b">
+              <label for="q5b">1–3 hours</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q5" value="3–5 hours" id="q5c">
+              <label for="q5c">3–5 hours</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q5" value="5–7 hours" id="q5d">
+              <label for="q5d">5–7 hours</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q5" value="More than 7 hours" id="q5e">
+              <label for="q5e">More than 7 hours</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q6 -->
+
+        <div class="question-card" data-question="6" data-section="2">
+
+          <div class="section-tag">Section 2 • Privacy Awareness</div>
+
+          <div class="question-number">Question 06 of 25</div>
+
+          <h2 class="question-title">
+            Have you heard the term "Data Privacy" before?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q6" value="Yes" id="q6a" required>
+              <label for="q6a">Yes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q6" value="No" id="q6b">
+              <label for="q6b">No</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q6" value="Not sure" id="q6c">
+              <label for="q6c">Not sure</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q7 -->
+
+        <div class="question-card" data-question="7" data-section="2">
+
+          <div class="section-tag">Section 2 • Privacy Awareness</div>
+
+          <div class="question-number">Question 07 of 25</div>
+
+          <h2 class="question-title">
+            How would you rate your knowledge of data privacy?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q7" value="Very Low" id="q7a" required>
+              <label for="q7a">Very Low</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q7" value="1" id="q7b">
+              <label for="q7b">1</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q7" value="2" id="q7c">
+              <label for="q7c">2</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q7" value="3" id="q7d">
+              <label for="q7d">3</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q7" value="4" id="q7e">
+              <label for="q7e">4</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q7" value="5" id="q7f">
+              <label for="q7f">5</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q7" value="Excellent" id="q7g">
+              <label for="q7g">Excellent</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q8 -->
+
+        <div class="question-card" data-question="8" data-section="2">
+
+          <div class="section-tag">Section 2 • Privacy Awareness</div>
+
+          <div class="question-number">Question 08 of 25</div>
+
+          <h2 class="question-title">
+            What do you understand by "personal data"?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q8" value="Information that can identify a person" id="q8a" required>
+              <label for="q8a">Information that can identify a person</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q8" value="Only passwords" id="q8b">
+              <label for="q8b">Only passwords</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q8" value="Only bank details" id="q8c">
+              <label for="q8c">Only bank details</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q8" value="Only social media information" id="q8d">
+              <label for="q8d">Only social media information</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q8" value="I don't know" id="q8e">
+              <label for="q8e">I don't know</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q9 -->
+
+        <div class="question-card" data-question="9" data-section="2">
+
+          <div class="section-tag">Section 2 • Privacy Awareness</div>
+
+          <div class="question-number">Question 09 of 25</div>
+
+          <h2 class="question-title">
+            Which of the following can be considered personal information?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q9" value="Name" id="q9a">
+              <label for="q9a">Name</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q9" value="Phone number" id="q9b">
+              <label for="q9b">Phone number</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q9" value="Email address" id="q9c">
+              <label for="q9c">Email address</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q9" value="Home address" id="q9d">
+              <label for="q9d">Home address</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q9" value="Aadhaar/PAN details" id="q9e">
+              <label for="q9e">Aadhaar/PAN details</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q9" value="Photos" id="q9f">
+              <label for="q9f">Photos</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q9" value="All of the above" id="q9g">
+              <label for="q9g">All of the above</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q10 -->
+
+        <div class="question-card" data-question="10" data-section="2">
+
+          <div class="section-tag">Section 2 • Privacy Awareness</div>
+
+          <div class="question-number">Question 10 of 25</div>
+
+          <h2 class="question-title">
+            How often do you read privacy policies before using an app or service?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q10" value="Always" id="q10a" required>
+              <label for="q10a">Always</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q10" value="Often" id="q10b">
+              <label for="q10b">Often</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q10" value="Sometimes" id="q10c">
+              <label for="q10c">Sometimes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q10" value="Rarely" id="q10d">
+              <label for="q10d">Rarely</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q10" value="Never" id="q10e">
+              <label for="q10e">Never</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q11 -->
+
+        <div class="question-card" data-question="11" data-section="3">
+
+          <div class="section-tag">Section 3 • Digital Security</div>
+
+          <div class="question-number">Question 11 of 25</div>
+
+          <h2 class="question-title">
+            How often do you check app permissions before granting access?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q11" value="Always" id="q11a" required>
+              <label for="q11a">Always</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q11" value="Often" id="q11b">
+              <label for="q11b">Often</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q11" value="Sometimes" id="q11c">
+              <label for="q11c">Sometimes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q11" value="Rarely" id="q11d">
+              <label for="q11d">Rarely</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q11" value="Never" id="q11e">
+              <label for="q11e">Never</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q12 -->
+
+        <div class="question-card" data-question="12" data-section="3">
+
+          <div class="section-tag">Section 3 • Digital Security</div>
+
+          <div class="question-number">Question 12 of 25</div>
+
+          <h2 class="question-title">
+            Have you ever given an app access without checking what it could access?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q12" value="Yes" id="q12a" required>
+              <label for="q12a">Yes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q12" value="No" id="q12b">
+              <label for="q12b">No</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q12" value="Not sure" id="q12c">
+              <label for="q12c">Not sure</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q13 -->
+
+        <div class="question-card" data-question="13" data-section="3">
+
+          <div class="section-tag">Section 3 • Digital Security</div>
+
+          <div class="question-number">Question 13 of 25</div>
+
+          <h2 class="question-title">
+            How frequently do you share personal information on social media?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q13" value="Very frequently" id="q13a" required>
+              <label for="q13a">Very frequently</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q13" value="Frequently" id="q13b">
+              <label for="q13b">Frequently</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q13" value="Sometimes" id="q13c">
+              <label for="q13c">Sometimes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q13" value="Rarely" id="q13d">
+              <label for="q13d">Rarely</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q13" value="Never" id="q13e">
+              <label for="q13e">Never</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q14 -->
+
+        <div class="question-card" data-question="14" data-section="3">
+
+          <div class="section-tag">Section 3 • Digital Security</div>
+
+          <div class="question-number">Question 14 of 25</div>
+
+          <h2 class="question-title">
+            Are your social media accounts private?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q14" value="Yes" id="q14a" required>
+              <label for="q14a">Yes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q14" value="No" id="q14b">
+              <label for="q14b">No</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q14" value="Some accounts are private" id="q14c">
+              <label for="q14c">Some accounts are private</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q14" value="I don't know how to change privacy settings" id="q14d">
+              <label for="q14d">I don't know how to change privacy settings</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q15 -->
+
+        <div class="question-card" data-question="15" data-section="3">
+
+          <div class="section-tag">Section 3 • Digital Security</div>
+
+          <div class="question-number">Question 15 of 25</div>
+
+          <h2 class="question-title">
+            Do you use the same password for multiple accounts?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q15" value="Yes" id="q15a" required>
+              <label for="q15a">Yes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q15" value="No" id="q15b">
+              <label for="q15b">No</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q15" value="Sometimes" id="q15c">
+              <label for="q15c">Sometimes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q15" value="Prefer not to say" id="q15d">
+              <label for="q15d">Prefer not to say</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q16 -->
+
+        <div class="question-card" data-question="16" data-section="3">
+
+          <div class="section-tag">Section 3 • Digital Security</div>
+
+          <div class="question-number">Question 16 of 25</div>
+
+          <h2 class="question-title">
+            Do you use two-factor authentication (2FA)?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q16" value="Yes, on most accounts" id="q16a" required>
+              <label for="q16a">Yes, on most accounts</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q16" value="Yes, on some accounts" id="q16b">
+              <label for="q16b">Yes, on some accounts</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q16" value="No" id="q16c">
+              <label for="q16c">No</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q16" value="I don't know what 2FA is" id="q16d">
+              <label for="q16d">I don't know what 2FA is</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q17 -->
+
+        <div class="question-card" data-question="17" data-section="4">
+
+          <div class="section-tag">Section 4 • Cybercrime Awareness</div>
+
+          <div class="question-number">Question 17 of 25</div>
+
+          <h2 class="question-title">
+            Can you identify a suspicious or phishing link?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q17" value="Yes" id="q17a" required>
+              <label for="q17a">Yes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q17" value="No" id="q17b">
+              <label for="q17b">No</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q17" value="Sometimes" id="q17c">
+              <label for="q17c">Sometimes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q17" value="Not sure" id="q17d">
+              <label for="q17d">Not sure</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q18 -->
+
+        <div class="question-card" data-question="18" data-section="4">
+
+          <div class="section-tag">Section 4 • Cybercrime Awareness</div>
+
+          <div class="question-number">Question 18 of 25</div>
+
+          <h2 class="question-title">
+            Have you ever received a suspicious message, email, call or link?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q18" value="Yes" id="q18a" required>
+              <label for="q18a">Yes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q18" value="No" id="q18b">
+              <label for="q18b">No</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q18" value="Not sure" id="q18c">
+              <label for="q18c">Not sure</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q19 -->
+
+        <div class="question-card" data-question="19" data-section="4">
+
+          <div class="section-tag">Section 4 • Cybercrime Awareness</div>
+
+          <div class="question-number">Question 19 of 25</div>
+
+          <h2 class="question-title">
+            Have you or someone you know experienced online fraud or cybercrime?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q19" value="Yes" id="q19a" required>
+              <label for="q19a">Yes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q19" value="No" id="q19b">
+              <label for="q19b">No</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q19" value="Not sure" id="q19c">
+              <label for="q19c">Not sure</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q19" value="Prefer not to say" id="q19d">
+              <label for="q19d">Prefer not to say</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q20 -->
+
+        <div class="question-card" data-question="20" data-section="4">
+
+          <div class="section-tag">Section 4 • Cybercrime Awareness</div>
+
+          <div class="question-number">Question 20 of 25</div>
+
+          <h2 class="question-title">
+            Which type of online fraud or cybercrime have you experienced or heard about?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q20" value="UPI / Payment Fraud" id="q20a">
+              <label for="q20a">UPI / Payment Fraud</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q20" value="OTP Scam" id="q20b">
+              <label for="q20b">OTP Scam</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q20" value="Phishing" id="q20c">
+              <label for="q20c">Phishing</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q20" value="Fake Shopping Website" id="q20d">
+              <label for="q20d">Fake Shopping Website</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q20" value="Social Media Account Hacking" id="q20e">
+              <label for="q20e">Social Media Account Hacking</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q20" value="Identity Theft" id="q20f">
+              <label for="q20f">Identity Theft</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q20" value="Fake Job/Internship Scam" id="q20g">
+              <label for="q20g">Fake Job/Internship Scam</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q20" value="Online Gaming/Investment Scam" id="q20h">
+              <label for="q20h">Online Gaming/Investment Scam</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q20" value="Cyberbullying" id="q20i">
+              <label for="q20i">Cyberbullying</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q20" value="Other" id="q20j">
+              <label for="q20j">Other</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q20" value="Not applicable" id="q20k">
+              <label for="q20k">Not applicable</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q21 -->
+
+        <div class="question-card" data-question="21" data-section="4">
+
+          <div class="section-tag">Section 4 • Cybercrime Awareness</div>
+
+          <div class="question-number">Question 21 of 25</div>
+
+          <h2 class="question-title">
+            If someone calls asking for your OTP or password, what would you do?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q21" value="Share it if they claim to be from a bank/company" id="q21a" required>
+              <label for="q21a">Share it if they claim to be from a bank/company</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q21" value="Refuse and end the call" id="q21b">
+              <label for="q21b">Refuse and end the call</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q21" value="Ask them why they need it" id="q21c">
+              <label for="q21c">Ask them why they need it</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q21" value="I'm not sure" id="q21d">
+              <label for="q21d">I'm not sure</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q21" value="Other" id="q21e">
+              <label for="q21e">Other</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q22 -->
+
+        <div class="question-card" data-question="22" data-section="5">
+
+          <div class="section-tag">Section 5 • Safe Internet Practices</div>
+
+          <div class="question-number">Question 22 of 25</div>
+
+          <h2 class="question-title">
+            How often do you verify a website before entering personal or payment information?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q22" value="Always" id="q22a" required>
+              <label for="q22a">Always</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q22" value="Often" id="q22b">
+              <label for="q22b">Often</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q22" value="Sometimes" id="q22c">
+              <label for="q22c">Sometimes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q22" value="Rarely" id="q22d">
+              <label for="q22d">Rarely</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q22" value="Never" id="q22e">
+              <label for="q22e">Never</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q23 -->
+
+        <div class="question-card" data-question="23" data-section="5">
+
+          <div class="section-tag">Section 5 • Safe Internet Practices</div>
+
+          <div class="question-number">Question 23 of 25</div>
+
+          <h2 class="question-title">
+            How often do you use public Wi-Fi for banking or sensitive activities?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q23" value="Always" id="q23a" required>
+              <label for="q23a">Always</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q23" value="Often" id="q23b">
+              <label for="q23b">Often</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q23" value="Sometimes" id="q23c">
+              <label for="q23c">Sometimes</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q23" value="Rarely" id="q23d">
+              <label for="q23d">Rarely</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q23" value="Never" id="q23e">
+              <label for="q23e">Never</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q24 -->
+
+        <div class="question-card" data-question="24" data-section="5">
+
+          <div class="section-tag">Section 5 • Safe Internet Practices</div>
+
+          <div class="question-number">Question 24 of 25</div>
+
+          <h2 class="question-title">
+            Which practice do you think is most important for protecting personal data?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option">
+              <input type="radio" name="q24" value="Using strong and unique passwords" id="q24a" required>
+              <label for="q24a">Using strong and unique passwords</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q24" value="Using 2FA" id="q24b">
+              <label for="q24b">Using 2FA</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q24" value="Avoiding suspicious links" id="q24c">
+              <label for="q24c">Avoiding suspicious links</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q24" value="Limiting personal information shared online" id="q24d">
+              <label for="q24d">Limiting personal information shared online</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q24" value="Keeping apps and devices updated" id="q24e">
+              <label for="q24e">Keeping apps and devices updated</label>
+            </div>
+
+            <div class="option">
+              <input type="radio" name="q24" value="All of the above" id="q24f">
+              <label for="q24f">All of the above</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Q25 -->
+
+        <div class="question-card" data-question="25" data-section="5">
+
+          <div class="section-tag">Section 5 • Safe Internet Practices</div>
+
+          <div class="question-number">Question 25 of 25</div>
+
+          <h2 class="question-title">
+            What would help improve data privacy awareness among college students?
+            <span class="required">*</span>
+          </h2>
+
+          <div class="options">
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q25" value="College awareness programs" id="q25a">
+              <label for="q25a">College awareness programs</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q25" value="Workshops/seminars" id="q25b">
+              <label for="q25b">Workshops/seminars</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q25" value="Social media awareness campaigns" id="q25c">
+              <label for="q25c">Social media awareness campaigns</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q25" value="Cybersecurity training" id="q25d">
+              <label for="q25d">Cybersecurity training</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q25" value="Government awareness campaigns" id="q25e">
+              <label for="q25e">Government awareness campaigns</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q25" value="Educational videos" id="q25f">
+              <label for="q25f">Educational videos</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q25" value="Online courses" id="q25g">
+              <label for="q25g">Online courses</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q25" value="More information from banks/payment apps" id="q25h">
+              <label for="q25h">More information from banks/payment apps</label>
+            </div>
+
+            <div class="option checkbox">
+              <input type="checkbox" name="q25" value="Other" id="q25i">
+              <label for="q25i">Other</label>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="error" id="errorBox">
+          Please select an answer before continuing.
+        </div>
+
+
+        <div class="survey-actions">
+
+          <button type="button"
+                  class="btn btn-secondary"
+                  id="prevBtn">
+            ← Previous
+          </button>
+
+          <button type="button"
+                  class="btn btn-primary"
+                  id="nextBtn">
+            Next →
+          </button>
+
+        </div>
+
+      </form>
+
+
+      <!-- SUCCESS -->
+
+      <div class="success-card" id="successCard">
+
+        <div class="success-icon">
+          ✓
+        </div>
+
+        <h2>Thank You!</h2>
+
+        <p>
+          Your response has been submitted successfully and will contribute
+          to the academic field study on data privacy awareness among
+          college students.
+        </p>
+
+        <div class="btns"
+             style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:25px;">
+
+          <a href="quiz.html" class="btn btn-primary">
+            Take Privacy Quiz →
+          </a>
+
+          <a href="index.html" class="btn btn-secondary">
+            Back to Home
+          </a>
+
+        </div>
+
       </div>
 
     </div>
 
-  </footer>
+  </div>
+
+</section>
 
 
-  <!-- BACK TO TOP -->
+<!-- ================= FOOTER ================= -->
 
-  <button
-    class="back-top"
-    aria-label="Back to top"
-  >
-    ↑
-  </button>
+<footer>
+
+  <div class="container footer-inner">
+
+    <div>
+
+      <strong style="color:#dbeafe;">
+        Field Study on Awareness of Data Privacy Among College Students
+      </strong>
+
+      <br>
+
+      Viva College • B.Sc IT • 2nd Year • Division C
+
+    </div>
+
+    <div>
+      Academic Year 2026–27 • Aniket
+    </div>
+
+  </div>
+
+</footer>
 
 
-  <script src="js/main.js"></script>
+<script>
+
+  /* ==========================================
+     NAVIGATION
+  ========================================== */
+
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+    });
+  });
+
+
+  /* ==========================================
+     SURVEY SYSTEM
+  ========================================== */
+
+  const cards = Array.from(
+    document.querySelectorAll(".question-card")
+  );
+
+  const form = document.getElementById("surveyForm");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  const progressFill =
+    document.getElementById("progressFill");
+
+  const progressNumber =
+    document.getElementById("progressNumber");
+
+  const sectionName =
+    document.getElementById("sectionName");
+
+  const errorBox =
+    document.getElementById("errorBox");
+
+  const successCard =
+    document.getElementById("successCard");
+
+  const sectionIndicators =
+    document.querySelectorAll(".section-indicator");
+
+
+  let current = 0;
+
+
+  const sectionNames = {
+
+    1: "Section 1 • Basic Information",
+    2: "Section 2 • Privacy Awareness",
+    3: "Section 3 • Digital Security",
+    4: "Section 4 • Cybercrime Awareness",
+    5: "Section 5 • Safe Internet Practices"
+
+  };
+
+
+  function getQuestionInputs(card) {
+
+    return Array.from(
+      card.querySelectorAll(
+        'input[type="radio"], input[type="checkbox"]'
+      )
+    );
+
+  }
+
+
+  function hasAnswer(card) {
+
+    const inputs = getQuestionInputs(card);
+
+    return inputs.some(input => input.checked);
+
+  }
+
+
+  function updatePage() {
+
+    cards.forEach((card, index) => {
+
+      card.classList.toggle(
+        "active",
+        index === current
+      );
+
+    });
+
+
+    const questionNumber = current + 1;
+
+    const percentage =
+      (questionNumber / cards.length) * 100;
+
+
+    progressFill.style.width =
+      percentage + "%";
+
+
+    progressNumber.textContent =
+      questionNumber + " / " + cards.length;
+
+
+    const section =
+      cards[current].dataset.section;
+
+
+    sectionName.textContent =
+      sectionNames[section];
+
+
+    sectionIndicators.forEach((indicator, index) => {
+
+      indicator.classList.toggle(
+        "active",
+        index < Number(section)
+      );
+
+    });
+
+
+    prevBtn.disabled =
+      current === 0;
+
+
+    if (current === cards.length - 1) {
+
+      nextBtn.textContent =
+        "Submit Survey ✓";
+
+    } else {
+
+      nextBtn.textContent =
+        "Next →";
+
+    }
+
+
+    errorBox.classList.remove("show");
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  function validateCurrent() {
+
+    const card = cards[current];
+
+    if (!hasAnswer(card)) {
+
+      errorBox.classList.add("show");
+
+      return false;
+
+    }
+
+    errorBox.classList.remove("show");
+
+    return true;
+
+  }
+
+
+  prevBtn.addEventListener("click", () => {
+
+    if (current > 0) {
+
+      current--;
+
+      updatePage();
+
+    }
+
+  });
+
+
+  nextBtn.addEventListener("click", async () => {
+
+    if (!validateCurrent()) {
+
+      return;
+
+    }
+
+
+    if (current < cards.length - 1) {
+
+      current++;
+
+      updatePage();
+
+      return;
+
+    }
+
+
+    await submitSurvey();
+
+  });
+
+
+  /* ==========================================
+     APPS SCRIPT BACKEND
+  ========================================== */
+
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbz2qTZQR7u8eZJUb_Ac9Ytnr-9nAoItyDIP7HjS-onbHgcDcYw2XzF6onGnJEmiO4yQcg/exec";
+
+
+  function collectAnswers() {
+
+    const answers = {};
+
+    for (let i = 1; i <= 25; i++) {
+
+      const inputs =
+        document.querySelectorAll(
+          '[name="q' + i + '"]'
+        );
+
+      const selected =
+        Array.from(inputs)
+          .filter(input => input.checked)
+          .map(input => input.value);
+
+      answers["q" + i] =
+        selected.join(", ");
+
+    }
+
+    return answers;
+
+  }
+
+
+  async function submitSurvey() {
+
+    nextBtn.disabled = true;
+
+    prevBtn.disabled = true;
+
+    nextBtn.textContent =
+      "Submitting...";
+
+
+    const answers =
+      collectAnswers();
+
+
+    const payload = {
+
+      action: "submitSurvey",
+
+      answers: answers,
+
+      timestamp:
+        new Date().toISOString()
+
+    };
+
+
+    try {
+
+      /*
+        We intentionally use a normal HTML form POST
+        instead of fetch() so that GitHub Pages does
+        not run into CORS restrictions.
+      */
+
+      const formData =
+        new URLSearchParams();
+
+      formData.append(
+        "payload",
+        JSON.stringify(payload)
+      );
+
+
+      await fetch(
+        SCRIPT_URL,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type":
+              "application/x-www-form-urlencoded"
+          },
+          body: formData.toString(),
+          mode: "no-cors"
+        }
+      );
+
+
+      /*
+        Google Apps Script receives the request.
+        no-cors prevents reading the response,
+        but the submission is still sent.
+      */
+
+      form.style.display = "none";
+
+      document.querySelector(".progress-card").style.display =
+        "none";
+
+      successCard.classList.add("show");
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      nextBtn.disabled = false;
+
+      prevBtn.disabled = false;
+
+      nextBtn.textContent =
+        "Submit Survey ✓";
+
+      errorBox.textContent =
+        "There was a problem submitting the survey. Please try again.";
+
+      errorBox.classList.add("show");
+
+    }
+
+  }
+
+
+  /* ==========================================
+     CHECKBOX UX
+  ========================================== */
+
+  document.querySelectorAll(
+    'input[type="checkbox"]'
+  ).forEach(box => {
+
+    box.addEventListener("change", () => {
+
+      errorBox.classList.remove("show");
+
+    });
+
+  });
+
+
+  /* ==========================================
+     RADIO UX
+  ========================================== */
+
+  document.querySelectorAll(
+    'input[type="radio"]'
+  ).forEach(radio => {
+
+    radio.addEventListener("change", () => {
+
+      errorBox.classList.remove("show");
+
+    });
+
+  });
+
+
+  /* ==========================================
+     INITIALIZE
+  ========================================== */
+
+  updatePage();
+
+</script>
 
 </body>
 </html>
