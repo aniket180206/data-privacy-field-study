@@ -1,1 +1,2509 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dashboard</title><link rel="stylesheet" href="css/style.css"><script>window.QUIZ_ENDPOINT="https://script.google.com/macros/s/AKfycbz2qTZQR7u8eZJUb_Ac9Ytnr-9nAoItyDIP7HjS-onbHgcDcYw2XzF6onGnJEmiO4yQcg/exec";</script><script src="js/dashboard.js" defer></script></head><body><nav class="navbar"><div class="container nav-inner"><a class="brand" href="index.html"><span class="brand-mark">✦</span> Data Privacy Field Study</a><button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="awareness.html">Awareness</a><a href="survey.html">Survey</a><a href="quiz.html">Quiz</a><a href="leaderboard.html">Leaderboard</a><a href="dashboard.html">Dashboard</a><a href="findings.html">Findings</a><a href="conclusion.html">Conclusion</a></div></div></nav><main><section class="page-hero"><div class="container"><span class="eyebrow">Project dashboard</span><h1 class="gradient">Dashboard</h1><p>Quiz participation overview and leaderboard snapshot.</p></div></section><section class="section"><div class="container"><div class="stats"><div class="stat"><strong id="count">—</strong><span>Participants</span></div><div class="stat"><strong id="avg">—</strong><span>Average Score</span></div><div class="stat"><strong id="best">—</strong><span>Highest Score</span></div></div><div class="card" style="margin-top:18px"><h2>Top 10</h2><div id="dash" class="leaderboard"><div class="notice">Loading…</div></div></div><div class="card" style="margin-top:18px"><h2>Survey</h2><p>The 25-question survey is collected through the official project Google Form response system. Use the Google Form response spreadsheet for complete survey charts and analysis.</p><a class="btn btn-primary" href="survey.html">Take Survey →</a></div></div></section></main><footer><div class="container footer-inner"><div><strong>Field Study on Awareness of Data Privacy Among College Students</strong><br>Viva College · B.Sc IT · 2nd Year · Division C · 2026–27</div><div>Aniket</div></div></footer><button class="back-top" aria-label="Back to top">↑</button><script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Data Privacy Field Study dashboard showing quiz participation and performance."
+    >
+
+    <meta
+        name="theme-color"
+        content="#07111f"
+    >
+
+    <title>
+        Dashboard | Data Privacy Field Study
+    </title>
+
+
+    <!-- ==================================================
+         MAIN WEBSITE CSS
+         ================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css?v=20"
+    >
+
+
+    <!-- ==================================================
+         DASHBOARD CSS
+         ================================================== -->
+
+    <style>
+
+        /* =================================================
+           RESET
+           ================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+
+        /* =================================================
+           HEADER
+           ================================================= */
+
+        .site-header {
+            width: 100%;
+            position: relative;
+            z-index: 1000;
+        }
+
+
+        .site-header .container {
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+
+        .navbar {
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            text-decoration: none;
+            white-space: nowrap;
+
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+
+        .brand-icon {
+            color: #29b9ff;
+            font-size: 22px;
+        }
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            margin-left: auto;
+        }
+
+
+        .nav-links a {
+            color: #91a9bf;
+            text-decoration: none;
+            font-size: 15px;
+            white-space: nowrap;
+
+            transition:
+                color .2s ease;
+        }
+
+
+        .nav-links a:hover {
+            color: #29b9ff;
+        }
+
+
+        .nav-links a.active {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+
+        .menu-toggle {
+            display: none;
+
+            border: 0;
+            background: transparent;
+
+            color: #ffffff;
+
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+
+        /* =================================================
+           MAIN
+           ================================================= */
+
+        .dashboard-section {
+            width: 100%;
+
+            padding:
+                85px 0
+                100px;
+        }
+
+
+        .dashboard-container {
+            width: 100%;
+            max-width: 1180px;
+
+            margin: 0 auto;
+
+            padding:
+                0 24px;
+        }
+
+
+        /* =================================================
+           HERO
+           ================================================= */
+
+        .dashboard-hero {
+            max-width: 800px;
+
+            margin-bottom: 50px;
+        }
+
+
+        .dashboard-kicker {
+            color: #27b8ff;
+
+            font-size: 14px;
+            font-weight: 850;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 14px;
+        }
+
+
+        .dashboard-title {
+            margin: 0 0 22px;
+
+            color: #f2f8ff;
+
+            font-size:
+                clamp(48px, 7vw, 78px);
+
+            line-height: .98;
+
+            font-weight: 900;
+
+            letter-spacing: -4px;
+        }
+
+
+        .dashboard-title span {
+            color: #8edfff;
+        }
+
+
+        .dashboard-description {
+            margin: 0;
+
+            max-width: 760px;
+
+            color: #a4b9cc;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =================================================
+           LOADING
+           ================================================= */
+
+        .dashboard-loading {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 12px;
+
+            min-height: 300px;
+
+            color: #9db4c8;
+
+            font-size: 16px;
+        }
+
+
+        .spinner {
+
+            width: 30px;
+            height: 30px;
+
+            border:
+                3px solid
+                rgba(255,255,255,.1);
+
+            border-top-color:
+                #29b9ff;
+
+            border-radius: 50%;
+
+            animation:
+                dashboardSpin .8s linear infinite;
+        }
+
+
+        @keyframes dashboardSpin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =================================================
+           ERROR
+           ================================================= */
+
+        .dashboard-error {
+
+            display: none;
+
+            padding: 20px 24px;
+
+            margin-bottom: 25px;
+
+            border:
+                1px solid
+                rgba(255,100,100,.35);
+
+            border-radius: 16px;
+
+            background:
+                rgba(120,30,30,.15);
+
+            color: #ffbcbc;
+
+            line-height: 1.6;
+        }
+
+
+        /* =================================================
+           STAT CARDS
+           ================================================= */
+
+        .stats-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .stat-card {
+
+            padding: 25px;
+
+            border:
+                1px solid
+                rgba(89,181,255,.15);
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15,34,57,.95),
+                    rgba(8,21,37,.95)
+                );
+
+            min-height: 140px;
+        }
+
+
+        .stat-label {
+
+            display: block;
+
+            margin-bottom: 12px;
+
+            color: #7794ad;
+
+            font-size: 12px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.4px;
+
+            text-transform: uppercase;
+        }
+
+
+        .stat-value {
+
+            display: block;
+
+            color: #f0f7ff;
+
+            font-size: 34px;
+
+            font-weight: 900;
+
+            line-height: 1;
+        }
+
+
+        .stat-sub {
+
+            display: block;
+
+            margin-top: 12px;
+
+            color: #6e879e;
+
+            font-size: 13px;
+        }
+
+
+        /* =================================================
+           CONTENT GRID
+           ================================================= */
+
+        .dashboard-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 20px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .dashboard-card {
+
+            padding: 28px;
+
+            border:
+                1px solid
+                rgba(89,181,255,.15);
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15,34,57,.94),
+                    rgba(8,21,37,.94)
+                );
+        }
+
+
+        .dashboard-card.full {
+
+            grid-column:
+                1 / -1;
+        }
+
+
+        .card-title {
+
+            margin: 0 0 7px;
+
+            color: #eef7ff;
+
+            font-size: 20px;
+
+            font-weight: 850;
+        }
+
+
+        .card-description {
+
+            margin: 0 0 25px;
+
+            color: #7892a9;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =================================================
+           SCORE DISTRIBUTION
+           ================================================= */
+
+        .distribution-row {
+
+            display: grid;
+
+            grid-template-columns:
+                90px 1fr 45px;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .distribution-row:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .distribution-label {
+
+            color: #a7bfd3;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        .distribution-bar {
+
+            height: 12px;
+
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.07);
+        }
+
+
+        .distribution-fill {
+
+            height: 100%;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #1f9fe0,
+                    #54d5ff
+                );
+
+            transition:
+                width .5s ease;
+        }
+
+
+        .distribution-count {
+
+            color: #d9efff;
+
+            font-weight: 800;
+
+            text-align: right;
+        }
+
+
+        /* =================================================
+           PERFORMANCE
+           ================================================= */
+
+        .performance-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+
+        .performance-item {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                15px 17px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.05);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.025);
+        }
+
+
+        .performance-item span {
+
+            color: #a5bdd0;
+
+            font-size: 14px;
+
+            font-weight: 650;
+        }
+
+
+        .performance-item strong {
+
+            color: #35c2ff;
+
+            font-size: 18px;
+        }
+
+
+        /* =================================================
+           TOP PERFORMERS
+           ================================================= */
+
+        .top-performers {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+
+        .performer {
+
+            display: grid;
+
+            grid-template-columns:
+                55px 1fr auto;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding:
+                16px 18px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.05);
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,255,255,.025);
+        }
+
+
+        .performer-rank {
+
+            color: #8fb3cc;
+
+            font-weight: 900;
+        }
+
+
+        .performer-name {
+
+            color: #eef7ff;
+
+            font-weight: 750;
+
+            overflow: hidden;
+
+            white-space: nowrap;
+
+            text-overflow: ellipsis;
+        }
+
+
+        .performer-score {
+
+            color: #35c2ff;
+
+            font-weight: 900;
+        }
+
+
+        /* =================================================
+           EMPTY
+           ================================================= */
+
+        .empty-state {
+
+            padding: 50px 20px;
+
+            text-align: center;
+
+            color: #849db4;
+        }
+
+
+        .empty-state-icon {
+
+            font-size: 40px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .empty-state h3 {
+
+            margin: 0 0 8px;
+
+            color: #e8f3fc;
+        }
+
+
+        .empty-state p {
+
+            margin: 0;
+
+            line-height: 1.6;
+        }
+
+
+        /* =================================================
+           FOOTER
+           ================================================= */
+
+        .site-footer .container {
+
+            width: 100%;
+            max-width: 1180px;
+
+            margin: 0 auto;
+
+            padding:
+                35px 24px;
+        }
+
+
+        .footer-content {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .footer-content strong {
+
+            color: #b9d4ec;
+        }
+
+
+        .footer-content p {
+
+            margin: 7px 0 0;
+
+            color: #7892aa;
+
+            font-size: 14px;
+        }
+
+
+        .footer-name {
+
+            color: #94c9eb;
+
+            font-size: 18px;
+        }
+
+
+        /* =================================================
+           TABLET
+           ================================================= */
+
+        @media (max-width: 950px) {
+
+            .nav-links {
+                gap: 15px;
+            }
+
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+
+            .stats-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                min-height: 70px;
+            }
+
+
+            .menu-toggle {
+                display: block;
+            }
+
+
+            .nav-links {
+
+                display: none;
+
+                position: absolute;
+
+                top: 70px;
+
+                left: 18px;
+                right: 18px;
+
+                padding: 12px;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 3px;
+
+                border:
+                    1px solid
+                    rgba(89,181,255,.18);
+
+                border-radius: 16px;
+
+                background:
+                    #09192b;
+
+                box-shadow:
+                    0 25px 60px
+                    rgba(0,0,0,.4);
+            }
+
+
+            .nav-links.mobile-open {
+                display: flex;
+            }
+
+
+            .nav-links a {
+
+                padding:
+                    12px 14px;
+
+                border-radius: 9px;
+            }
+
+
+            .dashboard-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .dashboard-card.full {
+
+                grid-column:
+                    auto;
+
+            }
+
+        }
+
+
+        /* =================================================
+           SMALL MOBILE
+           ================================================= */
+
+        @media (max-width: 550px) {
+
+            .dashboard-section {
+
+                padding:
+                    55px 0
+                    70px;
+            }
+
+
+            .dashboard-container {
+
+                padding:
+                    0 16px;
+            }
+
+
+            .dashboard-title {
+
+                font-size: 48px;
+
+                letter-spacing: -2.5px;
+            }
+
+
+            .dashboard-description {
+
+                font-size: 15px;
+            }
+
+
+            .stats-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .dashboard-card {
+
+                padding: 20px;
+
+                border-radius: 18px;
+            }
+
+
+            .distribution-row {
+
+                grid-template-columns:
+                    75px 1fr 35px;
+
+                gap: 9px;
+            }
+
+
+            .footer-content {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="site-header">
+
+    <div class="container">
+
+        <nav class="navbar">
+
+
+            <a
+                href="index.html"
+                class="brand"
+            >
+
+                <span class="brand-icon">
+                    ✦
+                </span>
+
+                <span>
+                    Data Privacy Field Study
+                </span>
+
+            </a>
+
+
+            <div
+                class="nav-links"
+                id="mainNavigation"
+            >
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="awareness.html">
+                    Awareness
+                </a>
+
+                <a href="survey.html">
+                    Survey
+                </a>
+
+                <a href="quiz.html">
+                    Quiz
+                </a>
+
+                <a href="leaderboard.html">
+                    Leaderboard
+                </a>
+
+                <a
+                    href="dashboard.html"
+                    class="active"
+                >
+                    Dashboard
+                </a>
+
+                <a href="findings.html">
+                    Findings
+                </a>
+
+                <a href="conclusion.html">
+                    Conclusion
+                </a>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation"
+            >
+                ☰
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main>
+
+
+<section
+    class="dashboard-section"
+>
+
+<div
+    class="dashboard-container"
+>
+
+
+    <!-- ================================================
+         HERO
+         ================================================ -->
+
+    <div
+        class="dashboard-hero"
+    >
+
+        <div
+            class="dashboard-kicker"
+        >
+            Quiz Analytics
+        </div>
+
+
+        <h1
+            class="dashboard-title"
+        >
+            Study <span>Dashboard</span>
+        </h1>
+
+
+        <p
+            class="dashboard-description"
+        >
+            An overview of quiz participation and
+            performance from the Data Privacy Awareness
+            Quiz.
+        </p>
+
+    </div>
+
+
+
+    <!-- ================================================
+         ERROR
+         ================================================ -->
+
+    <div
+        class="dashboard-error"
+        id="dashboardError"
+    ></div>
+
+
+
+    <!-- ================================================
+         LOADING
+         ================================================ -->
+
+    <div
+        id="dashboardLoading"
+        class="dashboard-loading"
+    >
+
+        <div class="spinner"></div>
+
+        <span>
+            Loading dashboard data...
+        </span>
+
+    </div>
+
+
+
+    <!-- ================================================
+         ACTUAL DASHBOARD
+         ================================================ -->
+
+    <div
+        id="dashboardContent"
+        style="display:none;"
+    >
+
+
+        <!-- ============================================
+             STAT CARDS
+             ============================================ -->
+
+        <div
+            class="stats-grid"
+        >
+
+
+            <div
+                class="stat-card"
+            >
+
+                <span
+                    class="stat-label"
+                >
+                    Participants
+                </span>
+
+                <span
+                    class="stat-value"
+                    id="totalParticipants"
+                >
+                    0
+                </span>
+
+                <span
+                    class="stat-sub"
+                >
+                    Quiz attempts
+                </span>
+
+            </div>
+
+
+
+            <div
+                class="stat-card"
+            >
+
+                <span
+                    class="stat-label"
+                >
+                    Average Score
+                </span>
+
+                <span
+                    class="stat-value"
+                    id="averageScore"
+                >
+                    0%
+                </span>
+
+                <span
+                    class="stat-sub"
+                >
+                    Across all attempts
+                </span>
+
+            </div>
+
+
+
+            <div
+                class="stat-card"
+            >
+
+                <span
+                    class="stat-label"
+                >
+                    Highest Score
+                </span>
+
+                <span
+                    class="stat-value"
+                    id="highestScore"
+                >
+                    0%
+                </span>
+
+                <span
+                    class="stat-sub"
+                >
+                    Best performance
+                </span>
+
+            </div>
+
+
+
+            <div
+                class="stat-card"
+            >
+
+                <span
+                    class="stat-label"
+                >
+                    Average Time
+                </span>
+
+                <span
+                    class="stat-value"
+                    id="averageTime"
+                >
+                    0s
+                </span>
+
+                <span
+                    class="stat-sub"
+                >
+                    Quiz completion
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ============================================
+             TWO COLUMN
+             ============================================ -->
+
+        <div
+            class="dashboard-grid"
+        >
+
+
+            <!-- SCORE DISTRIBUTION -->
+
+            <div
+                class="dashboard-card"
+            >
+
+                <h2
+                    class="card-title"
+                >
+                    Score Distribution
+                </h2>
+
+                <p
+                    class="card-description"
+                >
+                    Number of participants within
+                    each score range.
+                </p>
+
+
+                <div
+                    id="scoreDistribution"
+                ></div>
+
+            </div>
+
+
+
+            <!-- PERFORMANCE -->
+
+            <div
+                class="dashboard-card"
+            >
+
+                <h2
+                    class="card-title"
+                >
+                    Performance Overview
+                </h2>
+
+                <p
+                    class="card-description"
+                >
+                    Participants grouped according
+                    to their quiz performance.
+                </p>
+
+
+                <div
+                    class="performance-list"
+                    id="performanceDistribution"
+                ></div>
+
+            </div>
+
+
+            <!-- ========================================
+                 TOP PERFORMERS
+                 ======================================== -->
+
+            <div
+                class="dashboard-card full"
+            >
+
+                <h2
+                    class="card-title"
+                >
+                    Top Performers
+                </h2>
+
+                <p
+                    class="card-description"
+                >
+                    Highest-scoring quiz participants.
+                </p>
+
+
+                <div
+                    class="top-performers"
+                    id="topPerformers"
+                ></div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div
+            class="footer-content"
+        >
+
+            <div>
+
+                <strong>
+                    Field Study on Awareness of
+                    Data Privacy Among College Students
+                </strong>
+
+                <p>
+                    Viva College · B.Sc IT ·
+                    2nd Year · Division C ·
+                    2026–27
+                </p>
+
+            </div>
+
+
+            <div
+                class="footer-name"
+            >
+                Aniket
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     DASHBOARD JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+"use strict";
+
+
+/* =====================================================
+   CONFIGURATION
+   ===================================================== */
+
+const BACKEND_URL =
+    "https://script.google.com/macros/s/AKfycbz2qTZQR7u8eZJUb_Ac9Ytnr-9nAoItyDIP7HjS-onbHgcDcYw2XzF6onGnJEmiO4yQcg/exec";
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        setupMobileMenu();
+
+        loadDashboard();
+
+    }
+);
+
+
+/* =====================================================
+   MOBILE MENU
+   ===================================================== */
+
+function setupMobileMenu() {
+
+    const button =
+        document.getElementById(
+            "menuToggle"
+        );
+
+
+    const navigation =
+        document.getElementById(
+            "mainNavigation"
+        );
+
+
+    if (
+        !button ||
+        !navigation
+    ) {
+        return;
+    }
+
+
+    button.addEventListener(
+        "click",
+        function () {
+
+            navigation.classList.toggle(
+                "mobile-open"
+            );
+
+        }
+    );
+
+
+    navigation
+        .querySelectorAll("a")
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        navigation.classList.remove(
+                            "mobile-open"
+                        );
+
+                    }
+                );
+
+            }
+        );
+}
+
+
+/* =====================================================
+   LOAD DASHBOARD
+   ===================================================== */
+
+function loadDashboard() {
+
+    const callbackName =
+        "dashboardData_" +
+        Date.now();
+
+
+    const script =
+        document.createElement(
+            "script"
+        );
+
+
+    let finished =
+        false;
+
+
+    window[callbackName] =
+        function (data) {
+
+            if (finished) {
+                return;
+            }
+
+
+            finished = true;
+
+
+            console.log(
+                "Dashboard API response:",
+                data
+            );
+
+
+            if (
+                !data ||
+                data.success !== true
+            ) {
+
+                showError(
+                    "Dashboard data could not be loaded."
+                );
+
+                cleanup();
+
+                return;
+            }
+
+
+            /*
+             * The Apps Script backend returns
+             * leaderboard.
+             */
+
+            const players =
+                Array.isArray(
+                    data.leaderboard
+                )
+                    ? data.leaderboard
+                    : [];
+
+
+            buildDashboard(
+                players
+            );
+
+
+            cleanup();
+
+        };
+
+
+    script.src =
+        BACKEND_URL +
+        "?action=leaderboard" +
+        "&callback=" +
+        callbackName +
+        "&t=" +
+        Date.now();
+
+
+    script.async = true;
+
+
+    script.onerror =
+        function () {
+
+            if (finished) {
+                return;
+            }
+
+
+            finished = true;
+
+
+            showError(
+                "Could not connect to the dashboard server."
+            );
+
+
+            cleanup();
+
+        };
+
+
+    document.body.appendChild(
+        script
+    );
+
+
+    /*
+     * Timeout
+     */
+
+    setTimeout(
+        function () {
+
+            if (finished) {
+                return;
+            }
+
+
+            finished = true;
+
+
+            showError(
+                "Dashboard request timed out. Please refresh the page."
+            );
+
+
+            cleanup();
+
+        },
+        15000
+    );
+
+
+    function cleanup() {
+
+        delete window[
+            callbackName
+        ];
+
+
+        if (
+            script.parentNode
+        ) {
+
+            script.parentNode.removeChild(
+                script
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   BUILD DASHBOARD
+   ===================================================== */
+
+function buildDashboard(
+    players
+) {
+
+    const loading =
+        document.getElementById(
+            "dashboardLoading"
+        );
+
+
+    const content =
+        document.getElementById(
+            "dashboardContent"
+        );
+
+
+    if (loading) {
+        loading.style.display = "none";
+    }
+
+
+    if (content) {
+        content.style.display = "block";
+    }
+
+
+    /*
+     * No participants
+     */
+
+    if (
+        !players ||
+        players.length === 0
+    ) {
+
+        showEmptyDashboard();
+
+        return;
+    }
+
+
+    /*
+     * Normalize values
+     */
+
+    const cleanPlayers =
+        players.map(
+            function (player) {
+
+                const score =
+                    Number(
+                        player.score
+                    ) || 0;
+
+
+                const total =
+                    Number(
+                        player.total
+                    ) || 10;
+
+
+                let percentage =
+                    Number(
+                        player.percentage
+                    );
+
+
+                if (
+                    !isFinite(
+                        percentage
+                    )
+                ) {
+
+                    percentage =
+                        (
+                            score /
+                            total
+                        ) * 100;
+
+                }
+
+
+                const time =
+                    Number(
+                        player.time
+                    ) || 0;
+
+
+                return {
+
+                    name:
+                        player.name ||
+                        "Anonymous",
+
+                    score:
+                        score,
+
+                    total:
+                        total,
+
+                    percentage:
+                        Math.max(
+                            0,
+                            Math.min(
+                                100,
+                                percentage
+                            )
+                        ),
+
+                    time:
+                        Math.max(
+                            0,
+                            time
+                        )
+
+                };
+
+            }
+        );
+
+
+    /*
+     * STATISTICS
+     */
+
+    const scores =
+        cleanPlayers.map(
+            function (p) {
+                return p.percentage;
+            }
+        );
+
+
+    const times =
+        cleanPlayers.map(
+            function (p) {
+                return p.time;
+            }
+        );
+
+
+    const averageScore =
+        scores.reduce(
+            function (
+                sum,
+                value
+            ) {
+
+                return (
+                    sum + value
+                );
+
+            },
+            0
+        ) /
+        scores.length;
+
+
+    const highestScore =
+        Math.max(
+            ...scores
+        );
+
+
+    const averageTime =
+        times.reduce(
+            function (
+                sum,
+                value
+            ) {
+
+                return (
+                    sum + value
+                );
+
+            },
+            0
+        ) /
+        times.length;
+
+
+    setText(
+        "totalParticipants",
+        cleanPlayers.length
+    );
+
+
+    setText(
+        "averageScore",
+        Math.round(
+            averageScore
+        ) + "%"
+    );
+
+
+    setText(
+        "highestScore",
+        Math.round(
+            highestScore
+        ) + "%"
+    );
+
+
+    setText(
+        "averageTime",
+        formatTime(
+            averageTime
+        )
+    );
+
+
+    /*
+     * CHARTS
+     */
+
+    buildScoreDistribution(
+        scores
+    );
+
+
+    buildPerformanceDistribution(
+        scores
+    );
+
+
+    buildTopPerformers(
+        cleanPlayers
+    );
+
+}
+
+
+/* =====================================================
+   SCORE DISTRIBUTION
+   ===================================================== */
+
+function buildScoreDistribution(
+    scores
+) {
+
+    const ranges = {
+
+        "0–20%": 0,
+
+        "21–40%": 0,
+
+        "41–60%": 0,
+
+        "61–80%": 0,
+
+        "81–100%": 0
+
+    };
+
+
+    scores.forEach(
+        function (score) {
+
+            if (
+                score <= 20
+            ) {
+
+                ranges["0–20%"]++;
+
+            }
+
+            else if (
+                score <= 40
+            ) {
+
+                ranges["21–40%"]++;
+
+            }
+
+            else if (
+                score <= 60
+            ) {
+
+                ranges["41–60%"]++;
+
+            }
+
+            else if (
+                score <= 80
+            ) {
+
+                ranges["61–80%"]++;
+
+            }
+
+            else {
+
+                ranges["81–100%"]++;
+
+            }
+
+        }
+    );
+
+
+    const container =
+        document.getElementById(
+            "scoreDistribution"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    const maximum =
+        Math.max(
+            ...Object.values(
+                ranges
+            ),
+            1
+        );
+
+
+    let html = "";
+
+
+    Object.keys(
+        ranges
+    ).forEach(
+        function (label) {
+
+            const count =
+                ranges[label];
+
+
+            const width =
+                Math.max(
+                    3,
+                    (
+                        count /
+                        maximum
+                    ) * 100
+                );
+
+
+            html += `
+
+                <div
+                    class="distribution-row"
+                >
+
+                    <div
+                        class="distribution-label"
+                    >
+                        ${label}
+                    </div>
+
+                    <div
+                        class="distribution-bar"
+                    >
+
+                        <div
+                            class="distribution-fill"
+                            style="width:${width}%"
+                        ></div>
+
+                    </div>
+
+                    <div
+                        class="distribution-count"
+                    >
+                        ${count}
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+/* =====================================================
+   PERFORMANCE
+   ===================================================== */
+
+function buildPerformanceDistribution(
+    scores
+) {
+
+    const categories = {
+
+        "Excellent · 80–100%": 0,
+
+        "Good · 60–79%": 0,
+
+        "Average · 40–59%": 0,
+
+        "Needs Improvement · 0–39%": 0
+
+    };
+
+
+    scores.forEach(
+        function (score) {
+
+            if (
+                score >= 80
+            ) {
+
+                categories[
+                    "Excellent · 80–100%"
+                ]++;
+
+            }
+
+            else if (
+                score >= 60
+            ) {
+
+                categories[
+                    "Good · 60–79%"
+                ]++;
+
+            }
+
+            else if (
+                score >= 40
+            ) {
+
+                categories[
+                    "Average · 40–59%"
+                ]++;
+
+            }
+
+            else {
+
+                categories[
+                    "Needs Improvement · 0–39%"
+                ]++;
+
+            }
+
+        }
+    );
+
+
+    const container =
+        document.getElementById(
+            "performanceDistribution"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    let html = "";
+
+
+    Object.keys(
+        categories
+    ).forEach(
+        function (category) {
+
+            html += `
+
+                <div
+                    class="performance-item"
+                >
+
+                    <span>
+                        ${category}
+                    </span>
+
+                    <strong>
+                        ${categories[category]}
+                    </strong>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+/* =====================================================
+   TOP PERFORMERS
+   ===================================================== */
+
+function buildTopPerformers(
+    players
+) {
+
+    const container =
+        document.getElementById(
+            "topPerformers"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    const sorted =
+        [...players].sort(
+            function (
+                a,
+                b
+            ) {
+
+                if (
+                    b.percentage !==
+                    a.percentage
+                ) {
+
+                    return (
+                        b.percentage -
+                        a.percentage
+                    );
+
+                }
+
+
+                return (
+                    a.time -
+                    b.time
+                );
+
+            }
+        );
+
+
+    const top =
+        sorted.slice(
+            0,
+            5
+        );
+
+
+    let html = "";
+
+
+    top.forEach(
+        function (
+            player,
+            index
+        ) {
+
+            html += `
+
+                <div
+                    class="performer"
+                >
+
+                    <div
+                        class="performer-rank"
+                    >
+                        #${index + 1}
+                    </div>
+
+                    <div
+                        class="performer-name"
+                    >
+                        ${escapeHTML(
+                            player.name
+                        )}
+                    </div>
+
+                    <div
+                        class="performer-score"
+                    >
+                        ${Math.round(
+                            player.percentage
+                        )}%
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+/* =====================================================
+   EMPTY DASHBOARD
+   ===================================================== */
+
+function showEmptyDashboard() {
+
+    setText(
+        "totalParticipants",
+        "0"
+    );
+
+
+    setText(
+        "averageScore",
+        "0%"
+    );
+
+
+    setText(
+        "highestScore",
+        "0%"
+    );
+
+
+    setText(
+        "averageTime",
+        "0s"
+    );
+
+
+    document.getElementById(
+        "scoreDistribution"
+    ).innerHTML = `
+
+        <div class="empty-state">
+
+            <div
+                class="empty-state-icon"
+            >
+                📊
+            </div>
+
+            <h3>
+                No quiz data yet
+            </h3>
+
+            <p>
+                Quiz participants will appear
+                here after completing the quiz.
+            </p>
+
+        </div>
+
+    `;
+
+
+    document.getElementById(
+        "performanceDistribution"
+    ).innerHTML = `
+
+        <div class="empty-state">
+
+            No performance data available.
+
+        </div>
+
+    `;
+
+
+    document.getElementById(
+        "topPerformers"
+    ).innerHTML = `
+
+        <div class="empty-state">
+
+            No participants yet.
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   ERROR
+   ===================================================== */
+
+function showError(
+    message
+) {
+
+    const loading =
+        document.getElementById(
+            "dashboardLoading"
+        );
+
+
+    const content =
+        document.getElementById(
+            "dashboardContent"
+        );
+
+
+    const error =
+        document.getElementById(
+            "dashboardError"
+        );
+
+
+    if (loading) {
+        loading.style.display = "none";
+    }
+
+
+    if (content) {
+        content.style.display = "none";
+    }
+
+
+    if (error) {
+
+        error.style.display =
+            "block";
+
+        error.innerHTML = `
+            <strong>
+                Dashboard unavailable
+            </strong>
+            <br>
+            ${escapeHTML(message)}
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   SET TEXT
+   ===================================================== */
+
+function setText(
+    id,
+    value
+) {
+
+    const element =
+        document.getElementById(
+            id
+        );
+
+
+    if (element) {
+
+        element.textContent =
+            value;
+
+    }
+
+}
+
+
+/* =====================================================
+   FORMAT TIME
+   ===================================================== */
+
+function formatTime(
+    seconds
+) {
+
+    seconds =
+        Math.round(
+            Number(seconds) || 0
+        );
+
+
+    if (
+        seconds < 60
+    ) {
+
+        return (
+            seconds +
+            "s"
+        );
+
+    }
+
+
+    const minutes =
+        Math.floor(
+            seconds / 60
+        );
+
+
+    const remaining =
+        seconds % 60;
+
+
+    return (
+        minutes +
+        "m " +
+        String(
+            remaining
+        ).padStart(
+            2,
+            "0"
+        ) +
+        "s"
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+   ===================================================== */
+
+function escapeHTML(
+    value
+) {
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
