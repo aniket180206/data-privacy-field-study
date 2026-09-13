@@ -1,1 +1,2369 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quiz</title><link rel="stylesheet" href="css/style.css"><script>window.QUIZ_ENDPOINT="https://script.google.com/macros/s/AKfycbz2qTZQR7u8eZJUb_Ac9Ytnr-9nAoItyDIP7HjS-onbHgcDcYw2XzF6onGnJEmiO4yQcg/exec";</script><script src="js/quiz.js" defer></script></head><body><nav class="navbar"><div class="container nav-inner"><a class="brand" href="index.html"><span class="brand-mark">✦</span> Data Privacy Field Study</a><button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="awareness.html">Awareness</a><a href="survey.html">Survey</a><a href="quiz.html">Quiz</a><a href="leaderboard.html">Leaderboard</a><a href="dashboard.html">Dashboard</a><a href="findings.html">Findings</a><a href="conclusion.html">Conclusion</a></div></div></nav><main><section class="page-hero"><div class="container quiz-box"><span class="eyebrow">10-question challenge</span><h1 class="gradient">Data Privacy Quiz</h1><p>Higher score wins. Ties are decided by faster completion time.</p><div class="card" id="start"><h2>Enter your details</h2><div class="field"><label for="name"><strong>Name</strong></label><input id="name" type="text" required maxlength="80"></div><div class="field"><label for="roll"><strong>Roll Number</strong></label><input id="roll" type="text" required maxlength="30"></div><button id="startBtn" class="btn btn-primary" type="button">Start Quiz →</button><div id="startMsg" class="notice error" hidden></div></div><div class="card" id="game" hidden><span id="qn" class="question-number"></span><span id="clock" style="float:right">00:00</span><div class="quiz-progress"><span id="bar"></span></div><h2 id="question"></h2><div id="opts" class="quiz-options"></div><div class="form-actions"><button id="next" class="btn btn-primary" type="button" disabled>Next →</button></div></div><div class="card" id="result" hidden><span class="eyebrow">Result</span><h2 id="resultTitle"></h2><div class="stats"><div class="stat"><strong id="score"></strong><span>Score</span></div><div class="stat"><strong id="pct"></strong><span>Accuracy</span></div><div class="stat"><strong id="time"></strong><span>Time</span></div></div><div id="saveMsg" class="notice"></div><div class="actions"><a class="btn btn-primary" href="leaderboard.html">Leaderboard →</a><a class="btn" href="quiz.html">Play Again</a></div></div></div></section></main><footer><div class="container footer-inner"><div><strong>Field Study on Awareness of Data Privacy Among College Students</strong><br>Viva College · B.Sc IT · 2nd Year · Division C · 2026–27</div><div>Aniket</div></div></footer><button class="back-top" aria-label="Back to top">↑</button><script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Privacy Awareness Quiz | Viva College</title>
+
+<meta name="description"
+content="Test your knowledge of data privacy, cybersecurity, phishing, passwords and online safety. Viva College B.Sc IT Field Study 2026-27.">
+
+<style>
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(14,165,233,.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(99,102,241,.10),
+            transparent 30%
+        ),
+        #060a12;
+
+    color:#edf5ff;
+    line-height:1.6;
+    min-height:100vh;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.015) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.015) 1px,
+            transparent 1px
+        );
+
+    background-size:50px 50px;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(6,10,18,.88);
+    backdrop-filter:blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+.nav{
+    width:min(1180px,calc(100% - 40px));
+    min-height:74px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+
+    font-size:16px;
+    font-weight:800;
+}
+
+.logo-icon{
+    width:40px;
+    height:40px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0ea5e9,
+            #6366f1
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(14,165,233,.20);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:4px;
+}
+
+.nav-links a{
+    padding:9px 10px;
+
+    border-radius:9px;
+
+    color:#8492a7;
+
+    font-size:12px;
+    font-weight:650;
+
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    color:#fff;
+    background:rgba(255,255,255,.06);
+}
+
+.nav-links a.active{
+    color:#fff;
+
+    background:
+        rgba(14,165,233,.10);
+}
+
+.menu-btn{
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius:10px;
+
+    background:#0d1522;
+    color:#fff;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.container{
+    width:min(900px,calc(100% - 30px));
+    margin:auto;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    padding:
+        70px
+        0
+        35px;
+
+    text-align:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+
+    padding:7px 13px;
+
+    border-radius:999px;
+
+    color:#67d5ff;
+
+    background:
+        rgba(14,165,233,.07);
+
+    border:
+        1px solid
+        rgba(56,189,248,.20);
+
+    font-size:11px;
+    font-weight:800;
+
+    text-transform:uppercase;
+    letter-spacing:.8px;
+}
+
+.badge::before{
+    content:"";
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#38bdf8;
+
+    box-shadow:
+        0 0 12px
+        rgba(56,189,248,.8);
+}
+
+.hero h1{
+    margin:
+        18px
+        auto
+        12px;
+
+    font-size:
+        clamp(
+            34px,
+            6vw,
+            55px
+        );
+
+    line-height:1.05;
+
+    letter-spacing:-2px;
+}
+
+.gradient{
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #818cf8
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+}
+
+.hero p{
+    max-width:680px;
+    margin:auto;
+
+    color:#8c9bb0;
+
+    font-size:15px;
+}
+
+
+/* =========================================================
+   QUIZ INFO
+========================================================= */
+
+.quiz-info{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+
+    margin-bottom:22px;
+}
+
+.info{
+    padding:18px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:14px;
+
+    background:
+        rgba(13,21,34,.78);
+}
+
+.info strong{
+    display:block;
+
+    color:#fff;
+
+    font-size:22px;
+}
+
+.info span{
+    color:#7f8da2;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   QUIZ CARD
+========================================================= */
+
+.quiz-card{
+    padding:26px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    background:
+        rgba(13,21,34,.88);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   START SCREEN
+========================================================= */
+
+.start-screen{
+    text-align:center;
+
+    padding:
+        35px
+        20px;
+}
+
+.start-icon{
+    width:72px;
+    height:72px;
+
+    margin:
+        0
+        auto
+        20px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(14,165,233,.15),
+            rgba(99,102,241,.15)
+        );
+
+    border:
+        1px solid
+        rgba(56,189,248,.18);
+
+    font-size:32px;
+}
+
+.start-screen h2{
+    margin-bottom:10px;
+
+    font-size:28px;
+}
+
+.start-screen p{
+    max-width:570px;
+
+    margin:
+        0
+        auto
+        22px;
+
+    color:#8997aa;
+
+    font-size:14px;
+}
+
+.rules{
+    max-width:550px;
+
+    margin:
+        0
+        auto
+        25px;
+
+    display:grid;
+
+    gap:8px;
+
+    text-align:left;
+}
+
+.rule{
+    padding:11px 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:#aab7ca;
+
+    font-size:13px;
+}
+
+.rule span{
+    color:#38bdf8;
+    margin-right:8px;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.btn{
+    border:0;
+
+    padding:
+        13px
+        24px;
+
+    border-radius:11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0ea5e9,
+            #6366f1
+        );
+
+    color:#fff;
+
+    font-size:14px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 12px 30px
+        rgba(14,165,233,.18);
+
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 18px 38px
+        rgba(14,165,233,.28);
+}
+
+.btn:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+    transform:none;
+}
+
+
+/* =========================================================
+   QUIZ SCREEN
+========================================================= */
+
+#quizScreen{
+    display:none;
+}
+
+.quiz-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:15px;
+
+    color:#8795a9;
+
+    font-size:12px;
+}
+
+.progress{
+    height:6px;
+
+    margin-bottom:25px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+.progress-fill{
+    width:0%;
+    height:100%;
+
+    border-radius:inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0ea5e9,
+            #6366f1
+        );
+
+    transition:
+        width .3s ease;
+}
+
+
+/* QUESTION */
+
+.question-number{
+    color:#38bdf8;
+
+    font-size:12px;
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.8px;
+}
+
+.question-title{
+    margin:
+        8px
+        0
+        22px;
+
+    font-size:22px;
+    line-height:1.35;
+}
+
+
+/* ANSWERS */
+
+.answers{
+    display:grid;
+
+    gap:10px;
+}
+
+.answer{
+    position:relative;
+}
+
+.answer input{
+    position:absolute;
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+.answer label{
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    padding:
+        14px
+        15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:12px;
+
+    background:#0a111d;
+
+    color:#aab7ca;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    transition:.2s;
+}
+
+.answer label:hover{
+    border-color:
+        rgba(56,189,248,.30);
+
+    color:#fff;
+
+    transform:translateY(-1px);
+}
+
+.answer-letter{
+    width:31px;
+    height:31px;
+
+    flex:none;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:8px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:#8290a4;
+
+    font-weight:800;
+
+    font-size:12px;
+}
+
+.answer input:checked + label{
+    color:#fff;
+
+    border-color:
+        rgba(56,189,248,.55);
+
+    background:
+        rgba(14,165,233,.10);
+
+    box-shadow:
+        0 0 0 1px
+        rgba(56,189,248,.08);
+}
+
+.answer input:checked + label .answer-letter{
+    background:
+        linear-gradient(
+            135deg,
+            #0ea5e9,
+            #6366f1
+        );
+
+    color:#fff;
+}
+
+
+/* =========================================================
+   QUIZ NAVIGATION
+========================================================= */
+
+.quiz-actions{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    margin-top:25px;
+
+    padding-top:20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+}
+
+.secondary-btn{
+    padding:
+        11px
+        18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    color:#aebbd0;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.secondary-btn:hover{
+    color:#fff;
+
+    border-color:
+        rgba(56,189,248,.25);
+}
+
+.secondary-btn:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+}
+
+
+/* =========================================================
+   NAME FORM
+========================================================= */
+
+.player-form{
+    max-width:500px;
+
+    margin:
+        0
+        auto;
+}
+
+.player-form label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#cbd7e6;
+
+    text-align:left;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.player-form input{
+    width:100%;
+
+    padding:
+        13px
+        14px;
+
+    margin-bottom:14px;
+
+    outline:none;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-radius:10px;
+
+    background:#0a111d;
+
+    color:#fff;
+}
+
+.player-form input:focus{
+    border-color:
+        rgba(56,189,248,.45);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(56,189,248,.07);
+}
+
+.player-form input::placeholder{
+    color:#617086;
+}
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+#resultScreen{
+    display:none;
+
+    text-align:center;
+
+    padding:
+        25px
+        10px
+        35px;
+}
+
+.result-icon{
+    width:76px;
+    height:76px;
+
+    margin:
+        0
+        auto
+        18px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:
+        rgba(52,211,153,.10);
+
+    border:
+        1px solid
+        rgba(52,211,153,.22);
+
+    color:#34d399;
+
+    font-size:32px;
+}
+
+#resultScreen h2{
+    font-size:30px;
+
+    margin-bottom:6px;
+}
+
+.result-subtitle{
+    color:#8997aa;
+
+    font-size:14px;
+}
+
+
+/* SCORE */
+
+.score-circle{
+    width:170px;
+    height:170px;
+
+    margin:
+        30px
+        auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #0c1625 60%,
+            transparent 61%
+        );
+
+    border:
+        8px solid
+        rgba(56,189,248,.14);
+
+    box-shadow:
+        0 0 50px
+        rgba(14,165,233,.10);
+}
+
+.score-circle strong{
+    font-size:42px;
+
+    line-height:1;
+}
+
+.score-circle span{
+    margin-top:6px;
+
+    color:#8190a5;
+
+    font-size:12px;
+}
+
+
+/* RESULT STATS */
+
+.result-stats{
+    max-width:600px;
+
+    margin:
+        0
+        auto
+        25px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+}
+
+.result-stat{
+    padding:16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    border-radius:12px;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.result-stat strong{
+    display:block;
+
+    color:#fff;
+
+    font-size:19px;
+}
+
+.result-stat span{
+    color:#7d8ba0;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error{
+    display:none;
+
+    margin:
+        12px
+        0;
+
+    padding:
+        12px
+        14px;
+
+    border-radius:10px;
+
+    background:
+        rgba(239,68,68,.08);
+
+    border:
+        1px solid
+        rgba(239,68,68,.20);
+
+    color:#fca5a5;
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    margin-top:70px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+}
+
+.footer-inner{
+    width:min(1180px,calc(100% - 30px));
+
+    min-height:95px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    color:#718096;
+
+    font-size:11px;
+}
+
+.footer-brand{
+    color:#c3d0df;
+
+    font-weight:750;
+
+    margin-bottom:3px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:850px){
+
+    .nav-links{
+        position:absolute;
+
+        top:74px;
+        left:15px;
+        right:15px;
+
+        display:none;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        padding:9px;
+
+        background:
+            rgba(7,11,20,.98);
+
+        border:
+            1px solid
+            rgba(255,255,255,.08);
+
+        border-radius:13px;
+
+        box-shadow:
+            0 20px 60px
+            rgba(0,0,0,.45);
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:12px;
+    }
+
+    .menu-btn{
+        display:grid;
+        place-items:center;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .container{
+        width:
+            calc(100% - 22px);
+    }
+
+    .hero{
+        padding:
+            50px
+            0
+            25px;
+    }
+
+    .hero h1{
+        font-size:35px;
+
+        letter-spacing:-1.3px;
+    }
+
+    .hero p{
+        font-size:13px;
+    }
+
+    .quiz-info{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .info{
+        padding:13px 7px;
+    }
+
+    .info strong{
+        font-size:18px;
+    }
+
+    .info span{
+        font-size:9px;
+    }
+
+    .quiz-card{
+        padding:17px;
+
+        border-radius:17px;
+    }
+
+    .question-title{
+        font-size:19px;
+    }
+
+    .answer label{
+        padding:12px;
+        font-size:13px;
+    }
+
+    .quiz-actions{
+        gap:8px;
+    }
+
+    .quiz-actions button{
+        font-size:12px;
+    }
+
+    .result-stats{
+        grid-template-columns:
+            1fr;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+
+        justify-content:center;
+
+        text-align:center;
+
+        padding:
+            25px
+            0;
+    }
+
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+<div class="nav">
+
+<a href="index.html" class="logo">
+
+<div class="logo-icon">
+    🔐
+</div>
+
+<span>Data Privacy Study</span>
+
+</a>
+
+
+<button
+    class="menu-btn"
+    id="menuBtn"
+    type="button"
+>
+    ☰
+</button>
+
+
+<nav class="nav-links" id="navLinks">
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About</a>
+
+<a href="awareness.html">Awareness</a>
+
+<a href="survey.html">Survey</a>
+
+<a href="quiz.html" class="active">Quiz</a>
+
+<a href="leaderboard.html">Leaderboard</a>
+
+<a href="dashboard.html">Dashboard</a>
+
+<a href="findings.html">Findings</a>
+
+<a href="conclusion.html">Conclusion</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+<section class="hero">
+
+<div class="container">
+
+<div class="badge">
+Data Privacy • Knowledge Challenge
+</div>
+
+<h1>
+Test Your
+<span class="gradient">Privacy Knowledge</span>
+</h1>
+
+<p>
+Answer 10 questions about data privacy, passwords,
+phishing, online fraud and safe digital behaviour.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="container">
+
+
+<!-- INFO -->
+
+<div class="quiz-info">
+
+<div class="info">
+<strong>10</strong>
+<span>Questions</span>
+</div>
+
+<div class="info">
+<strong>10</strong>
+<span>Points</span>
+</div>
+
+<div class="info">
+<strong>∞</strong>
+<span>Attempts</span>
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     QUIZ CARD
+========================================================= -->
+
+<div class="quiz-card">
+
+
+<!-- START SCREEN -->
+
+<div id="startScreen" class="start-screen">
+
+<div class="start-icon">
+🛡️
+</div>
+
+<h2>
+Ready for the Challenge?
+</h2>
+
+<p>
+Test your understanding of data privacy and
+cybersecurity through this short 10-question quiz.
+</p>
+
+
+<div class="rules">
+
+<div class="rule">
+<span>✓</span>
+10 multiple-choice questions
+</div>
+
+<div class="rule">
+<span>✓</span>
+1 point for every correct answer
+</div>
+
+<div class="rule">
+<span>✓</span>
+Your score will be shown at the end
+</div>
+
+<div class="rule">
+<span>✓</span>
+Top scores can appear on the leaderboard
+</div>
+
+</div>
+
+
+<div class="player-form">
+
+<label for="playerName">
+Your Name
+</label>
+
+<input
+    type="text"
+    id="playerName"
+    placeholder="Enter your name"
+    maxlength="50"
+    autocomplete="name"
+>
+
+
+<label for="rollNo">
+Roll Number
+</label>
+
+<input
+    type="text"
+    id="rollNo"
+    placeholder="Enter your roll number"
+    maxlength="20"
+>
+
+<div
+    class="error"
+    id="startError"
+></div>
+
+
+<button
+    class="btn"
+    id="startBtn"
+    type="button"
+>
+    Start Quiz →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     QUIZ SCREEN
+========================================================= -->
+
+<div id="quizScreen">
+
+<div class="quiz-top">
+
+<span id="questionCounter">
+Question 1 of 10
+</span>
+
+<span id="scoreDisplay">
+Score: 0
+</span>
+
+</div>
+
+
+<div class="progress">
+
+<div
+    class="progress-fill"
+    id="progressFill"
+></div>
+
+</div>
+
+
+<div
+    class="question-number"
+    id="questionCategory"
+>
+DATA PRIVACY
+</div>
+
+
+<h2
+    class="question-title"
+    id="questionText"
+>
+Question
+</h2>
+
+
+<div
+    class="answers"
+    id="answers"
+>
+</div>
+
+
+<div class="quiz-actions">
+
+<button
+    type="button"
+    class="secondary-btn"
+    id="prevBtn"
+>
+    ← Previous
+</button>
+
+
+<button
+    type="button"
+    class="btn"
+    id="nextBtn"
+>
+    Next →
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     RESULT SCREEN
+========================================================= -->
+
+<div id="resultScreen">
+
+<div class="result-icon">
+✓
+</div>
+
+<h2>
+Quiz Completed!
+</h2>
+
+<p class="result-subtitle">
+Great job! Here is your result.
+</p>
+
+
+<div class="score-circle">
+
+<strong id="finalScore">
+0/10
+</strong>
+
+<span id="finalPercentage">
+0%
+</span>
+
+</div>
+
+
+<div class="result-stats">
+
+<div class="result-stat">
+
+<strong id="correctAnswers">
+0
+</strong>
+
+<span>
+Correct
+</span>
+
+</div>
+
+
+<div class="result-stat">
+
+<strong id="wrongAnswers">
+0
+</strong>
+
+<span>
+Incorrect
+</span>
+
+</div>
+
+
+<div class="result-stat">
+
+<strong id="timeTaken">
+0s
+</strong>
+
+<span>
+Time Taken
+</span>
+
+</div>
+
+</div>
+
+
+<p
+    id="resultMessage"
+    style="
+        color:#aab7ca;
+        margin-bottom:22px;
+        font-size:14px;
+    "
+></p>
+
+
+<button
+    type="button"
+    class="btn"
+    id="retryBtn"
+>
+    Try Again
+</button>
+
+
+<a
+    href="leaderboard.html"
+    class="btn"
+    style="
+        display:inline-flex;
+        margin-left:8px;
+    "
+>
+    View Leaderboard →
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="footer-inner">
+
+<div>
+
+<div class="footer-brand">
+Viva College • B.Sc Information Technology
+</div>
+
+<div>
+2nd Year • Division C • Academic Year 2026–27
+</div>
+
+</div>
+
+
+<div>
+Data Privacy Field Study • Aniket
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+   GOOGLE APPS SCRIPT
+========================================================= */
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbz2qTZQR7u8eZJUb_Ac9Ytnr-9nAoItyDIP7HjS-onbHgcDcYw2XzF6onGnJEmiO4yQcg/exec";
+
+
+/* =========================================================
+   QUIZ QUESTIONS
+========================================================= */
+
+const questions = [
+
+{
+    category:"DATA PRIVACY",
+    question:"What does data privacy mainly refer to?",
+    options:[
+        "Protecting and controlling how personal information is collected and used",
+        "Making your internet connection faster",
+        "Deleting all files from a device",
+        "Using social media every day"
+    ],
+    answer:0
+},
+
+{
+    category:"PERSONAL DATA",
+    question:"Which of the following is personal data?",
+    options:[
+        "A person's phone number",
+        "A random weather report",
+        "A public traffic signal",
+        "A general news headline"
+    ],
+    answer:0
+},
+
+{
+    category:"PASSWORD SECURITY",
+    question:"What is the safest password practice?",
+    options:[
+        "Use the same password everywhere",
+        "Use your date of birth",
+        "Use strong and unique passwords for different accounts",
+        "Share your password with trusted friends"
+    ],
+    answer:2
+},
+
+{
+    category:"TWO-FACTOR AUTHENTICATION",
+    question:"What does 2FA provide?",
+    options:[
+        "An additional layer of account security",
+        "Free internet access",
+        "Automatic password sharing",
+        "Unlimited storage"
+    ],
+    answer:0
+},
+
+{
+    category:"PHISHING",
+    question:"What is phishing?",
+    options:[
+        "A method used to trick people into revealing sensitive information",
+        "A way to improve Wi-Fi speed",
+        "A type of computer hardware",
+        "A social media filter"
+    ],
+    answer:0
+},
+
+{
+    category:"OTP SECURITY",
+    question:"What should you do if someone calls asking for your OTP?",
+    options:[
+        "Give it immediately",
+        "Share it if they sound professional",
+        "Refuse to share it",
+        "Post it in a chat"
+    ],
+    answer:2
+},
+
+{
+    category:"APP PRIVACY",
+    question:"Why should you check app permissions?",
+    options:[
+        "To understand what information and device features an app can access",
+        "To make the app download faster",
+        "To increase phone storage",
+        "To improve screen brightness"
+    ],
+    answer:0
+},
+
+{
+    category:"SOCIAL MEDIA",
+    question:"Which is a safer social media practice?",
+    options:[
+        "Share your address publicly",
+        "Accept every unknown request",
+        "Limit the personal information you share",
+        "Post your OTP online"
+    ],
+    answer:2
+},
+
+{
+    category:"ONLINE FRAUD",
+    question:"Which is a common sign of an online scam?",
+    options:[
+        "A trusted website using normal security practices",
+        "A message creating urgency and asking for money or sensitive information",
+        "A normal software update",
+        "A college announcement"
+    ],
+    answer:1
+},
+
+{
+    category:"PUBLIC WI-FI",
+    question:"What is the safer approach when using public Wi-Fi?",
+    options:[
+        "Perform sensitive banking transactions without checking security",
+        "Share passwords with other users",
+        "Avoid sensitive transactions on untrusted public networks",
+        "Disable every security feature"
+    ],
+    answer:2
+}
+
+];
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let currentQuestion = 0;
+
+let userAnswers =
+    new Array(questions.length).fill(null);
+
+let score = 0;
+
+let startTime = 0;
+
+let playerName = "";
+
+let rollNo = "";
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const startScreen =
+    document.getElementById("startScreen");
+
+const quizScreen =
+    document.getElementById("quizScreen");
+
+const resultScreen =
+    document.getElementById("resultScreen");
+
+const playerNameInput =
+    document.getElementById("playerName");
+
+const rollNoInput =
+    document.getElementById("rollNo");
+
+const startBtn =
+    document.getElementById("startBtn");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+const prevBtn =
+    document.getElementById("prevBtn");
+
+const retryBtn =
+    document.getElementById("retryBtn");
+
+const questionText =
+    document.getElementById("questionText");
+
+const questionCategory =
+    document.getElementById("questionCategory");
+
+const answersContainer =
+    document.getElementById("answers");
+
+const questionCounter =
+    document.getElementById("questionCounter");
+
+const scoreDisplay =
+    document.getElementById("scoreDisplay");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const startError =
+    document.getElementById("startError");
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+document
+.getElementById("menuBtn")
+.addEventListener("click",function(){
+
+    document
+        .getElementById("navLinks")
+        .classList.toggle("open");
+
+});
+
+
+/* =========================================================
+   START QUIZ
+========================================================= */
+
+startBtn.addEventListener("click",function(){
+
+    playerName =
+        playerNameInput.value.trim();
+
+    rollNo =
+        rollNoInput.value.trim();
+
+
+    if(!playerName){
+
+        showStartError(
+            "Please enter your name."
+        );
+
+        playerNameInput.focus();
+
+        return;
+    }
+
+
+    if(!rollNo){
+
+        showStartError(
+            "Please enter your roll number."
+        );
+
+        rollNoInput.focus();
+
+        return;
+    }
+
+
+    startError.style.display = "none";
+
+    currentQuestion = 0;
+
+    userAnswers =
+        new Array(questions.length).fill(null);
+
+    score = 0;
+
+    startTime =
+        Date.now();
+
+
+    startScreen.style.display = "none";
+
+    quizScreen.style.display = "block";
+
+    resultScreen.style.display = "none";
+
+
+    renderQuestion();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function showStartError(message){
+
+    startError.textContent = message;
+
+    startError.style.display = "block";
+
+}
+
+
+/* =========================================================
+   RENDER QUESTION
+========================================================= */
+
+function renderQuestion(){
+
+    const q =
+        questions[currentQuestion];
+
+
+    questionText.textContent =
+        q.question;
+
+    questionCategory.textContent =
+        q.category;
+
+
+    questionCounter.textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        questions.length;
+
+
+    scoreDisplay.textContent =
+        "Score: " + score;
+
+
+    const progress =
+        ((currentQuestion + 1) /
+        questions.length) * 100;
+
+
+    progressFill.style.width =
+        progress + "%";
+
+
+    answersContainer.innerHTML = "";
+
+
+    q.options.forEach(
+        function(option,index){
+
+            const wrapper =
+                document.createElement("div");
+
+            wrapper.className =
+                "answer";
+
+
+            const input =
+                document.createElement("input");
+
+            input.type =
+                "radio";
+
+            input.name =
+                "quizAnswer";
+
+            input.id =
+                "answer_" + index;
+
+            input.value =
+                index;
+
+
+            if(
+                userAnswers[currentQuestion] === index
+            ){
+                input.checked = true;
+            }
+
+
+            const label =
+                document.createElement("label");
+
+            label.htmlFor =
+                input.id;
+
+
+            const letter =
+                document.createElement("span");
+
+            letter.className =
+                "answer-letter";
+
+            letter.textContent =
+                String.fromCharCode(
+                    65 + index
+                );
+
+
+            const text =
+                document.createElement("span");
+
+            text.textContent =
+                option;
+
+
+            label.appendChild(letter);
+
+            label.appendChild(text);
+
+            wrapper.appendChild(input);
+
+            wrapper.appendChild(label);
+
+            answersContainer.appendChild(wrapper);
+
+
+            input.addEventListener(
+                "change",
+                function(){
+
+                    userAnswers[currentQuestion] =
+                        Number(this.value);
+
+                }
+            );
+
+        }
+    );
+
+
+    prevBtn.disabled =
+        currentQuestion === 0;
+
+
+    if(
+        currentQuestion ===
+        questions.length - 1
+    ){
+
+        nextBtn.textContent =
+            "Finish Quiz ✓";
+
+    }else{
+
+        nextBtn.textContent =
+            "Next →";
+
+    }
+
+}
+
+
+/* =========================================================
+   NEXT
+========================================================= */
+
+nextBtn.addEventListener("click",function(){
+
+    if(
+        userAnswers[currentQuestion] === null
+    ){
+
+        alert(
+            "Please select an answer before continuing."
+        );
+
+        return;
+    }
+
+
+    if(
+        currentQuestion <
+        questions.length - 1
+    ){
+
+        currentQuestion++;
+
+        renderQuestion();
+
+        window.scrollTo({
+            top:120,
+            behavior:"smooth"
+        });
+
+        return;
+    }
+
+
+    finishQuiz();
+
+});
+
+
+/* =========================================================
+   PREVIOUS
+========================================================= */
+
+prevBtn.addEventListener("click",function(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        renderQuestion();
+
+        window.scrollTo({
+            top:120,
+            behavior:"smooth"
+        });
+
+    }
+
+});
+
+
+/* =========================================================
+   FINISH QUIZ
+========================================================= */
+
+function finishQuiz(){
+
+    score = 0;
+
+
+    questions.forEach(
+        function(question,index){
+
+            if(
+                userAnswers[index] ===
+                question.answer
+            ){
+
+                score++;
+
+            }
+
+        }
+    );
+
+
+    const total =
+        questions.length;
+
+
+    const percentage =
+        Math.round(
+            (score / total) * 100
+        );
+
+
+    const time =
+        Math.max(
+            1,
+            Math.round(
+                (Date.now() - startTime) / 1000
+            )
+        );
+
+
+    document
+        .getElementById("finalScore")
+        .textContent =
+        score + "/" + total;
+
+
+    document
+        .getElementById("finalPercentage")
+        .textContent =
+        percentage + "%";
+
+
+    document
+        .getElementById("correctAnswers")
+        .textContent =
+        score;
+
+
+    document
+        .getElementById("wrongAnswers")
+        .textContent =
+        total - score;
+
+
+    document
+        .getElementById("timeTaken")
+        .textContent =
+        time + "s";
+
+
+    document
+        .getElementById("resultMessage")
+        .textContent =
+        getResultMessage(percentage);
+
+
+    quizScreen.style.display =
+        "none";
+
+    resultScreen.style.display =
+        "block";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+
+    /* Save result */
+
+    saveQuizResult(
+        playerName,
+        rollNo,
+        score,
+        total,
+        percentage,
+        time
+    );
+
+}
+
+
+/* =========================================================
+   RESULT MESSAGE
+========================================================= */
+
+function getResultMessage(percentage){
+
+    if(percentage >= 90){
+
+        return "Excellent! You have a strong understanding of data privacy and online safety.";
+
+    }
+
+    if(percentage >= 70){
+
+        return "Great work! Your privacy awareness is good, but there is always more to learn.";
+
+    }
+
+    if(percentage >= 50){
+
+        return "Good attempt! Review basic privacy and cybersecurity practices to improve further.";
+
+    }
+
+    return "Keep learning! Improving your privacy awareness can help you stay safer online.";
+
+}
+
+
+/* =========================================================
+   SAVE RESULT TO GOOGLE SHEETS
+========================================================= */
+
+function saveQuizResult(
+    name,
+    roll,
+    finalScore,
+    total,
+    percentage,
+    time
+){
+
+    const payload = {
+
+        action:"submitQuiz",
+
+        name:name,
+
+        rollNo:roll,
+
+        score:finalScore,
+
+        total:total,
+
+        percentage:percentage,
+
+        time:time,
+
+        timestamp:
+            new Date().toISOString()
+
+    };
+
+
+    const formData =
+        new URLSearchParams();
+
+
+    formData.append(
+        "payload",
+        JSON.stringify(payload)
+    );
+
+
+    /*
+       no-cors is used because Google Apps Script
+       is a cross-origin endpoint.
+
+       The request is sent to the backend,
+       but the browser cannot read the response.
+    */
+
+    fetch(
+        SCRIPT_URL,
+        {
+            method:"POST",
+
+            headers:{
+                "Content-Type":
+                "application/x-www-form-urlencoded"
+            },
+
+            body:
+                formData.toString(),
+
+            mode:"no-cors"
+        }
+    )
+    .catch(
+        function(error){
+
+            console.error(
+                "Quiz submission error:",
+                error
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   RETRY
+========================================================= */
+
+retryBtn.addEventListener("click",function(){
+
+    currentQuestion = 0;
+
+    userAnswers =
+        new Array(questions.length).fill(null);
+
+    score = 0;
+
+    startTime =
+        Date.now();
+
+
+    resultScreen.style.display =
+        "none";
+
+    quizScreen.style.display =
+        "block";
+
+
+    renderQuestion();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+</script>
+
+</body>
+</html>
