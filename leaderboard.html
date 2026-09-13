@@ -1,1 +1,673 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Leaderboard</title><link rel="stylesheet" href="css/style.css"><script>window.QUIZ_ENDPOINT="https://script.google.com/macros/s/AKfycbz2qTZQR7u8eZJUb_Ac9Ytnr-9nAoItyDIP7HjS-onbHgcDcYw2XzF6onGnJEmiO4yQcg/exec";</script><script src="js/leaderboard.js" defer></script></head><body><nav class="navbar"><div class="container nav-inner"><a class="brand" href="index.html"><span class="brand-mark">✦</span> Data Privacy Field Study</a><button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false">☰</button><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="awareness.html">Awareness</a><a href="survey.html">Survey</a><a href="quiz.html">Quiz</a><a href="leaderboard.html">Leaderboard</a><a href="dashboard.html">Dashboard</a><a href="findings.html">Findings</a><a href="conclusion.html">Conclusion</a></div></div></nav><main><section class="page-hero"><div class="container"><span class="eyebrow">Quiz ranking</span><h1 class="gradient">Leaderboard</h1><p>Highest score first. Faster time wins when scores are tied.</p></div></section><section class="section"><div class="container leaderboard"><div class="card"><div id="status" class="notice">Loading…</div><div id="table"></div></div></div></section></main><footer><div class="container footer-inner"><div><strong>Field Study on Awareness of Data Privacy Among College Students</strong><br>Viva College · B.Sc IT · 2nd Year · Division C · 2026–27</div><div>Aniket</div></div></footer><button class="back-top" aria-label="Back to top">↑</button><script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Data Privacy Field Study quiz leaderboard for Viva College students."
+    >
+
+    <meta
+        name="theme-color"
+        content="#07111f"
+    >
+
+    <title>
+        Leaderboard | Data Privacy Field Study
+    </title>
+
+    <!-- Main stylesheet -->
+    <link
+        rel="stylesheet"
+        href="css/style.css?v=4"
+    >
+
+    <!-- Leaderboard stylesheet -->
+    <style>
+
+        /* =========================================
+           LEADERBOARD PAGE
+           ========================================= */
+
+        .leaderboard-section {
+            padding: 90px 0 100px;
+            min-height: 70vh;
+        }
+
+
+        .leaderboard-intro {
+            max-width: 850px;
+            margin-bottom: 55px;
+        }
+
+
+        .leaderboard-kicker {
+            color: #27b8ff;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+
+        .leaderboard-title {
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: 1;
+            margin: 0 0 25px;
+            font-weight: 900;
+            letter-spacing: -3px;
+        }
+
+
+        .leaderboard-subtitle {
+            font-size: 18px;
+            line-height: 1.7;
+            opacity: .8;
+            max-width: 720px;
+        }
+
+
+        /* =========================================
+           CARD
+           ========================================= */
+
+        .leaderboard-card {
+            width: 100%;
+            border: 1px solid rgba(100, 190, 255, .18);
+            background: rgba(15, 31, 52, .72);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, .25);
+            overflow-x: auto;
+        }
+
+
+        /* =========================================
+           HEADER
+           ========================================= */
+
+        .leaderboard-header,
+        .leaderboard-row {
+
+            min-width: 720px;
+
+            display: grid;
+
+            grid-template-columns:
+                90px
+                minmax(220px, 1fr)
+                130px
+                150px
+                130px;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .leaderboard-header {
+
+            padding: 18px 22px;
+
+            margin-bottom: 10px;
+
+            border-bottom:
+                1px solid rgba(255, 255, 255, .1);
+
+            color: #8fa8c2;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        /* =========================================
+           ROW
+           ========================================= */
+
+        .leaderboard-row {
+
+            padding: 22px;
+
+            margin-bottom: 10px;
+
+            border-radius: 16px;
+
+            background:
+                rgba(255, 255, 255, .025);
+
+            border:
+                1px solid rgba(255, 255, 255, .045);
+
+            transition:
+                transform .2s ease,
+                background .2s ease,
+                border-color .2s ease;
+        }
+
+
+        .leaderboard-row:hover {
+
+            transform:
+                translateY(-2px);
+
+            background:
+                rgba(255, 255, 255, .055);
+
+            border-color:
+                rgba(39, 184, 255, .2);
+        }
+
+
+        .leaderboard-row:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* =========================================
+           RANK
+           ========================================= */
+
+        .rank {
+
+            font-size: 22px;
+
+            font-weight: 900;
+
+            color: #dff5ff;
+
+            text-align: center;
+        }
+
+
+        /* =========================================
+           NAME
+           ========================================= */
+
+        .name {
+
+            font-size: 17px;
+
+            font-weight: 750;
+
+            color: #f1f7ff;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================================
+           SCORE
+           ========================================= */
+
+        .score {
+
+            font-weight: 800;
+
+            color: #bcecff;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================================
+           PERCENTAGE
+           ========================================= */
+
+        .percentage {
+
+            font-weight: 900;
+
+            font-size: 18px;
+
+            color: #39c6ff;
+        }
+
+
+        /* =========================================
+           TIME
+           ========================================= */
+
+        .time {
+
+            color: #9fb6ca;
+
+            font-weight: 650;
+        }
+
+
+        /* =========================================
+           LOADING
+           ========================================= */
+
+        .loading-state {
+
+            min-height: 180px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: #9fb6ca;
+
+            font-size: 16px;
+        }
+
+
+        .loading-state::before {
+
+            content: "";
+
+            width: 20px;
+
+            height: 20px;
+
+            margin-right: 12px;
+
+            border-radius: 50%;
+
+            border:
+                2px solid rgba(255,255,255,.15);
+
+            border-top-color:
+                #27b8ff;
+
+            animation:
+                leaderboardSpin .8s linear infinite;
+        }
+
+
+        @keyframes leaderboardSpin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =========================================
+           EMPTY / ERROR
+           ========================================= */
+
+        .empty-state,
+        .error-state {
+
+            min-height: 180px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding: 40px;
+        }
+
+
+        .empty-state h3,
+        .error-state h3 {
+
+            margin: 0 0 10px;
+
+            font-size: 22px;
+        }
+
+
+        .empty-state p,
+        .error-state p {
+
+            margin: 0;
+
+            color: #9fb6ca;
+
+            line-height: 1.6;
+        }
+
+
+        .error-state {
+
+            color: #ffb4b4;
+        }
+
+
+        /* =========================================
+           MOBILE
+           ========================================= */
+
+        @media (max-width: 700px) {
+
+            .leaderboard-section {
+
+                padding:
+                    60px 0 70px;
+            }
+
+
+            .leaderboard-title {
+
+                font-size: 48px;
+
+                letter-spacing: -2px;
+            }
+
+
+            .leaderboard-subtitle {
+
+                font-size: 16px;
+            }
+
+
+            .leaderboard-card {
+
+                padding: 15px;
+
+                border-radius: 18px;
+            }
+
+
+            .leaderboard-header,
+            .leaderboard-row {
+
+                min-width: 650px;
+
+                grid-template-columns:
+                    70px
+                    minmax(180px, 1fr)
+                    100px
+                    120px
+                    110px;
+
+                gap: 10px;
+            }
+
+
+            .leaderboard-row {
+
+                padding: 18px 15px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="site-header">
+
+    <div class="container">
+
+        <nav class="navbar">
+
+            <a
+                href="index.html"
+                class="brand"
+            >
+                <span class="brand-icon">✦</span>
+                <span>
+                    Data Privacy Field Study
+                </span>
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="awareness.html">
+                    Awareness
+                </a>
+
+                <a href="survey.html">
+                    Survey
+                </a>
+
+                <a href="quiz.html">
+                    Quiz
+                </a>
+
+                <a
+                    href="leaderboard.html"
+                    class="active"
+                >
+                    Leaderboard
+                </a>
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="findings.html">
+                    Findings
+                </a>
+
+                <a href="conclusion.html">
+                    Conclusion
+                </a>
+
+            </div>
+
+
+            <!-- Mobile menu button -->
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Open navigation"
+                onclick="toggleMenu()"
+            >
+                ☰
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main>
+
+
+    <section
+        class="leaderboard-section"
+    >
+
+        <div class="container">
+
+
+            <!-- INTRO -->
+
+            <div
+                class="leaderboard-intro"
+            >
+
+                <div
+                    class="leaderboard-kicker"
+                >
+                    Quiz Ranking
+                </div>
+
+
+                <h1
+                    class="leaderboard-title"
+                >
+                    Leaderboard
+                </h1>
+
+
+                <p
+                    class="leaderboard-subtitle"
+                >
+                    See how participants performed
+                    in the Data Privacy Awareness
+                    Quiz. Higher scores are ranked
+                    first, and faster completion
+                    times are used as the tie-breaker.
+                </p>
+
+            </div>
+
+
+
+            <!-- LEADERBOARD -->
+
+            <div
+                class="leaderboard-card"
+            >
+
+                <div
+                    id="leaderboard"
+                >
+
+                    <div
+                        class="loading-state"
+                    >
+                        Loading leaderboard...
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <strong>
+                    Field Study on Awareness of
+                    Data Privacy Among College Students
+                </strong>
+
+
+                <p>
+                    Viva College · B.Sc IT ·
+                    2nd Year · Division C ·
+                    2026–27
+                </p>
+
+            </div>
+
+
+            <div class="footer-name">
+
+                Aniket
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     MAIN JS
+     ===================================================== -->
+
+<script src="js/main.js?v=4"></script>
+
+
+<!-- =====================================================
+     LEADERBOARD JS
+     ===================================================== -->
+
+<script src="js/leaderboard.js?v=4"></script>
+
+
+
+<!-- =====================================================
+     MOBILE NAVIGATION
+     ===================================================== -->
+
+<script>
+
+function toggleMenu() {
+
+    const nav =
+        document.querySelector(
+            ".nav-links"
+        );
+
+
+    if (!nav) {
+        return;
+    }
+
+
+    nav.classList.toggle(
+        "mobile-open"
+    );
+}
+
+</script>
+
+
+</body>
+</html>
